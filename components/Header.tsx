@@ -17,6 +17,9 @@ const navLinks = [
   { label: "Corporate Workshop", href: "/corporate-workshop" },
 ];
 
+const whatsappUrl =
+  "https://api.whatsapp.com/send/?phone=919310685448&text=Hello+%EF%BF%BD%0AWelcome+to+Shwaastika+Wellness.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.%0A%0AYou+can+share%3A%0A%E2%80%A2+Your+concern+or+goal%0A%E2%80%A2+Preferred+service%0A%E2%80%A2+Suitable+time+for+a+call%2Fsession%0A%0AOur+team+will+respond+shortly+%EF%BF%BD&type=phone_number&app_absent=0";
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -66,13 +69,14 @@ export default function Header() {
         </ul>
 
         <div className="hidden shrink-0 items-center gap-3 xl:flex">
-          <Link
-            href="/book-a-session"
-            scroll
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-[#2f3033] px-3.5 py-2.5 text-[11px] font-semibold text-white shadow-md shadow-[#2f3033]/12 transition hover:-translate-y-0.5 hover:bg-[#4f6574]"
           >
             Book a Consultation
-          </Link>
+          </a>
         </div>
 
         <button
@@ -117,14 +121,15 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/book-a-session"
-                scroll
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 block rounded-full bg-[#2f3033] px-5 py-3 text-center text-sm font-semibold text-white"
               >
                 Book a Consultation
-              </Link>
+              </a>
             </div>
           </motion.div>
         ) : null}

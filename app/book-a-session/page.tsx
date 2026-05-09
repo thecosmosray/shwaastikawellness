@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     "Choose from Intuitive Healing, Inner Clarity Guidance, Corporate Workshop, and Womb Healing sessions with SHWAASTIKA WELLNESS.",
 };
 
+const whatsappUrl =
+  "https://api.whatsapp.com/send/?phone=919310685448&text=Hello+%EF%BF%BD%0AWelcome+to+Shwaastika+Wellness.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.%0A%0AYou+can+share%3A%0A%E2%80%A2+Your+concern+or+goal%0A%E2%80%A2+Preferred+service%0A%E2%80%A2+Suitable+time+for+a+call%2Fsession%0A%0AOur+team+will+respond+shortly+%EF%BF%BD&type=phone_number&app_absent=0";
+
 export default function BookASessionPage() {
   return (
     <main className="bg-[#fbf8f1]">
@@ -42,7 +45,9 @@ export default function BookASessionPage() {
               For Bookings
             </h2>
             <a
-              href="tel:+919310685448"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex rounded-full bg-[#2f2822] px-10 py-4 text-lg font-semibold tracking-[0.18em] text-white shadow-xl shadow-[#2f2822]/15 transition hover:-translate-y-1 hover:bg-[#3f5f46] hover:shadow-[#3f5f46]/25"
             >
               Contact Us

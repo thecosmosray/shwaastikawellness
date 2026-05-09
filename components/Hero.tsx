@@ -4,6 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
 
+const whatsappUrl =
+  "https://api.whatsapp.com/send/?phone=919310685448&text=Hello+%EF%BF%BD%0AWelcome+to+Shwaastika+Wellness.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.%0A%0AYou+can+share%3A%0A%E2%80%A2+Your+concern+or+goal%0A%E2%80%A2+Preferred+service%0A%E2%80%A2+Suitable+time+for+a+call%2Fsession%0A%0AOur+team+will+respond+shortly+%EF%BF%BD&type=phone_number&app_absent=0";
+
 export default function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -41,12 +44,14 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/book-a-session"
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-[#2f2822] px-7 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-[#2f2822]/15 transition hover:-translate-y-0.5 hover:bg-[#4f6574]"
               >
                 Book a Consultation
-              </Link>
+              </a>
               <Link
                 href="/intuitive-healing"
                 className="rounded-full border border-[#b8a486] bg-white/55 px-7 py-3.5 text-center text-sm font-semibold text-[#3f352d] backdrop-blur transition hover:-translate-y-0.5 hover:bg-white"
@@ -55,14 +60,16 @@ export default function Hero() {
               </Link>
             </div>
 
-            <Link
-              href="/book-a-session"
-              className="group mt-8 block rounded-full border border-white/75 bg-white/45 px-5 py-3 text-center text-sm font-semibold leading-6 text-[#3f352d] shadow-sm backdrop-blur transition hover:bg-white/80"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfO7gDBYyXmGLCCzgZUlWptEyUIo4VbTuBsrQD9ardaQi5e6w/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 block cursor-pointer rounded-full border border-white/75 bg-white/45 px-5 py-3 text-center text-sm font-semibold leading-6 text-[#3f352d] shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-md hover:shadow-[#6b513b]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7a9272]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf8f1]"
             >
               <span className="underline decoration-[#b9a27e]/60 underline-offset-4 transition group-hover:decoration-[#4f6574]">
                 Free | Weekly Inner Alignment Session | Movement, meditation & awareness for inner balance - Click to Join
               </span>
-            </Link>
+            </a>
           </div>
 
           <div ref={visualRef} className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] bg-[#eef8fb] shadow-lg shadow-[#6b513b]/8 sm:min-h-[390px] lg:min-h-[450px]">
