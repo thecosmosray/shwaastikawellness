@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+SHWAASTIKA WELLNESS 🌿
 
-## Getting Started
+A modern wellness and personal development platform built with Next.js, Tailwind CSS, and a calm, immersive UI focused on healing, mindfulness, and guided transformation.
 
-First, run the development server:
+✨ Overview
 
-```bash
+SHWAASTIKA WELLNESS is a professionally designed wellness website created for guided healing sessions, inner clarity programs, womb healing support, corporate workshops, testimonials, and mindful personal transformation.
+
+The platform focuses on:
+
+Intuitive healing
+Guided wellness sessions
+Inner clarity & awareness
+Prenatal & womb healing support
+Corporate emotional wellness workshops
+Testimonials & healing journeys
+🛠️ Tech Stack
+Next.js 15+
+React
+Tailwind CSS
+TypeScript
+Framer Motion
+Responsive UI Architecture
+SEO Optimized Structure
+🎨 Design Philosophy
+
+The project follows a:
+
+Calm & minimal aesthetic
+Soft wellness-inspired palette
+Premium modern UI
+Smooth but lightweight interactions
+Mobile-first responsive structure
+Zen-inspired layout architecture
+📱 Features
+🌸 Wellness Pages
+Home
+About
+Inner Clarity Session
+Intuitive Healing
+Womb Healing & Prenatal Support
+Corporate Workshops
+Testimonials
+Blog
+Book A Session
+🎥 Testimonials Experience
+Video testimonials
+Image review sliders
+Google review galleries
+Interactive review sections
+📅 Booking Experience
+Animated session cards
+Hidden pricing reveal interactions
+Consultation CTA system
+Mobile-friendly booking UI
+🧘 UI & UX Enhancements
+Smooth page transitions
+Responsive navigation
+Mobile hamburger menu
+Calm visual hierarchy
+Soft rounded layouts
+SEO-friendly semantic structure
+⚡ Performance & SEO
+Server-side rendering with Next.js
+Semantic HTML structure
+Responsive image handling
+Optimized route-based navigation
+Metadata optimization
+Accessible component structure
+🚀 Getting Started
+1. Clone the repository
+git clone https://github.com/your-username/shwaastika-wellness.git
+2. Navigate to the project
+cd shwaastika-wellness
+3. Install dependencies
+npm install
+4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+5. Open in browser
+http://localhost:3000
+📂 Project Structure
+/app
+/components
+/public
+/styles
+/lib
+/hooks
+📸 UI Inspiration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The interface is inspired by:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Modern wellness brands
+Zen-inspired layouts
+Minimal editorial UI systems
+Calm therapeutic digital experiences
+🌍 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Recommended deployment platforms:
 
-## Learn More
+Vercel
+Netlify
+AWS Amplify
+🔒 Notes
 
-To learn more about Next.js, take a look at the following resources:
+This project is designed with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Responsive layouts
+Tailwind utility-first architecture
+Clean component separation
+Maintainable scalability
+👨‍💻 Developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Built with passion by Shantanu Kumar
 
-## Deploy on Vercel
+📜 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is intended for personal/business wellness platform usage.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌿 “Healing begins when awareness meets intention.”
