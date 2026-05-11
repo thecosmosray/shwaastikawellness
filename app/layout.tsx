@@ -40,18 +40,18 @@ export const metadata: Metadata = {
   applicationName: siteName,
   category: "Wellness",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   openGraph: {
     title: "Preeti Semwal's Healing Space | Healing",
     description: siteDescription,
-    url: "/",
+    url: siteUrl,
     type: "website",
     locale: "en_IN",
     siteName,
     images: [
       {
-        url: "/images/logo.png",
+        url: `${siteUrl}/images/logo.png`,
         width: 512,
         height: 512,
         alt: "Preeti Semwal's Healing Space logo",
@@ -62,15 +62,15 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Preeti Semwal's Healing Space | Healing",
     description: siteDescription,
-    images: ["/images/logo.png"],
+    images: [`${siteUrl}/images/logo.png`],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/images/logo.png", type: "image/png" },
+      { url: `${siteUrl}/favicon.ico` },
+      { url: `${siteUrl}/images/logo.png`, type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/images/logo.png",
+    shortcut: `${siteUrl}/favicon.ico`,
+    apple: `${siteUrl}/images/logo.png`,
   },
   robots: {
     index: true,
