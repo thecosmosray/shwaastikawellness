@@ -65,10 +65,11 @@ export default function WombHealingPage() {
                   alt="Womb Healing and prenatal support session"
                   fill
                   className="object-cover object-top"
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  quality={90}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/30 via-transparent to-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/12 via-transparent to-transparent" />
               </div>
             </div>
           </Reveal>

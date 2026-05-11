@@ -28,15 +28,15 @@ const featureBlocks = [
 
 const aboutImages = [
   {
-    src: "/images/About1.JPG",
+    src: "/images/About/About1.JPG",
     alt: "Preeti Semwal at SHWAASTIKA WELLNESS",
   },
   {
-    src: "/images/About2.JPG",
+    src: "/images/About/About2.JPG",
     alt: "SHWAASTIKA WELLNESS healing and wellness practice",
   },
   {
-    src: "/images/About3.jpeg",
+    src: "/images/About/About3.jpeg",
     alt: "Preeti Semwal guiding wellness work",
   },
 ];
@@ -109,15 +109,17 @@ export default function AboutPage() {
       <section className="bg-[#fbf8f1] px-5 py-16 sm:px-8 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
           {aboutImages.map((image, index) => (
-            <Reveal key={image.src} delay={index * 0.08}>
+            <Reveal key={image.alt} delay={index * 0.08}>
               <div className="rounded-[2rem] border border-[#e4d8c4] bg-white/75 p-4 shadow-xl shadow-[#6b513b]/8">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[#f3eadb]">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                    quality={90}
                   />
                 </div>
               </div>

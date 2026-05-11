@@ -8,7 +8,8 @@ const tabs = [
   {
     label: "How a Session Works",
     imageLabel: "Session image",
-    imageSrc: "/images/How%20a%20session%20work.png",
+    imageAlt: "Illustration explaining how an Inner Clarity Guidance session works",
+    imageSrc: "/images/inner%20clarity/How%20a%20session%20work.png",
     items: [
       "Modes: in-person, live online (video), or voice call all equally transformative",
       "We begin with simple breathwork to settle your energy and quiet mental noise",
@@ -20,7 +21,8 @@ const tabs = [
   {
     label: "How You'll Know It's Time",
     imageLabel: "Clarity image",
-    imageSrc: "/images/how%20you%27ll%20know%20it%27s%20time.png",
+    imageAlt: "Illustration describing signs that it is time for Inner Clarity Guidance",
+    imageSrc: "/images/inner%20clarity/how%20you%27ll%20know%20it%27s%20time.png",
     items: [
       "Decision fatigue has you second-guessing every option",
       "You've tried strategy and logic but still feel confused",
@@ -46,7 +48,8 @@ const tabs = [
   {
     label: "Who Benefits",
     imageLabel: "Benefits image",
-    imageSrc: "/images/who%20benifits.png",
+    imageAlt: "Illustration showing who benefits from Inner Clarity Guidance",
+    imageSrc: "/images/inner%20clarity/who%20benifits.png",
     note: "Anyone seeking clarity, closure or direction regardless of age or background gains from this work. It's best if you come present, honest with yourself and ready to engage with the guidance offered.",
   },
 ];
@@ -96,13 +99,15 @@ export default function InnerClarityTabs() {
                   <>
                     <Image
                       src={activeTab.imageSrc}
-                      alt={activeTab.imageLabel}
+                      alt={activeTab.imageAlt}
                       fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 34vw, 100vw"
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
+                      quality={90}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/38 via-transparent to-white/10" />
-                    <p className="absolute bottom-5 left-5 rounded-full bg-white/86 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3f5f46] shadow-sm backdrop-blur">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/8 via-transparent to-transparent" />
+                    <p className="absolute bottom-5 left-5 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3f5f46] shadow-sm">
                       {activeTab.imageLabel}
                     </p>
                   </>
@@ -119,7 +124,7 @@ export default function InnerClarityTabs() {
                 )}
               </div>
 
-              <div className="flex rounded-[1.5rem] border border-white/65 bg-white/68 p-6 shadow-sm shadow-[#6b513b]/5 backdrop-blur sm:p-8 lg:p-9">
+              <div className="flex rounded-[1.5rem] border border-white/65 bg-white/80 p-6 shadow-sm shadow-[#6b513b]/5 sm:p-8 lg:p-9">
                 <div className="self-center text-lg leading-9 text-[#332b24]">
                   <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
                     {activeTab.label}

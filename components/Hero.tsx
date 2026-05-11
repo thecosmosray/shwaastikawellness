@@ -82,9 +82,11 @@ export default function Hero() {
                 src="/images/Home.png"
                 alt="Preeti Semwal intuitive healing session at SHWAASTIKA WELLNESS"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                priority
+                priority={true}
+                fetchPriority="high"
+                quality={95}
               />
             </motion.div>
             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#fbf8f1]/80 to-transparent" />
