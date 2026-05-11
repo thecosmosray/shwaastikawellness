@@ -5,20 +5,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const navLinks = [
+const mainLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Inner Clarity Session", href: "/inner-clarity-session" },
-  { label: "Intuitive Healing", href: "/intuitive-healing" },
-  { label: "Womb Healing", href: "/womb-healing" },
+  { label: "Healing Sessions", href: "/inner-clarity-session" },
   { label: "Book A Session", href: "/book-a-session" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Blog", href: "/blog" },
   { label: "Corporate Workshop", href: "/corporate-workshop" },
 ];
 
-const whatsappUrl =
-  "https://api.whatsapp.com/send/?phone=919310685448&text=Hello+%EF%BF%BD%0AWelcome+to+Shwaastika+Wellness.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.%0A%0AYou+can+share%3A%0A%E2%80%A2+Your+concern+or+goal%0A%E2%80%A2+Preferred+service%0A%E2%80%A2+Suitable+time+for+a+call%2Fsession%0A%0AOur+team+will+respond+shortly+%EF%BF%BD&type=phone_number&app_absent=0";
+const moreLinks = [
+  { label: "Intuitive Healing", href: "/intuitive-healing" },
+  { label: "Womb Healing", href: "/womb-healing" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Blog", href: "/blog" },
+];
+
+const allLinks = [...mainLinks, ...moreLinks];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,20 +30,25 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/70 bg-[#f7f2e8]/88 backdrop-blur-xl">
       <nav
         aria-label="Primary navigation"
-        className="mx-auto flex max-w-[92rem] items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-[86rem] items-center justify-between gap-6 px-5 py-4 sm:px-6 lg:px-10"
       >
-        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="SHWAASTIKA WELLNESS home">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center gap-3"
+          aria-label="SHWAASTIKA WELLNESS home"
+        >
           <span
             aria-hidden="true"
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c8d9e5] bg-white/75 shadow-sm"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c8d9e5] bg-white/75 shadow-sm"
           >
-            <span className="h-3 w-3 rounded-full bg-[#4f6574]" />
+            <span className="h-3.5 w-3.5 rounded-full bg-[#4f6574]" />
           </span>
+
           <div className="leading-tight">
-            <p className="text-[13px] font-semibold tracking-[0.04em] text-[#263542]">
+            <p className="text-[14px] font-semibold tracking-[0.04em] text-[#263542]">
               SHWAASTIKA WELLNESS
             </p>
-            <p className="text-[10px] uppercase tracking-[0.16em] text-[#8b9a72]">
+            <p className="text-[10px] uppercase tracking-[0.18em] text-[#8b9a72]">
               AKR WELLNESS
             </p>
             <p className="text-[10px] italic text-[#8a7764]">
@@ -50,13 +57,13 @@ export default function Header() {
           </div>
         </Link>
 
-        <ul className="hidden flex-1 items-center justify-center gap-1.5 xl:flex">
-          {navLinks.map((link) => (
+        <ul className="hidden flex-1 items-center justify-center gap-3 xl:flex">
+          {mainLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 scroll
-                className={`block rounded-full px-2.5 py-2 text-[11px] font-semibold transition ${
+                className={`block rounded-full px-4 py-2 text-[13px] font-medium transition ${
                   pathname === link.href
                     ? "bg-white text-[#24394a] shadow-sm"
                     : "text-[#41515d] hover:bg-white/65 hover:text-[#24394a]"
@@ -66,17 +73,42 @@ export default function Header() {
               </Link>
             </li>
           ))}
+
+          <li className="group relative">
+            <button
+              type="button"
+              className="rounded-full px-4 py-2 text-[13px] font-medium text-[#41515d] transition hover:bg-white/65 hover:text-[#24394a]"
+            >
+              More
+            </button>
+
+            <div className="invisible absolute left-1/2 top-11 w-56 -translate-x-1/2 rounded-2xl border border-white/70 bg-[#f7f2e8] p-2 opacity-0 shadow-xl shadow-black/10 transition group-hover:visible group-hover:opacity-100">
+              {moreLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  scroll
+                  className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
+                    pathname === link.href
+                      ? "bg-white text-[#24394a] shadow-sm"
+                      : "text-[#41515d] hover:bg-white/70 hover:text-[#24394a]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </li>
         </ul>
 
-        <div className="hidden shrink-0 items-center gap-3 xl:flex">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[#2f3033] px-3.5 py-2.5 text-[11px] font-semibold text-white shadow-md shadow-[#2f3033]/12 transition hover:-translate-y-0.5 hover:bg-[#4f6574]"
+        <div className="hidden shrink-0 items-center xl:flex">
+          <Link
+            href="/book-a-session"
+            scroll
+            className="rounded-full bg-[#2f3033] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#2f3033]/12 transition hover:-translate-y-0.5 hover:bg-[#4f6574]"
           >
             Book a Consultation
-          </a>
+          </Link>
         </div>
 
         <button
@@ -87,9 +119,21 @@ export default function Header() {
           onClick={() => setIsOpen((value) => !value)}
         >
           <span className="relative h-4 w-5">
-            <span className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${isOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition ${isOpen ? "opacity-0" : ""}`} />
-            <span className={`absolute left-0 top-4 h-0.5 w-5 bg-current transition ${isOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${
+                isOpen ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-4 h-0.5 w-5 bg-current transition ${
+                isOpen ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
           </span>
         </button>
       </nav>
@@ -104,7 +148,7 @@ export default function Header() {
           >
             <div className="mx-auto max-w-7xl px-5 py-4 sm:px-8">
               <ul className="flex flex-col gap-1.5">
-                {navLinks.map((link) => (
+                {allLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -121,15 +165,15 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+
+              <Link
+                href="/book-a-session"
+                scroll
                 onClick={() => setIsOpen(false)}
-                className="mt-2 block rounded-full bg-[#2f3033] px-5 py-3 text-center text-sm font-semibold text-white"
+                className="mt-3 block rounded-full bg-[#2f3033] px-5 py-3 text-center text-sm font-semibold text-white"
               >
                 Book a Consultation
-              </a>
+              </Link>
             </div>
           </motion.div>
         ) : null}
