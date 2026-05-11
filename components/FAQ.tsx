@@ -4,7 +4,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
-const faqs = [
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type FAQProps = {
+  items?: FAQItem[];
+  eyebrow?: string;
+  title?: string;
+  sectionClassName?: string;
+  initialOpenIndex?: number;
+};
+
+const defaultFaqs = [
   {
     question: "What services does SHWAASTIKA WELLNESS provide?",
     answer:
@@ -32,22 +45,28 @@ const faqs = [
   },
 ];
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0);
+export default function FAQ({
+  items = defaultFaqs,
+  eyebrow = "FAQ",
+  title = "Clear answers for planning your next program.",
+  sectionClassName = "bg-white px-5 py-14 sm:px-8 lg:px-10",
+  initialOpenIndex = 0,
+}: FAQProps) {
+  const [openIndex, setOpenIndex] = useState(initialOpenIndex);
 
   return (
-    <section className="bg-white px-5 py-14 sm:px-8 lg:px-10">
+    <section className={sectionClassName}>
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">FAQ</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">{eyebrow}</p>
           <h2 className="mt-3 text-3xl font-semibold text-[#2f2822] sm:text-4xl">
-            Clear answers for planning your next program.
+            {title}
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="space-y-4">
-            {faqs.map((faq, index) => {
+            {items.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (

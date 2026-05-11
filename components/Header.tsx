@@ -1,21 +1,22 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const mainLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Healing Sessions", href: "/inner-clarity-session" },
-  { label: "Book A Session", href: "/book-a-session" },
-  { label: "Corporate Workshop", href: "/corporate-workshop" },
+  { label: "Inner Clarity Sessions", href: "/inner-clarity-session" },
+  { label: "Intuitive Healing", href: "/intuitive-healing" },
+  { label: "Womb Healing", href: "/womb-healing" },
 ];
 
 const moreLinks = [
-  { label: "Intuitive Healing", href: "/intuitive-healing" },
-  { label: "Womb Healing", href: "/womb-healing" },
+  { label: "Book A Session", href: "/book-a-session" },
+  { label: "Corporate Workshop", href: "/corporate-workshop" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Blog", href: "/blog" },
 ];
@@ -24,7 +25,40 @@ const allLinks = [...mainLinks, ...moreLinks];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const moreDropdownRef = useRef<HTMLLIElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (!isMoreOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (
+        moreDropdownRef.current &&
+        !moreDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsMoreOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMoreOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMoreOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/70 bg-[#f7f2e8]/88 backdrop-blur-xl">
@@ -39,9 +73,16 @@ export default function Header() {
         >
           <span
             aria-hidden="true"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c8d9e5] bg-white/75 shadow-sm"
+            className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-[#c8d9e5] bg-white/75 shadow-sm"
           >
-            <span className="h-3.5 w-3.5 rounded-full bg-[#4f6574]" />
+            <Image
+              src="/images/logo.png"
+              alt=""
+              width={44}
+              height={44}
+              className="h-full w-full object-contain"
+              priority
+            />
           </span>
 
           <div className="leading-tight">
@@ -74,20 +115,30 @@ export default function Header() {
             </li>
           ))}
 
-          <li className="group relative">
+          <li ref={moreDropdownRef} className="relative">
             <button
               type="button"
+              aria-expanded={isMoreOpen}
+              aria-haspopup="menu"
+              onClick={() => setIsMoreOpen((value) => !value)}
               className="rounded-full px-4 py-2 text-[13px] font-medium text-[#41515d] transition hover:bg-white/65 hover:text-[#24394a]"
             >
               More
             </button>
 
-            <div className="invisible absolute left-1/2 top-11 w-56 -translate-x-1/2 rounded-2xl border border-white/70 bg-[#f7f2e8] p-2 opacity-0 shadow-xl shadow-black/10 transition group-hover:visible group-hover:opacity-100">
+            <div
+              role="menu"
+              className={`absolute left-1/2 top-11 w-56 -translate-x-1/2 rounded-2xl border border-white/70 bg-[#f7f2e8] p-2 shadow-xl shadow-black/10 transition ${
+                isMoreOpen ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               {moreLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   scroll
+                  role="menuitem"
+                  onClick={() => setIsMoreOpen(false)}
                   className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
                     pathname === link.href
                       ? "bg-white text-[#24394a] shadow-sm"

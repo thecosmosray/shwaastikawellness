@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import IntuitiveHealingFAQ from "@/components/IntuitiveHealingFAQ";
+import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -30,6 +30,29 @@ const instructions = [
   "Turn off phones, remove smartwatches and disable device notifications",
   "Eat 3-4 hours before the session; avoid non-veg/eggs, alcohol, coffee and smoking on the day",
   "Ensure a quiet, clutter-free space with no interruptions; lock the door if possible",
+];
+
+const intuitiveFaqs = [
+  {
+    question: "How long is a session?",
+    answer:
+      "Typically lasting 60-65 minutes, each session is designed to feel immersive, engaging, and thoughtfully paced from beginning to end.",
+  },
+  {
+    question: "Is online as effective as in-person?",
+    answer:
+      "Yes - many participants describe online experiences as equally deep, engaging, and impactful as sessions held in person.",
+  },
+  {
+    question: "Is this a medical treatment?",
+    answer:
+      "This is intuitive healing-alternative treatments for deep rooted chronic issues. It not a substitute for licensed medical or mental-health care.",
+  },
+  {
+    question: "Can I seek guidance about someone else?",
+    answer:
+      "Yes, if the guidance is intended for the well-being of a loved one",
+  },
 ];
 
 export default function IntuitiveHealingPage() {
@@ -97,7 +120,11 @@ export default function IntuitiveHealingPage() {
         </Reveal>
       </section>
 
-      <IntuitiveHealingFAQ />
+      <FAQ
+        items={intuitiveFaqs}
+        title="Clear answers about intuitive healing sessions."
+        sectionClassName="bg-white px-5 py-14 sm:px-8 lg:px-10"
+      />
 
       <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
         <Reveal>

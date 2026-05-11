@@ -1,12 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 
 const tabs = [
   {
     label: "How a Session Works",
     imageLabel: "Session image",
+    imageSrc: "/images/How%20a%20session%20work.png",
     items: [
       "Modes: in-person, live online (video), or voice call all equally transformative",
       "We begin with simple breathwork to settle your energy and quiet mental noise",
@@ -18,6 +20,7 @@ const tabs = [
   {
     label: "How You'll Know It's Time",
     imageLabel: "Clarity image",
+    imageSrc: "/images/how%20you%27ll%20know%20it%27s%20time.png",
     items: [
       "Decision fatigue has you second-guessing every option",
       "You've tried strategy and logic but still feel confused",
@@ -43,6 +46,7 @@ const tabs = [
   {
     label: "Who Benefits",
     imageLabel: "Benefits image",
+    imageSrc: "/images/who%20benifits.png",
     note: "Anyone seeking clarity, closure or direction regardless of age or background gains from this work. It's best if you come present, honest with yourself and ready to engage with the guidance offered.",
   },
 ];
@@ -84,31 +88,56 @@ export default function InnerClarityTabs() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="mt-6 rounded-[2rem] border border-[#eadfce] bg-[#f5e9f7] p-6 shadow-xl shadow-[#6b513b]/5 sm:p-8 lg:p-10"
+            className="mt-6 overflow-hidden rounded-[2rem] border border-[#eadfce] bg-[#f5e9f7] p-4 shadow-xl shadow-[#6b513b]/5 sm:p-5 lg:p-6"
           >
-            <div className="grid items-start gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-              <div className="overflow-hidden rounded-[1.5rem] border border-white/70 bg-white p-3 shadow-lg shadow-[#6b513b]/8">
-                <div className="flex aspect-[4/3] items-center justify-center rounded-[1.1rem] bg-[linear-gradient(145deg,#fffdf8,#dfe9d8)] text-center">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                    {activeTab.imageLabel}
-                  </p>
-                </div>
+            <div className="grid items-stretch gap-7 lg:grid-cols-[0.78fr_1.22fr]">
+              <div className="relative min-h-[300px] overflow-hidden rounded-[1.5rem] border border-white/75 bg-white shadow-lg shadow-[#6b513b]/8 sm:min-h-[360px] lg:min-h-[430px]">
+                {activeTab.imageSrc ? (
+                  <>
+                    <Image
+                      src={activeTab.imageSrc}
+                      alt={activeTab.imageLabel}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 34vw, 100vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/38 via-transparent to-white/10" />
+                    <p className="absolute bottom-5 left-5 rounded-full bg-white/86 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#3f5f46] shadow-sm backdrop-blur">
+                      {activeTab.imageLabel}
+                    </p>
+                  </>
+                ) : (
+                  <div className="flex h-full min-h-[300px] flex-col justify-end bg-[linear-gradient(145deg,#fffdf8,#f5e9f7_48%,#dfe9d8)] p-7 sm:min-h-[360px] lg:min-h-[430px]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
+                      {activeTab.imageLabel}
+                    </p>
+                    <p className="mt-4 text-3xl font-semibold leading-tight text-[#2f2822]">
+                      Tune into what is asking for clarity.
+                    </p>
+                    <div className="mt-7 h-px w-24 bg-[#b9a27e]" />
+                  </div>
+                )}
               </div>
 
-              <div className="text-lg leading-9 text-[#332b24]">
-                {activeTab.items ? (
-                  <ul className="space-y-3">
-                    {activeTab.items.map((item) => (
-                      <li key={item} className="flex gap-3">
-                        <span className="mt-4 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-                {activeTab.note ? (
-                  <p className={`${activeTab.items ? "mt-8" : ""}`}>{activeTab.note}</p>
-                ) : null}
+              <div className="flex rounded-[1.5rem] border border-white/65 bg-white/68 p-6 shadow-sm shadow-[#6b513b]/5 backdrop-blur sm:p-8 lg:p-9">
+                <div className="self-center text-lg leading-9 text-[#332b24]">
+                  <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
+                    {activeTab.label}
+                  </p>
+                  {activeTab.items ? (
+                    <ul className="space-y-3">
+                      {activeTab.items.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-4 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {activeTab.note ? (
+                    <p className={`${activeTab.items ? "mt-8" : ""}`}>{activeTab.note}</p>
+                  ) : null}
+                </div>
               </div>
             </div>
           </motion.article>

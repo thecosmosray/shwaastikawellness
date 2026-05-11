@@ -9,7 +9,7 @@ export default function HomeIntro() {
       <div className="absolute bottom-10 right-[12%] -z-10 h-32 w-32 rounded-full bg-[#c7d6bd]/16 blur-3xl" />
 
       <motion.article
-        initial={{ opacity: 0, y: 18 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.85, ease: "easeOut" }}

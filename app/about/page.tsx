@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -19,6 +20,21 @@ const featureBlocks = [
   {
     title: "A Life of Service & Balance",
     text: "A devoted mother of two and wife of a retired Army officer, I live by the values of discipline, compassion, and grace. Fluent in English and Hindi, I work across cultures and age groups with one purpose: to help people awaken their inner healing potential and live vibrant, fulfilling lives.",
+  },
+];
+
+const aboutImages = [
+  {
+    src: "/images/About1.JPG",
+    alt: "Preeti Semwal at SHWAASTIKA WELLNESS",
+  },
+  {
+    src: "/images/About2.JPG",
+    alt: "SHWAASTIKA WELLNESS healing and wellness practice",
+  },
+  {
+    src: "/images/About3.jpeg",
+    alt: "Preeti Semwal guiding wellness work",
   },
 ];
 
@@ -89,13 +105,17 @@ export default function AboutPage() {
 
       <section className="bg-[#fbf8f1] px-5 py-16 sm:px-8 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
-          {["Image 1", "Image 2", "Image 3"].map((label, index) => (
-            <Reveal key={label} delay={index * 0.08}>
+          {aboutImages.map((image, index) => (
+            <Reveal key={image.src} delay={index * 0.08}>
               <div className="rounded-[2rem] border border-[#e4d8c4] bg-white/75 p-4 shadow-xl shadow-[#6b513b]/8">
-                <div className="flex aspect-[4/3] items-center justify-center rounded-[1.5rem] border border-dashed border-[#c9b693] bg-[linear-gradient(145deg,#fffdf8,#e5eddf)] text-center">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                    {label}
-                  </p>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[#f3eadb]">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                  />
                 </div>
               </div>
             </Reveal>

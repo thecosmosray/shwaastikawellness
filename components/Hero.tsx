@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -18,7 +19,7 @@ export default function Hero() {
   return (
     <section className="bg-[#fbf8f1] px-4 pb-12 pt-7 sm:px-6 lg:px-8 lg:pb-16 lg:pt-9">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85, ease: "easeOut" }}
         className="relative isolate mx-auto max-w-[92rem] overflow-hidden rounded-[1.75rem] border border-white/70 bg-[#dceef4] shadow-xl shadow-[#6b513b]/8"
@@ -31,16 +32,16 @@ export default function Hero() {
               Wellness sanctuary
             </p>
             <h1 className="mt-4 text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-[3.45rem]">
-              SHWAASTIKA WELLNESS
+              Preeti Semwal
             </h1>
             <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#7a9272]">
-              AKR WELLNESS
+              SHWAASTIKA WELLNESS
             </p>
             <p className="mt-5 max-w-xl text-base leading-8 text-[#5f5349] sm:text-[17px]">
               Wellness & Personal Development Practice | Guided sessions and intuitive healing
             </p>
             <p className="mt-3 text-base font-semibold italic text-[#7a6b5e]">
-              By Preeti Semwal
+              Intuitive Energy Healer & Wellness Guide
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -75,10 +76,17 @@ export default function Hero() {
           <div ref={visualRef} className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] bg-[#eef8fb] shadow-lg shadow-[#6b513b]/8 sm:min-h-[390px] lg:min-h-[450px]">
             <motion.div
               style={{ y: visualY }}
-              className="absolute -inset-x-8 -inset-y-10 bg-[radial-gradient(ellipse_at_52%_18%,rgba(255,255,255,0.9),transparent_26%),radial-gradient(ellipse_at_48%_72%,rgba(63,95,70,0.13),transparent_18%),repeating-linear-gradient(178deg,rgba(101,148,164,0.24)_0px,rgba(101,148,164,0.24)_2px,transparent_7px,transparent_25px),linear-gradient(180deg,#d9eef7_0%,#eff9fb_42%,#f7efe3_78%,#e5d6bf_100%)]"
-            />
-            <div className="absolute inset-0 bg-white/15" />
-            <div className="absolute bottom-10 left-1/2 h-28 w-16 -translate-x-1/2 rounded-t-full bg-[#6b513b]/22 blur-[1px]" />
+              className="absolute -inset-x-4 -inset-y-6"
+            >
+              <Image
+                src="/images/Home.png"
+                alt="Preeti Semwal intuitive healing session at SHWAASTIKA WELLNESS"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                priority
+              />
+            </motion.div>
             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#fbf8f1]/80 to-transparent" />
           </div>
         </div>

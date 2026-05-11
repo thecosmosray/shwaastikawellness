@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const quickLinks = [
@@ -18,8 +19,14 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_1fr_0.9fr] lg:items-start">
         <div>
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d7c8ad]/40 bg-white/10 text-xs font-semibold text-[#f3eadb]">
-              SW
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#d7c8ad]/70 bg-[#fbf8f1] p-0.5 text-xs font-semibold text-[#f3eadb]">
+              <Image
+                src="/images/logo.png"
+                alt=""
+                width={40}
+                height={40}
+                className="h-full w-full rounded-full object-contain"
+              />
             </span>
             <div>
               <p className="text-base font-semibold leading-tight">SHWAASTIKA WELLNESS</p>

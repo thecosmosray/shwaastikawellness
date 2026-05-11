@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -55,15 +56,16 @@ export default function WombHealingPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
             <div className="rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-4 shadow-xl shadow-[#6b513b]/8">
-              <div className="flex aspect-[4/5] items-center justify-center rounded-[1.5rem] border border-dashed border-[#c9b693] bg-[linear-gradient(145deg,#fffdf8,#e5eddf)] text-center">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                    Image placeholder
-                  </p>
-                  <p className="mt-3 max-w-xs text-sm leading-6 text-[#76695d]">
-                    Prenatal or womb healing image will be added here.
-                  </p>
-                </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#f3eadb]">
+                <Image
+                  src="/images/womb%20healing.jpg"
+                  alt="Womb Healing and prenatal support session"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/30 via-transparent to-white/10" />
               </div>
             </div>
           </Reveal>
@@ -71,11 +73,11 @@ export default function WombHealingPage() {
           <Reveal delay={0.12}>
             <article>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                The Approach
+                Womb Healing
               </p>
-              <h2 className="mt-3 text-3xl font-semibold text-[#2f2822]">The Approach</h2>
+              <h2 className="mt-3 text-3xl font-semibold text-[#2f2822]">Womb Healing</h2>
               <div className="mt-7 space-y-6 text-lg leading-8 text-[#4b423b]">
-                {approachParagraphs.map((paragraph) => (
+                {wombDescription.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
@@ -86,10 +88,16 @@ export default function WombHealingPage() {
 
       <section className="bg-white px-5 pb-16 sm:px-8 lg:px-10">
         <Reveal>
-          <article className="mx-auto max-w-7xl space-y-7 text-lg leading-9 text-[#4b423b]">
-            {wombDescription.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+          <article className="mx-auto max-w-7xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
+              The Approach
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#2f2822]">The Approach</h2>
+            <div className="mt-7 space-y-7 text-lg leading-9 text-[#4b423b]">
+              {approachParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </article>
         </Reveal>
       </section>

@@ -5,12 +5,22 @@ import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title:
-    "SHWAASTIKA WELLNESS | Workplace Wellness, Leadership & Emotional Intelligence Training",
+  title: {
+    default: "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
+    template: "%s | Preeti Semwal",
+  },
   description:
-    "Professional wellness, leadership, emotional intelligence, safety, and workplace behaviour training programs for individuals and organizations.",
+    "Preeti Semwal is an intuitive energy healer and wellness guide offering intuitive healing, inner clarity sessions, womb healing, prenatal support, and wellness programs.",
   keywords: [
+    "Preeti Semwal",
+    "Preeti Sembwal",
+    "Preeti Semwal Bembi",
     "SHWAASTIKA WELLNESS",
+    "Shwaastika Wellness",
+    "intuitive energy healer",
+    "intuitive healing",
+    "inner clarity session",
+    "womb healing",
     "workplace wellness",
     "leadership training",
     "emotional intelligence training",
@@ -18,14 +28,19 @@ export const metadata: Metadata = {
     "workplace behaviour training",
     "soft skills training",
   ],
+  authors: [{ name: "Preeti Semwal" }],
+  creator: "Preeti Semwal",
+  publisher: "Preeti Semwal",
+  applicationName: "Preeti Semwal",
+  category: "Wellness",
   openGraph: {
     title:
-      "SHWAASTIKA WELLNESS | Workplace Wellness, Leadership & Emotional Intelligence Training",
+      "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
     description:
-      "Professional wellness, leadership, emotional intelligence, safety, and workplace behaviour training programs for individuals and organizations.",
+      "Intuitive healing, inner clarity sessions, womb healing, prenatal support, and wellness guidance by Preeti Semwal.",
     type: "website",
     locale: "en_IN",
-    siteName: "SHWAASTIKA WELLNESS",
+    siteName: "Preeti Semwal",
   },
   robots: {
     index: true,
