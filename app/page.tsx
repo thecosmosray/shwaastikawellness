@@ -5,9 +5,9 @@ import HomeIntro from "@/components/HomeIntro";
 import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
-  title: "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
+  title: "Preeti Semwal's Healing Space | Healing",
   description:
-    "Preeti Semwal is an intuitive energy healer and wellness guide offering intuitive healing, inner clarity sessions, womb healing, prenatal support, and personal development.",
+    "Preeti Semwal's Healing Space offers intuitive healing, womb healing, inner clarity sessions, and corporate wellness workshops for physical, mental and emotional balance.",
   keywords: [
     "Preeti Semwal",
     "Preeti Sembwal",
@@ -27,93 +27,22 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
+    title: "Preeti Semwal's Healing Space | Healing",
     description:
-      "Intuitive healing, inner clarity sessions, womb healing, and wellness guidance by Preeti Semwal.",
+      "Intuitive healing, womb healing, inner clarity sessions, and corporate wellness workshops by Preeti Semwal.",
     type: "website",
     locale: "en_IN",
-    siteName: "Preeti Semwal",
+    siteName: "Preeti Semwal's Healing Space",
   },
 };
 
 export default function Home() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "#preeti-semwal",
-        name: "Preeti Semwal",
-        alternateName: ["Preeti Sembwal", "Preeti Semwal Bembi"],
-        jobTitle: "Intuitive Energy Healer and Wellness Guide",
-        description:
-          "Preeti Semwal is an intuitive energy healer and wellness guide offering intuitive healing, inner clarity sessions, womb healing, prenatal support, and personal development.",
-        knowsAbout: [
-          "Intuitive Healing",
-          "Inner Clarity Session",
-          "Womb Healing",
-          "Prenatal Support",
-          "Energy Healing",
-          "Wellness Guidance",
-        ],
-        worksFor: {
-          "@id": "#shwaastika-wellness",
-        },
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "#shwaastika-wellness",
-        name: "SHWAASTIKA WELLNESS",
-        alternateName: ["Shwaastika Wellness", "AKR Wellness"],
-        founder: {
-          "@id": "#preeti-semwal",
-        },
-        areaServed: "India",
-        serviceType: [
-          "Intuitive Healing",
-          "Inner Clarity Session",
-          "Womb Healing",
-          "Prenatal Support",
-          "Workplace Wellness Training",
-        ],
-      },
-      {
-        "@type": "WebSite",
-        "@id": "#website",
-        name: "Preeti Semwal",
-        alternateName: "SHWAASTIKA WELLNESS",
-        publisher: {
-          "@id": "#preeti-semwal",
-        },
-      },
-      {
-        "@type": "WebPage",
-        "@id": "#homepage",
-        name: "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
-        description:
-          "Official homepage of Preeti Semwal, intuitive energy healer and wellness guide.",
-        isPartOf: {
-          "@id": "#website",
-        },
-        mainEntity: {
-          "@id": "#preeti-semwal",
-        },
-      },
-    ],
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <main>
-        <Hero />
-        <HomeIntro />
-        <Testimonials />
-        <FAQ />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <HomeIntro />
+      <Testimonials />
+      <FAQ />
+    </main>
   );
 }

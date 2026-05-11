@@ -3,9 +3,12 @@ import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Intuitive Healing | SHWAASTIKA WELLNESS",
+  title: "Intuitive Healing",
   description:
-    "Intuitive healing sessions for energy, yoga, awareness, feminine well-being, and holistic support through SHWAASTIKA WELLNESS.",
+    "Intuitive healing sessions with Preeti Semwal support emotional, mental, physical and spiritual balance through energy work, awareness, breath, and gentle practices.",
+  alternates: {
+    canonical: "/intuitive-healing",
+  },
 };
 
 const introParagraphs = [

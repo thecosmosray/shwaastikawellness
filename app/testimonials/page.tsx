@@ -5,9 +5,12 @@ import VideoTestimonials from "@/components/VideoTestimonials";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Testimonials | SHWAASTIKA WELLNESS",
+  title: "Testimonials",
   description:
-    "Video testimonials, client stories, shared experiences, and Google reviews for SHWAASTIKA WELLNESS.",
+    "Read and watch testimonials, client stories, shared healing experiences, and Google reviews for Preeti Semwal's Healing Space.",
+  alternates: {
+    canonical: "/testimonials",
+  },
 };
 
 const clientTestimonialImages: CarouselImage[] = [

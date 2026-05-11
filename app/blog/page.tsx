@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import PagePlaceholder from "@/components/PagePlaceholder";
 
 export const metadata: Metadata = {
-  title: "Blog | SHWAASTIKA WELLNESS",
-  description: "Future articles and insights from SHWAASTIKA WELLNESS on wellness, leadership, emotional intelligence, and workplace behaviour.",
+  title: "Blog",
+  description:
+    "Insights from Preeti Semwal's Healing Space on healing, emotional balance, inner clarity, wellness, leadership, and workplace well-being.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function BlogPage() {

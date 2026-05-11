@@ -3,9 +3,12 @@ import SessionExperience from "@/components/SessionExperience";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Book A Session | SHWAASTIKA WELLNESS",
+  title: "Book a Session",
   description:
-    "Choose from Intuitive Healing, Inner Clarity Guidance, Corporate Workshop, and Womb Healing sessions with SHWAASTIKA WELLNESS.",
+    "Book an intuitive healing, womb healing, inner clarity, or corporate wellness session with Preeti Semwal's Healing Space.",
+  alternates: {
+    canonical: "/book-a-session",
+  },
 };
 
 const whatsappUrl =

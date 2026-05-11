@@ -4,17 +4,23 @@ import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
+const siteUrl = "https://www.preetisemwal.in";
+const siteName = "Preeti Semwal's Healing Space";
+const siteDescription =
+  "Preeti Semwal's Healing Space brings deep transformative experiences to regain physical, mental and emotional balance through intuitive healing, womb healing, inner clarity sessions, and corporate wellness workshops.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
-    template: "%s | Preeti Semwal",
+    default: "Preeti Semwal's Healing Space | Healing",
+    template: "%s | Preeti Semwal's Healing Space",
   },
-  description:
-    "Preeti Semwal is an intuitive energy healer and wellness guide offering intuitive healing, inner clarity sessions, womb healing, prenatal support, and wellness programs.",
+  description: siteDescription,
   keywords: [
     "Preeti Semwal",
     "Preeti Sembwal",
     "Preeti Semwal Bembi",
+    "Preeti Semwal's Healing Space",
     "SHWAASTIKA WELLNESS",
     "Shwaastika Wellness",
     "intuitive energy healer",
@@ -31,21 +37,102 @@ export const metadata: Metadata = {
   authors: [{ name: "Preeti Semwal" }],
   creator: "Preeti Semwal",
   publisher: "Preeti Semwal",
-  applicationName: "Preeti Semwal",
+  applicationName: siteName,
   category: "Wellness",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title:
-      "Preeti Semwal - Intuitive Energy Healer & Wellness Guide",
-    description:
-      "Intuitive healing, inner clarity sessions, womb healing, prenatal support, and wellness guidance by Preeti Semwal.",
+    title: "Preeti Semwal's Healing Space | Healing",
+    description: siteDescription,
+    url: "/",
     type: "website",
     locale: "en_IN",
-    siteName: "Preeti Semwal",
+    siteName,
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Preeti Semwal's Healing Space logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Preeti Semwal's Healing Space | Healing",
+    description: siteDescription,
+    images: ["/images/logo.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/images/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/images/logo.png",
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "@id": `${siteUrl}/#business`,
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}/images/logo.png`,
+  image: `${siteUrl}/images/logo.png`,
+  description: siteDescription,
+  founder: {
+    "@type": "Person",
+    name: "Preeti Semwal",
+  },
+  areaServed: "India",
+  serviceType: [
+    "Intuitive Healing",
+    "Womb Healing",
+    "Inner Clarity Sessions",
+    "Corporate Wellness Workshops",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Healing and Wellness Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Intuitive Healing",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Womb Healing",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Inner Clarity Sessions",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Corporate Wellness Workshops",
+        },
+      },
+    ],
+  },
+  sameAs: [siteUrl],
 };
 
 export default function RootLayout({
@@ -64,6 +151,10 @@ export default function RootLayout({
         className="relative min-h-full bg-[#fbf8f1] text-[#2f2822]"
         suppressHydrationWarning
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="relative min-h-screen">
           <ScrollToTop />
           <Header />

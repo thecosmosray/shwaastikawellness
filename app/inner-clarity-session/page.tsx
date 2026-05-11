@@ -3,9 +3,12 @@ import InnerClarityTabs from "@/components/InnerClarityTabs";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Inner Clarity Session | SHWAASTIKA WELLNESS",
+  title: "Inner Clarity Session",
   description:
-    "Inner Clarity Session guidance for intuitive insight, emotional patterns, life transitions, and grounded next steps.",
+    "Inner Clarity Sessions with Preeti Semwal offer intuitive insight for emotional patterns, relationships, life transitions, and grounded next steps.",
+  alternates: {
+    canonical: "/inner-clarity-session",
+  },
 };
 
 export default function InnerClaritySessionPage() {

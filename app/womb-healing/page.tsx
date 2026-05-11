@@ -3,9 +3,12 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Womb Healing & Prenatal Support | SHWAASTIKA WELLNESS",
+  title: "Womb Healing & Prenatal Support",
   description:
-    "Womb Healing and Prenatal Support for pregnancy, emotional transitions, mother-baby connection, and mindful prenatal well-being.",
+    "Womb Healing and prenatal support with Preeti Semwal offers a nurturing space for pregnancy, emotional transitions, mother-baby connection, and mindful well-being.",
+  alternates: {
+    canonical: "/womb-healing",
+  },
 };
 
 const approachParagraphs = [

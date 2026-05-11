@@ -3,9 +3,12 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "About Preeti Semwal | SHWAASTIKA WELLNESS",
+  title: "About Preeti Semwal",
   description:
-    "Meet Preeti Semwal, an intuitive energy healer devoted to balance, resilience, holistic well-being, ancestral wisdom, and transformative energy work.",
+    "Meet Preeti Semwal, the intuitive healer behind Preeti Semwal's Healing Space, offering transformative energy work rooted in balance, resilience, and ancestral wisdom.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const featureBlocks = [

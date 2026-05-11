@@ -3,9 +3,12 @@ import CorporateWorkshopTabs from "@/components/CorporateWorkshopTabs";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Corporate Workshop | SHWAASTIKA WELLNESS",
+  title: "Corporate Wellness Workshops",
   description:
-    "Corporate workshops for workplace resilience, safety awareness, leadership capability, emotional intelligence, and well-being.",
+    "Corporate wellness workshops with Preeti Semwal support workplace resilience, leadership presence, emotional intelligence, safety awareness, and well-being.",
+  alternates: {
+    canonical: "/corporate-workshop",
+  },
 };
 
 const introParagraphs = [
