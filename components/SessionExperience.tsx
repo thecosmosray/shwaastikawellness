@@ -10,7 +10,6 @@ const services = [
     intro: "Energy, yoga and awareness for whole-being support.",
     image: "/images/Book%20a%20Session/Intutive%20healing%20book%20a%20seesion.png",
     imagePosition: "center center",
-    maxImageWidth: "max-w-[287px]",
     tone: "from-[#ead1bd] via-[#fff8ef] to-[#dfe9d8]",
     details: "Session Investment",
     pricing: [
@@ -23,7 +22,6 @@ const services = [
     intro: "Gentle intuitive guidance for clarity, direction and next steps.",
     image: "/images/Book%20a%20Session/inner%20clarity%20guidance%20book%20a%20session.png",
     imagePosition: "center center",
-    maxImageWidth: "max-w-[286px]",
     tone: "from-[#dfe9d8] via-[#fffdf8] to-[#ead7c8]",
     details: "Session Investment",
     pricing: [["Single Session (40-45 mins)", "INR 2,500 | USD 55"]],
@@ -33,7 +31,6 @@ const services = [
     intro: "Customized wellness and awareness work for groups.",
     image: "/images/Book%20a%20Session/corporate%20workshop%20book%20a%20session.jpg",
     imagePosition: "center center",
-    maxImageWidth: "max-w-none",
     tone: "from-[#d7dfd1] via-[#f8f2e7] to-[#cdd5cf]",
     details:
       "Corporate workshop engagements are customized based on scope and requirements, with pricing shared upon discussion.",
@@ -44,7 +41,6 @@ const services = [
     intro: "Nurturing support through pregnancy, birth and postpartum recovery.",
     image: "/images/Book%20a%20Session/womb%20healing%20book%20a%20session.jpeg",
     imagePosition: "center top",
-    maxImageWidth: "max-w-none",
     tone: "from-[#f1d8cf] via-[#fff8ef] to-[#e7eadf]",
     details: "Session Investment",
     pricing: [
@@ -76,60 +72,76 @@ export default function SessionExperience() {
     setShowPricing(false);
   };
 
-  const renderServiceDetails = (service: typeof services[number]) => (
-    <>
-      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-        Selected Experience
-      </p>
-      <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f2822]">
-        {service.title}
-      </h2>
-      <p className="mt-4 text-lg leading-8 text-[#66584d]">{service.intro}</p>
+  const renderServiceDetails = (
+    service: typeof services[number],
+    variant: "desktop" | "mobile" = "desktop",
+  ) => {
+    const isMobile = variant === "mobile";
 
-      <button
-        type="button"
-        onClick={() => setShowPricing((value) => !value)}
-        className="mt-8 rounded-full border border-[#cdbd9f] bg-[#fbf8f1] px-6 py-3 text-sm font-semibold text-[#3f352d] transition hover:border-[#8a9b72] hover:bg-white"
-        aria-expanded={showPricing}
-      >
-        {showPricing ? "Hide Session Investment" : "View Session Investment"}
-      </button>
+    return (
+      <>
+        <p className={`text-sm font-semibold uppercase text-[#7d8b65] ${isMobile ? "tracking-[0.16em]" : "tracking-[0.22em]"}`}>
+          Selected Experience
+        </p>
+        <h2 className={`${isMobile ? "mt-2 text-2xl" : "mt-3 text-3xl"} font-semibold leading-tight text-[#2f2822]`}>
+          {service.title}
+        </h2>
+        <p className={`${isMobile ? "mt-3 text-base leading-7" : "mt-4 text-lg leading-8"} text-[#66584d]`}>{service.intro}</p>
 
-      <AnimatePresence initial={false}>
-        {showPricing ? (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="overflow-hidden"
+        <button
+          type="button"
+          onClick={() => setShowPricing((value) => !value)}
+          className={`${isMobile ? "mt-6 w-full justify-center py-3.5" : "mt-8 px-6 py-3"} inline-flex rounded-full border border-[#cdbd9f] bg-[#fbf8f1] text-sm font-semibold text-[#3f352d] transition hover:border-[#8a9b72] hover:bg-white`}
+          aria-expanded={showPricing}
+        >
+          {showPricing ? "Hide Session Investment" : "View Session Investment"}
+        </button>
+
+        <AnimatePresence initial={false}>
+          {showPricing ? (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="overflow-hidden"
+            >
+              <div className={`${isMobile ? "mt-5 rounded-[1.25rem] p-4" : "mt-7 rounded-[1.5rem] p-5"} border border-white/60 bg-white/60 shadow-inner`}>
+                <p className={`${isMobile ? "mb-3 tracking-[0.14em]" : "mb-4 tracking-[0.18em]"} text-sm font-semibold uppercase text-[#7d8b65]`}>
+                  {service.details}
+                </p>
+                {service.pricing.length > 0 ? (
+                  <div className={isMobile ? "space-y-4" : "space-y-5"}>
+                    {service.pricing.map(([name, price, note]) => (
+                      <div key={name} className="border-b border-[#e5d9c7] pb-4 last:border-b-0 last:pb-0">
+                        <p className="font-semibold text-[#2f2822]">{name}</p>
+                        <p className={`${isMobile ? "text-base" : "text-lg"} mt-1 text-[#3f5f46]`}>{price}</p>
+                        {note ? <p className="mt-1 text-sm text-[#786b5f]">{note}</p> : null}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-base leading-8 text-[#4b423b]">{service.details}</p>
+                )}
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        {isMobile ? (
+          <a
+            href="#for-bookings"
+            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#2f2822] px-6 py-3.5 text-sm font-semibold tracking-[0.14em] text-white shadow-lg shadow-[#2f2822]/15 transition hover:bg-[#3f5f46]"
           >
-            <div className="mt-7 rounded-[1.5rem] border border-white/60 bg-white/60 p-5 shadow-inner">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
-                {service.details}
-              </p>
-              {service.pricing.length > 0 ? (
-                <div className="space-y-5">
-                  {service.pricing.map(([name, price, note]) => (
-                    <div key={name} className="border-b border-[#e5d9c7] pb-4 last:border-b-0 last:pb-0">
-                      <p className="font-semibold text-[#2f2822]">{name}</p>
-                      <p className="mt-1 text-lg text-[#3f5f46]">{price}</p>
-                      {note ? <p className="mt-1 text-sm text-[#786b5f]">{note}</p> : null}
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-base leading-8 text-[#4b423b]">{service.details}</p>
-              )}
-            </div>
-          </motion.div>
+            Contact Us
+          </a>
         ) : null}
-      </AnimatePresence>
-    </>
-  );
+      </>
+    );
+  };
 
   return (
-    <section className="overflow-hidden bg-[#fbf8f1] px-5 py-16 sm:px-8 lg:px-10">
+    <section className="overflow-hidden bg-[#fbf8f1] px-5 py-10 sm:px-8 sm:py-16 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
           <div className="relative hidden h-[510px] items-center justify-center lg:flex">
@@ -178,58 +190,64 @@ export default function SessionExperience() {
           </div>
 
           <div className="lg:hidden">
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-3">
               {services.map((service, index) => {
                 const isActive = activeIndex === index;
 
                 return (
-                  <div key={service.title} className="space-y-4">
-                    <button
-                      type="button"
-                      onClick={() => selectService(index)}
-                      className={`w-full rounded-[1.75rem] border p-3 text-left shadow-lg transition ${
-                        isActive ? "border-[#3f5f46] bg-white" : "border-[#e5d9c7] bg-white/70"
-                      }`}
-                      aria-pressed={isActive}
-                    >
-                      <div className={`relative mx-auto flex aspect-[4/5] w-full ${service.maxImageWidth} items-end overflow-hidden rounded-[1.35rem] bg-gradient-to-br ${service.tone} p-4 sm:max-w-none`}>
-                        <Image
-                          src={service.image}
-                          alt={`${service.title} booking option`}
-                          fill
-                          className="object-cover object-center"
-                          style={{ objectPosition: service.imagePosition }}
-                          sizes="(max-width: 640px) 287px, (max-width: 768px) 50vw, 285px"
-                          loading="lazy"
-                          quality={90}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/10 via-transparent to-white/5" />
-                        <div className="relative ml-auto max-w-[88%] rounded-[1.35rem] border border-white/75 bg-white/90 px-4 py-2.5 shadow-lg shadow-black/10">
-                          <h3 className="text-sm font-semibold leading-tight text-[#2f2822] sm:text-base">{service.title}</h3>
-                          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#3f5f46]">
-                            {isActive ? "Details shown" : "Tap for details"}
-                          </p>
-                        </div>
-                      </div>
-                    </button>
-
-                    <AnimatePresence>
-                      {isActive ? (
-                        <motion.div
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.22 }}
-                          className="rounded-[2rem] border border-[#e5d9c7] bg-white/90 p-7 shadow-xl shadow-[#6b513b]/8"
-                        >
-                          {renderServiceDetails(service)}
-                        </motion.div>
-                      ) : null}
-                    </AnimatePresence>
-                  </div>
+                  <button
+                    key={service.title}
+                    type="button"
+                    onClick={() => selectService(index)}
+                    className={`flex w-full items-center gap-3 rounded-[1.25rem] border p-2.5 text-left shadow-sm transition ${
+                      isActive
+                        ? "border-[#3f5f46] bg-white shadow-[#6b513b]/12"
+                        : "border-[#e5d9c7] bg-white/70"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    <div className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-[0.9rem] bg-gradient-to-br ${service.tone}`}>
+                      <Image
+                        src={service.image}
+                        alt={`${service.title} booking option`}
+                        fill
+                        className="object-cover object-center"
+                        style={{ objectPosition: service.imagePosition }}
+                        sizes="64px"
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base font-semibold leading-snug text-[#2f2822]">
+                        {service.title}
+                      </h3>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f5f46]">
+                        {isActive ? "Selected" : "Tap to choose"}
+                      </p>
+                    </div>
+                    <span className={`h-3 w-3 shrink-0 rounded-full ${isActive ? "bg-[#3f5f46]" : "bg-[#d8cbb9]"}`} />
+                  </button>
                 );
               })}
-                    </div>
+            </div>
+
+            <motion.div
+              layout
+              className="mt-4 rounded-[1.5rem] border border-[#e5d9c7] bg-white/90 p-5 shadow-xl shadow-[#6b513b]/10"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeService.title}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.24 }}
+                >
+                  {renderServiceDetails(activeService, "mobile")}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           <motion.div

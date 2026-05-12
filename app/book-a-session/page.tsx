@@ -37,7 +37,7 @@ export default function BookASessionPage() {
 
       <SessionExperience />
 
-      <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
+      <section id="for-bookings" className="bg-white px-5 py-16 sm:px-8 lg:px-10">
         <Reveal>
           <div className="mx-auto max-w-4xl rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-8 text-center shadow-xl shadow-[#6b513b]/8 sm:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
