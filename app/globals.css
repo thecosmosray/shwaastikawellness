@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
 
 :root {
   --background: #fbf8f1;
@@ -36,4 +38,27 @@ li {
 ::selection {
   background: #c7d6bd;
   color: #2f2822;
+}
+
+.testimonial-swiper {
+  padding: 0.25rem 0.15rem 0.55rem;
+}
+
+.testimonial-swiper .swiper-pagination {
+  position: static;
+  margin-top: 1.75rem;
+}
+
+.testimonial-swiper .swiper-pagination-bullet {
+  height: 0.625rem;
+  width: 0.625rem;
+  background: #d2c3a9;
+  opacity: 1;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.testimonial-swiper .swiper-pagination-bullet-active {
+  width: 2rem;
+  border-radius: 9999px;
+  background: #3f5f46;
 }

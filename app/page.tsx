@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import HomeIntro from "@/components/HomeIntro";
+import LocationMap from "@/components/LocationMap";
 import Testimonials from "@/components/Testimonials";
 import { createPageMetadata } from "./seo";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <HomeIntro />
       <Testimonials />
+      <LocationMap />
       <FAQ />
     </main>
   );

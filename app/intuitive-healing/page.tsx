@@ -111,7 +111,7 @@ export default function IntuitiveHealingPage() {
       <section className="bg-[#fbf8f1] px-5 py-16 text-center sm:px-8 lg:px-10">
         <Reveal>
           <div className="mx-auto max-w-6xl">
-            <p className="text-3xl leading-[1.55] text-[#2f2822] sm:text-4xl">
+            <p className="text-xl leading-9 text-[#2f2822] sm:text-3xl sm:leading-[1.55] lg:text-4xl">
               The work also holds space for deeper aspects of feminine well-being,
               including support during phases such as{" "}
               <strong>pregnancy, emotional transitions and inner nurturing</strong>{" "}
@@ -140,11 +140,11 @@ export default function IntuitiveHealingPage() {
             </div>
 
             <div className="rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-6 shadow-sm sm:p-8 lg:p-10">
-              <h2 className="text-3xl font-semibold text-[#2f2822]">For Online Session</h2>
-              <ul className="mt-7 space-y-4 text-xl leading-9 text-[#2f2822]">
+              <h2 className="text-2xl font-semibold text-[#2f2822] sm:text-3xl">For Online Session</h2>
+              <ul className="mt-6 space-y-3 text-base leading-7 text-[#2f2822] sm:mt-7 sm:space-y-4 sm:text-xl sm:leading-9">
                 {instructions.map((instruction) => (
                   <li key={instruction} className="flex gap-4">
-                    <span className="mt-4 h-2.5 w-2.5 shrink-0 rounded-full bg-[#3f5f46]" />
+                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46] sm:mt-4 sm:h-2.5 sm:w-2.5" />
                     <span>{instruction}</span>
                   </li>
                 ))}

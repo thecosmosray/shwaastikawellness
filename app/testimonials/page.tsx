@@ -13,11 +13,76 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const clientTestimonialImages: CarouselImage[] = [
-  { title: "Shared Path", label: "Client reflection", tone: "from-[#ead7c8] via-[#fff8ef] to-[#dfe9d8]" },
-  { title: "Mind Body Spirit", label: "Client reflection", tone: "from-[#e9ddf1] via-[#fffdf8] to-[#dfe9d8]" },
-  { title: "Healing Parent & Child", label: "Client reflection", tone: "from-[#dce9ef] via-[#fff8ef] to-[#ead7c8]" },
-  { title: "Session Reflection", label: "Client reflection", tone: "from-[#f3eadb] via-[#fffdf8] to-[#c7d6bd]" },
-  { title: "Clarity Shared", label: "Client reflection", tone: "from-[#e5eddf] via-[#fff8ef] to-[#ead7c8]" },
+  {
+    title: "Session Experience",
+    label: "Client experience",
+    tone: "from-[#ead7c8] via-[#fff8ef] to-[#dfe9d8]",
+    src: "/images/testimonial/3DB10916-CAA9-4B76-84C1-433C79906C46.webp",
+    alt: "Client experience testimonial for a session with Preeti Semwal",
+  },
+  {
+    title: "Right Path",
+    label: "Client experience",
+    tone: "from-[#e9ddf1] via-[#fffdf8] to-[#dfe9d8]",
+    src: "/images/testimonial/WhatsApp%20Image%202025-09-11%20at%2017.28.50.webp",
+    alt: "Client message sharing clarity after guidance from Preeti Semwal",
+  },
+  {
+    title: "Online Healing Session",
+    label: "Client experience",
+    tone: "from-[#dce9ef] via-[#fff8ef] to-[#ead7c8]",
+    src: "/images/testimonial/WhatsApp%20Image%202025-09-11%20at%2017.33.06.webp",
+    alt: "Online pritya healing session client experience",
+  },
+  {
+    title: "Healing Reflection",
+    label: "Client experience",
+    tone: "from-[#f3eadb] via-[#fffdf8] to-[#c7d6bd]",
+    src: "/images/testimonial/WhatsApp%20Image%202025-09-11%20at%2017.33.46.webp",
+    alt: "Client healing reflection testimonial",
+  },
+  {
+    title: "Yoga & Meditation",
+    label: "Client experience",
+    tone: "from-[#e5eddf] via-[#fff8ef] to-[#ead7c8]",
+    src: "/images/testimonial/C9FC7271-F1DF-44BC-8B2D-2A4C997ADB46.webp",
+    alt: "Yoga and meditation session with young leaders",
+  },
+  {
+    title: "Practice Review",
+    label: "Client experience",
+    tone: "from-[#fff8ef] via-[#e5eddf] to-[#d7e4f0]",
+    src: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.24%20(1).webp",
+    alt: "Client review about feeling freshness after practice",
+  },
+  {
+    title: "Guidance Review",
+    label: "Client experience",
+    tone: "from-[#f3eadb] via-[#fffdf8] to-[#dfe9d8]",
+    src: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.24.webp",
+    alt: "Client review for Preeti Semwal guidance session",
+  },
+  {
+    title: "Healing Review",
+    label: "Client experience",
+    tone: "from-[#ead7c8] via-[#fff8ef] to-[#dfe9d8]",
+    src: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.25.webp",
+    alt: "Client review for craniosacral therapy and healing session",
+  },
+  {
+    title: "Client Review",
+    label: "Client experience",
+    tone: "from-[#e9ddf1] via-[#fffdf8] to-[#f3eadb]",
+    src: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.32.webp",
+    alt: "Client review for Shwaastika Wellness",
+  },
+  {
+    title: "Shared Review",
+    label: "Client experience",
+    tone: "from-[#e5eddf] via-[#fff8ef] to-[#ead7c8]",
+    src: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.35.webp",
+    alt: "Client review shared for Preeti Semwal",
+  },
 ];
 
 const googleReviewImages: CarouselImage[] = [

@@ -1,26 +1,56 @@
+"use client";
+
 import Reveal from "@/components/Reveal";
+import Image from "next/image";
 import Link from "next/link";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const testimonials = [
   {
-    quote:
-      "The session gave our team practical language for stress, communication, and accountability. It felt thoughtful, calm, and immediately useful.",
-    name: "Corporate workshop participant",
-    role: "Team development program",
+    title: "Client Reflection",
+    note: "A shared client experience from a healing session.",
+    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.24%20(1).webp",
+    alt: "Client review about feeling freshness after practice",
   },
   {
-    quote:
-      "Shwaastika Wellness created a safe environment for reflection while keeping the training grounded in workplace realities.",
-    name: "Workshop attendee",
-    role: "Workplace wellness session",
+    title: "Client Reflection",
+    note: "A client message about clarity and choosing the right path.",
+    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.25.webp",
+    alt: "Client review for craniosacral therapy and healing session",
   },
   {
-    quote:
-      "A polished and meaningful program that helped our people connect leadership behaviour with everyday wellbeing.",
-    name: "Program participant",
-    role: "Leadership and well-being workshop",
+    title: "Client Reflection",
+    note: "A review shared after personal guidance and support.",
+    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.35.webp",
+    alt: "Client review shared for Preeti Semwal",
   },
 ];
+
+function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[number] }) {
+  return (
+    <article className="h-full rounded-[1.5rem] border border-[#e5d9c7] bg-white p-3 shadow-sm">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[#fbf8f1]">
+        <Image
+          src={testimonial.image}
+          alt={testimonial.alt}
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 92vw, (max-width: 1180px) 45vw, 360px"
+          loading="lazy"
+          quality={88}
+        />
+      </div>
+      <div className="px-3 py-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
+          Client Feedback
+        </p>
+        <h3 className="mt-2 text-xl font-semibold text-[#332b24]">{testimonial.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-[#6a5d52]">{testimonial.note}</p>
+      </div>
+    </article>
+  );
+}
 
 export default function Testimonials() {
   return (
@@ -39,17 +69,47 @@ export default function Testimonials() {
           </Link>
         </Reveal>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-10 lg:hidden">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            autoplay={{
+              delay: 1800,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            speed={650}
+            loop
+            pagination={{ clickable: true }}
+            slidesPerView={1.05}
+            spaceBetween={16}
+            breakpoints={{
+              640: {
+                slidesPerView: 1.5,
+                spaceBetween: 18,
+              },
+              900: {
+                slidesPerView: 2.15,
+                spaceBetween: 20,
+              },
+              1180: {
+                slidesPerView: 2.75,
+                spaceBetween: 20,
+              },
+            }}
+            className="testimonial-swiper"
+          >
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial.image} className="h-auto">
+                <TestimonialCard testimonial={testimonial} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="mt-10 hidden gap-5 lg:grid lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <Reveal key={testimonial.role} delay={index * 0.08}>
-              <article className="h-full rounded-[1.5rem] border border-[#e5d9c7] bg-white p-6 shadow-sm">
-                <div className="mb-5 aspect-[16/9] rounded-2xl border border-dashed border-[#c8b693] bg-[#fbf8f1]" />
-                <p className="text-base leading-8 text-[#5f5349]">&ldquo;{testimonial.quote}&rdquo;</p>
-                <div className="mt-8 border-t border-[#e2d4bf] pt-5">
-                  <h3 className="font-semibold text-[#332b24]">{testimonial.name}</h3>
-                  <p className="mt-1 text-sm text-[#7b6e62]">{testimonial.role}</p>
-                </div>
-              </article>
+            <Reveal key={testimonial.image} delay={index * 0.08}>
+              <TestimonialCard testimonial={testimonial} />
             </Reveal>
           ))}
         </div>

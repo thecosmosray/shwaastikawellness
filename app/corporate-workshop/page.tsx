@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import CorporateWorkshopTabs from "@/components/CorporateWorkshopTabs";
 import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
@@ -21,25 +22,33 @@ const introParagraphs = [
 export default function CorporateWorkshopPage() {
   return (
     <main className="bg-[#fbf8f1]">
-      <section className="bg-white px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+      <section className="relative isolate overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(199,214,189,0.55),transparent_28%),linear-gradient(135deg,#fbf8f1_0%,#f3eadb_58%,#eef4e9_100%)]" />
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <h1 className="text-center text-4xl font-semibold leading-[1.08] text-[#120f0c] sm:text-5xl lg:text-6xl">
-              Corporate Workshop
-            </h1>
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#7d8b65]">
+                Corporate Wellness
+              </p>
+              <h1 className="mt-4 text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
+                Corporate Workshop
+              </h1>
+            </div>
           </Reveal>
 
           <Reveal delay={0.12}>
             <div className="group mt-9 overflow-hidden rounded-[1.75rem] border border-[#e5d9c7] bg-[#fbf8f1] p-3 shadow-xl shadow-[#6b513b]/10">
-              <div className="flex aspect-[16/5] min-h-[220px] items-center justify-center rounded-[1.35rem] bg-[linear-gradient(135deg,#dfe9d8,#fff8ef_48%,#d8ded5)] text-center transition duration-700 group-hover:scale-[1.008]">
-                <div className="rounded-2xl bg-white/75 p-6 backdrop-blur">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                    Wide workshop image
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#66584d]">
-                    Workshop setting and group learning visual
-                  </p>
-                </div>
+              <div className="relative aspect-[16/5] min-h-[220px] overflow-hidden rounded-[1.35rem] bg-[#dfe9d8] transition duration-700 group-hover:scale-[1.008]">
+                <Image
+                  src="/images/corporate%20workshop/Hero.JPG"
+                  alt="Corporate workshop setting and group learning visual"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 92vw, 1200px"
+                  priority
+                  quality={100}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/18 via-transparent to-white/5" />
               </div>
             </div>
           </Reveal>
@@ -53,12 +62,26 @@ export default function CorporateWorkshopPage() {
       </section>
 
       <section className="bg-white px-5 pb-16 sm:px-8 lg:px-10">
-        <article className="mx-auto max-w-6xl space-y-8 text-lg leading-9 text-[#3f372f]">
+        <article className="mx-auto max-w-6xl">
+          <Reveal>
+            <div className="mb-9 max-w-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
+                Corporate Wellness
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
+                Practical workshops for resilient, aware and confident teams.
+              </h2>
+              <div className="mt-7 h-px w-24 bg-[#d7c6a9]" />
+            </div>
+          </Reveal>
+
+          <div className="space-y-8 text-lg leading-9 text-[#3f372f]">
           {introParagraphs.map((paragraph, index) => (
             <Reveal key={paragraph} delay={index * 0.04}>
               <p>{paragraph}</p>
             </Reveal>
           ))}
+          </div>
         </article>
       </section>
 

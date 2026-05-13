@@ -76,9 +76,9 @@ export default function InnerClarityTabs() {
         <div
           role="tablist"
           aria-label="Inner clarity session information"
-          className="overflow-x-auto rounded-full border border-[#e6dac7] bg-[#fbf8f1] p-1 shadow-sm"
+          className="rounded-[1.25rem] border border-[#e6dac7] bg-[#fbf8f1] p-1.5 shadow-sm lg:rounded-full lg:p-1"
         >
-          <div className="flex min-w-max gap-1 lg:min-w-0">
+          <div className="grid grid-cols-2 gap-1.5 lg:flex lg:min-w-0 lg:gap-1">
             {tabs.map((tab, index) => {
               const isActive = activeIndex === index;
 
@@ -93,7 +93,7 @@ export default function InnerClarityTabs() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
-                  className={`whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold transition sm:px-6 lg:flex-1 ${
+                  className={`min-h-12 rounded-full px-3 py-3 text-center text-[13px] font-semibold leading-snug transition sm:px-5 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
                     isActive
                       ? "bg-[#be7b54] text-white shadow-md shadow-[#6b513b]/10"
                       : "text-[#5f5349] hover:bg-white hover:text-[#3f5f46]"

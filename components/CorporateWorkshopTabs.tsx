@@ -1,12 +1,16 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { KeyboardEvent, useState } from "react";
 
 const tabs = [
   {
     label: "Training Domains",
-    image: "Domain image",
+    imageSrc: "/images/corporate%20workshop/training%20domains.png",
+    imageAlt: "Corporate workshop training domains visual",
+    imageAspect: "aspect-[4/3]",
+    imageFit: "object-cover",
     heading: "Training Domains",
     intro:
       "Our programs are designed to strengthen workplace resilience, leadership capability, emotional intelligence, and overall well-being through practical, experiential learning.",
@@ -43,7 +47,10 @@ const tabs = [
   },
   {
     label: "Our Approach",
-    image: "Approach image",
+    imageSrc: "/images/corporate%20workshop/our%20approach.jpg",
+    imageAlt: "Corporate workshop approach visual",
+    imageAspect: "aspect-[4/3]",
+    imageFit: "object-cover",
     heading: "One of a kind designs",
     paragraphs: [
       "The program is designed as a capability-building experience, combining real-life scenarios, behavioural insights and experiential learning to strengthen awareness, decision-making, and response under pressure.",
@@ -53,7 +60,10 @@ const tabs = [
   },
   {
     label: "Delivery Options",
-    image: "Delivery image",
+    imageSrc: "/images/corporate%20workshop/Delivery%20option.JPG",
+    imageAlt: "Corporate workshop delivery options visual",
+    imageAspect: "aspect-[3/4]",
+    imageFit: "object-contain",
     heading: "Delivery Options",
     cards: [
       "On-site, off-site or online",
@@ -63,7 +73,10 @@ const tabs = [
   },
   {
     label: "Who Benefits",
-    image: "Benefits image",
+    imageSrc: "/images/corporate%20workshop/Hero.JPG",
+    imageAlt: "Corporate workshop participants and benefits visual",
+    imageAspect: "aspect-[4/3]",
+    imageFit: "object-cover",
     heading: "Who Benefits",
     bullets: [
       "Organizations addressing workplace stress",
@@ -95,9 +108,9 @@ export default function CorporateWorkshopTabs() {
         <div
           role="tablist"
           aria-label="Corporate workshop information"
-          className="sticky top-[76px] z-30 mb-10 overflow-x-auto rounded-full border border-[#d7c8ad] bg-white/85 p-1 shadow-sm backdrop-blur"
+          className="sticky top-[76px] z-30 mb-10 rounded-[1.25rem] border border-[#d7c8ad] bg-white/85 p-1.5 shadow-sm backdrop-blur lg:rounded-full lg:p-1"
         >
-          <div className="flex min-w-max gap-1 lg:min-w-0">
+          <div className="grid grid-cols-2 gap-1.5 lg:flex lg:min-w-0 lg:gap-1">
             {tabs.map((tab, index) => {
               const isActive = activeIndex === index;
 
@@ -112,7 +125,7 @@ export default function CorporateWorkshopTabs() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
-                  className={`relative rounded-full px-6 py-3 text-sm font-medium transition lg:flex-1 ${
+                  className={`relative min-h-12 rounded-full px-3 py-3 text-center text-[13px] font-medium leading-snug transition sm:px-5 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
                     isActive ? "text-[#26382a]" : "text-[#5f5349] hover:text-[#3f5f46]"
                   }`}
                 >
@@ -140,18 +153,20 @@ export default function CorporateWorkshopTabs() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.32, ease: "easeOut" }}
-            className="grid gap-10 rounded-[2rem] border border-[#e1d4bf] bg-white p-5 shadow-xl shadow-[#6b513b]/8 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:p-10"
+            className="grid items-start gap-8 rounded-[2rem] border border-[#e1d4bf] bg-white p-5 shadow-xl shadow-[#6b513b]/8 sm:p-8 lg:grid-cols-[0.68fr_1.32fr] lg:gap-10 lg:p-10"
           >
-            <div className="group overflow-hidden rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-4 shadow-lg shadow-[#6b513b]/8">
-              <div className="flex aspect-[4/5] items-center justify-center rounded-[1.5rem] bg-[linear-gradient(145deg,#dfe9d8,#fff8ef_48%,#d8ded5)] text-center transition duration-500 group-hover:scale-[1.01]">
-                <div className="rounded-2xl bg-white/75 p-5 backdrop-blur">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                    {activeTab.image}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#66584d]">
-                    Workshop focus area
-                  </p>
-                </div>
+            <div className="group mx-auto w-full self-start overflow-hidden rounded-[1.5rem] border border-[#e5d9c7] bg-[#fbf8f1] p-3 shadow-lg shadow-[#6b513b]/8 lg:max-w-[430px]">
+              <div className={`relative ${activeTab.imageAspect} overflow-hidden rounded-[1.15rem] bg-[#dfe9d8] transition duration-500 group-hover:scale-[1.01]`}>
+                <Image
+                  src={activeTab.imageSrc}
+                  alt={activeTab.imageAlt}
+                  fill
+                  className={`${activeTab.imageFit} object-center`}
+                  sizes="(max-width: 1024px) 100vw, 430px"
+                  loading="lazy"
+                  quality={100}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/18 via-transparent to-white/5" />
               </div>
             </div>
 

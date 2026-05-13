@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import SeoJsonLd from "@/components/SeoJsonLd";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import {
   founderName,
   practiceName,
@@ -87,6 +88,7 @@ export default function RootLayout({
           <Header />
           <div className="relative">{children}</div>
           <Footer />
+          <WhatsAppFloat />
         </div>
       </body>
     </html>
