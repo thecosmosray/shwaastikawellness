@@ -18,29 +18,29 @@ type FAQProps = {
 
 const defaultFaqs = [
   {
-    question: "What services does Shwaastika Wellness provide?",
+    question: "Are these sessions only spiritual in nature?",
     answer:
-      "Shwaastika Wellness provides workplace wellness, resilience, leadership, soft skills, emotional intelligence, safety, sensitivity, and workplace behaviour training.",
+      "No. While the work includes deeper awareness-based practices, the sessions are grounded, practical, and experience-oriented. The focus is on helping individuals develop greater clarity, emotional balance, inner steadiness, and overall well-being in a way that integrates naturally into everyday life.",
   },
   {
-    question: "Do you offer corporate training programs?",
+    question: "Is online guidance as effective as in-person sessions?",
     answer:
-      "Yes. Programs can be planned for corporate teams, leadership groups, employee wellness initiatives, and capability-building calendars.",
+      "Yes — participants often report experiences online that are just as deep, engaging, and impactful as in-person sessions.",
   },
   {
-    question: "Can sessions be customized?",
+    question: "Who are these sessions suitable for?",
     answer:
-      "Yes. Sessions can be tailored around audience size, industry context, experience level, learning goals, and preferred delivery format.",
+      "The sessions are suitable for all age groups seeking emotional clarity, stress regulation, inner balance, healing support, deeper self-awareness, or a more mindful approach to life and well-being. Sessions are adapted according to the individual’s current needs and life context.",
   },
   {
-    question: "How can we contact you?",
+    question: "What makes this approach different from a regular wellness or yoga session?",
     answer:
-      "You can use the consultation call-to-action on this page or connect through the contact details that will be added in the footer.",
+      "The approach goes beyond routine instruction and focuses on deeper inner work through guided awareness, emotional understanding, breathwork, movement, reflection, and intuitive processes. Each session is personalized and designed to support meaningful shifts rather than surface-level relaxation alone.",
   },
   {
-    question: "Do you provide online and offline workshops?",
+    question: "Can these sessions support people dealing with long-term emotional or inner challenges?",
     answer:
-      "Yes. Workshops can be structured for online, offline, or blended delivery depending on the team and program needs.",
+      "The work is intended to support individuals navigating deeper emotional, energetic, or inner concerns through awareness-based and alternative healing approaches. However, it is not a substitute for licensed medical or mental-health care.",
   },
 ];
 
