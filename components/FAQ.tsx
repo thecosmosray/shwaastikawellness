@@ -18,30 +18,30 @@ type FAQProps = {
 
 const defaultFaqs = [
   {
-    question: "Are these sessions only spiritual in nature?",
-    answer:
-      "No. While the work includes deeper awareness-based practices, the sessions are grounded, practical, and experience-oriented. The focus is on helping individuals develop greater clarity, emotional balance, inner steadiness, and overall well-being in a way that integrates naturally into everyday life.",
-  },
-  {
-    question: "Is online guidance as effective as in-person sessions?",
-    answer:
-      "Yes — participants often report experiences online that are just as deep, engaging, and impactful as in-person sessions.",
-  },
-  {
-    question: "Who are these sessions suitable for?",
-    answer:
-      "The sessions are suitable for all age groups seeking emotional clarity, stress regulation, inner balance, healing support, deeper self-awareness, or a more mindful approach to life and well-being. Sessions are adapted according to the individual’s current needs and life context.",
-  },
-  {
-    question: "What makes this approach different from a regular wellness or yoga session?",
-    answer:
-      "The approach goes beyond routine instruction and focuses on deeper inner work through guided awareness, emotional understanding, breathwork, movement, reflection, and intuitive processes. Each session is personalized and designed to support meaningful shifts rather than surface-level relaxation alone.",
-  },
-  {
-    question: "Can these sessions support people dealing with long-term emotional or inner challenges?",
-    answer:
-      "The work is intended to support individuals navigating deeper emotional, energetic, or inner concerns through awareness-based and alternative healing approaches. However, it is not a substitute for licensed medical or mental-health care.",
-  },
+  question: "Do I need any preparation before attending a session?",
+  answer:
+    "No special preparation is required. Participants are simply encouraged to come with openness, comfort, and a willingness to engage with the experience in a relaxed and natural way.",
+},
+{
+  question: "How long does it usually take to notice changes or benefits?",
+  answer:
+    "Each individual’s experience is different. Some people notice shifts in clarity, calmness, or awareness after a single session, while for others the process unfolds gradually over time.",
+},
+{
+  question: "Are these sessions focused only on relaxation?",
+  answer:
+    "While relaxation can naturally occur during the process, the sessions are intended to support deeper emotional awareness, self-understanding, inner balance, and meaningful personal growth.",
+},
+{
+  question: "Can sessions help improve focus and mental clarity?",
+  answer:
+    "Many participants report improved mental clarity, emotional steadiness, and a greater ability to remain present and focused in everyday situations after engaging consistently with the practices.",
+},
+{
+  question: "Are the practices gentle and suitable for beginners?",
+  answer:
+    "Yes. The practices are approached gently and mindfully, making them suitable for beginners as well as individuals with prior experience in wellness or awareness-based work.",
+},
 ];
 
 export default function FAQ({
