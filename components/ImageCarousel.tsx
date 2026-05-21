@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
 import LightboxModal from "@/components/LightboxModal";
@@ -23,6 +23,7 @@ type ImageCarouselProps = {
 
 export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouselProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeDot, setActiveDot] = useState(0);
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   const activeLightboxImage = lightboxIndex === null ? null : images[lightboxIndex];
@@ -39,7 +40,7 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
               {heading}
             </h2>
           </div>
-          <div className="flex gap-3">
+          <div className="flex w-full justify-between gap-3 sm:w-auto sm:justify-start">
             <button
               type="button"
               onClick={() => swiperRef.current?.slidePrev()}
@@ -60,10 +61,11 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
         </div>
 
         <Swiper
-          modules={[Autoplay, Pagination]}
+          modules={[Autoplay]}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
+          onSlideChange={(swiper) => setActiveDot(swiper.realIndex % 3)}
           autoplay={{
             delay: 2600,
             disableOnInteraction: false,
@@ -71,7 +73,6 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
           }}
           speed={850}
           loop={images.length > 3}
-          pagination={{ clickable: true }}
           slidesPerView={1.08}
           spaceBetween={16}
           breakpoints={{
@@ -135,6 +136,20 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="mt-7 flex justify-center gap-2" aria-label="Client stories carousel position">
+          {Array.from({ length: 3 }, (_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => swiperRef.current?.slideToLoop(index)}
+              className={`h-2.5 rounded-full transition ${
+                activeDot === index ? "w-8 bg-[#3f5f46]" : "w-2.5 bg-[#d2c3a9]"
+              }`}
+              aria-label={`Show client stories group ${index + 1}`}
+              aria-pressed={activeDot === index}
+            />
+          ))}
+        </div>
       </div>
 
       <LightboxModal

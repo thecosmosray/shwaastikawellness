@@ -6,6 +6,7 @@ import type { Review } from "@/data/reviews";
 type ReviewCardProps = {
   review: Review;
   variant?: "default" | "mobile";
+  onClick?: () => void;
 };
 
 function getInitials(name: string) {
@@ -33,13 +34,27 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-export default function ReviewCard({ review, variant = "default" }: ReviewCardProps) {
+export default function ReviewCard({ review, variant = "default", onClick }: ReviewCardProps) {
   const isMobileVariant = variant === "mobile";
 
   return (
     <article
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onClick={onClick}
+      onKeyDown={(event) => {
+        if (!onClick) {
+          return;
+        }
+
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onClick();
+        }
+      }}
       className={[
         "flex flex-col rounded-[1.4rem] border border-[#e5d9c7] bg-white p-5 shadow-sm shadow-[#6b513b]/8 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#6b513b]/10",
+        onClick ? "cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7d8b65]/70 focus-visible:ring-offset-2" : "",
         isMobileVariant ? "h-[440px]" : "h-[390px] sm:h-[420px]",
       ].join(" ")}
     >

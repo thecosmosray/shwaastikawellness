@@ -2,9 +2,11 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
+import LightboxModal from "@/components/LightboxModal";
 import Reveal from "@/components/Reveal";
 import ReviewCard from "@/components/ReviewCard";
 import { extractedReviews, type Review } from "@/data/reviews";
@@ -38,11 +40,37 @@ function readJson<T>(key: string, fallback: T): T {
   }
 }
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
+}
+
+function ReviewStars({ rating }: { rating: number }) {
+  return (
+    <div className="flex gap-1 text-lg" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, index) => (
+        <span
+          key={index}
+          className={index < rating ? "text-[#fbbc04]" : "text-[#d7d0c5]"}
+          aria-hidden="true"
+        >
+          &#9733;
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function ReviewsSection() {
   const reviewSwiperRef = useRef<SwiperInstance | null>(null);
   const [userReviews, setUserReviews] = useState<Review[]>([]);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_REVIEWS);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedReview, setSelectedReview] = useState<Review | null>(null);
   const [form, setForm] = useState<ReviewFormState>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof ReviewFormState, string>>>({});
 
@@ -161,7 +189,7 @@ export default function ReviewsSection() {
           >
             {reviews.map((review) => (
               <SwiperSlide key={review.id} className="h-auto">
-                <ReviewCard review={review} variant="mobile" />
+                <ReviewCard review={review} variant="mobile" onClick={() => setSelectedReview(review)} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -170,7 +198,7 @@ export default function ReviewsSection() {
         <div className="mt-10 hidden gap-5 md:grid md:grid-cols-2 xl:grid-cols-3">
           {visibleReviews.map((review, index) => (
             <Reveal key={review.id} delay={(index % 3) * 0.06}>
-              <ReviewCard review={review} />
+              <ReviewCard review={review} onClick={() => setSelectedReview(review)} />
             </Reveal>
           ))}
         </div>
@@ -187,6 +215,51 @@ export default function ReviewsSection() {
           </div>
         ) : null}
       </div>
+
+      <LightboxModal
+        isOpen={Boolean(selectedReview)}
+        title={selectedReview ? `${selectedReview.name} review` : "Google review"}
+        onClose={() => setSelectedReview(null)}
+      >
+        {selectedReview ? (
+          <article className="rounded-[1.5rem] border border-[#e5d9c7] bg-white p-5 shadow-sm sm:p-7">
+            <div className="flex items-start gap-4 pr-12">
+              <div className="relative h-14 w-14 shrink-0">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#3f5f46] text-lg font-semibold text-white">
+                  {getInitials(selectedReview.name) || "R"}
+                </div>
+                <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-sm ring-2 ring-white">
+                  <Image
+                    src="/images/google.png"
+                    alt="Google review"
+                    width={22}
+                    height={22}
+                    className="h-5 w-5 object-contain"
+                  />
+                </span>
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <h3 className="text-xl font-semibold text-[#2f2822]">{selectedReview.name}</h3>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#1a73e8] text-xs font-bold text-white" aria-label="Verified public review">
+                    &#10003;
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-[#7a6d61]">{selectedReview.time}</p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <ReviewStars rating={selectedReview.rating} />
+            </div>
+
+            <p className="mt-5 whitespace-pre-line text-justify text-base leading-8 text-[#3f352d] sm:text-lg sm:leading-9">
+              {selectedReview.review}
+            </p>
+          </article>
+        ) : null}
+      </LightboxModal>
 
       <AnimatePresence>
         {isModalOpen ? (
