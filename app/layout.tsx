@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -8,6 +9,7 @@ import {
   founderName,
   practiceName,
   siteDescription,
+  siteKeywords,
   siteName,
   siteUrl,
   socialDescription,
@@ -21,6 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Preeti Semwal",
   },
   description: siteDescription,
+  keywords: siteKeywords,
   authors: [{ name: founderName }],
   creator: founderName,
   publisher: practiceName,
@@ -64,6 +67,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#fbf8f1",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

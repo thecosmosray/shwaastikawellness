@@ -25,12 +25,12 @@ const defaultFaqs = [
   {
     question: "Is online guidance as effective as in-person sessions?",
     answer:
-      "Yes — participants often report experiences online that are just as deep, engaging, and impactful as in-person sessions.",
+      "Yes - participants often report experiences online that are just as deep, engaging, and impactful as in-person sessions.",
   },
   {
     question: "Who are these sessions suitable for?",
     answer:
-      "The sessions are suitable for all age groups seeking emotional clarity, stress regulation, inner balance, healing support, deeper self-awareness, or a more mindful approach to life and well-being. Sessions are adapted according to the individual’s current needs and life context.",
+      "The sessions are suitable for all age groups seeking emotional clarity, stress regulation, inner balance, healing support, deeper self-awareness, or a more mindful approach to life and well-being. Sessions are adapted according to the individual's current needs and life context.",
   },
   {
     question: "What makes this approach different from a regular wellness or yoga session?",
@@ -52,9 +52,25 @@ export default function FAQ({
   initialOpenIndex = 0,
 }: FAQProps) {
   const [openIndex, setOpenIndex] = useState(initialOpenIndex);
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <section className={sectionClassName}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">{eyebrow}</p>

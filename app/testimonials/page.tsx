@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ImageCarousel, { type CarouselImage } from "@/components/ImageCarousel";
-import ReviewCarousel from "@/components/ReviewCarousel";
+import ReviewsSection from "@/components/ReviewsSection";
 import VideoTestimonials from "@/components/VideoTestimonials";
 import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
@@ -85,13 +85,6 @@ const clientTestimonialImages: CarouselImage[] = [
   },
 ];
 
-const googleReviewImages: CarouselImage[] = [
-  { title: "Google Review 1", label: "Public review", tone: "from-[#fff8ef] via-[#e5eddf] to-[#d7e4f0]" },
-  { title: "Google Review 2", label: "Public review", tone: "from-[#f3eadb] via-[#fffdf8] to-[#dfe9d8]" },
-  { title: "Google Review 3", label: "Public review", tone: "from-[#ead7c8] via-[#fff8ef] to-[#dfe9d8]" },
-  { title: "Google Review 4", label: "Public review", tone: "from-[#e9ddf1] via-[#fffdf8] to-[#f3eadb]" },
-];
-
 export default function TestimonialsPage() {
   return (
     <main className="bg-[#fbf8f1]">
@@ -120,7 +113,7 @@ export default function TestimonialsPage() {
         images={clientTestimonialImages}
       />
 
-      <ReviewCarousel images={googleReviewImages} />
+      <ReviewsSection />
     </main>
   );
 }

@@ -71,3 +71,9 @@ li {
   border-radius: 9999px;
   background: #3f5f46;
 }
+
+.review-mobile-swiper {
+  margin-left: -0.2rem;
+  margin-right: -0.2rem;
+  padding: 0.2rem 0.2rem 0.45rem;
+}

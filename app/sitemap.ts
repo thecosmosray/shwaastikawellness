@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://www.preetisemwal.in";
+import { siteUrl } from "./seo";
 const lastModified = new Date();
 
 const routes = [
@@ -16,6 +15,11 @@ const routes = [
   },
   {
     path: "/intuitive-healing",
+    changeFrequency: "monthly",
+    priority: 0.9,
+  },
+  {
+    path: "/inner-clarity-session",
     changeFrequency: "monthly",
     priority: 0.9,
   },
