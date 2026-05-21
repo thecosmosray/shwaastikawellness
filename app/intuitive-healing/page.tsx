@@ -11,17 +11,18 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const introParagraphs = [
-  "Healing is for those who seek to reach the root of their physical, emotional and spiritual concerns. It is also for those who wish to explore the deeper reasons behind their issues through the language of energy. When energy within the body and mind is disturbed, it shows up as an imbalance, sometimes felt in the body, sometimes in emotions or thoughts and at times as a sense of spiritual disconnection. These imbalances hold people back from living a healthy, joyful and fulfilling life.",
-  "We are more than flesh and bone we are converging fields of energy, emotion, thought, and spirit. When these fields fall out of balance, disconnection and disease arise as chronic pain, anxiety, fatigue, or a deep sense of emptiness.",
-  "Intuitive Healing works where the surface cannot reach. Rooted in my Himalayan lineage and guided by divine grace, each session weaves together:",
-  "Healing flows not just to your body but into your mind, emotions and soul - awakening your innate strength and restoring your natural state of wholeness.",
+  "Intuitive Healing is an awareness-based energy healing approach that works with deeper physical, emotional, and mental imbalances. Often, what we repeatedly experience in the body or mind is not limited to the surface symptom alone. Emotional stress, recurring thought patterns, anxiety, fatigue, physical discomfort, heaviness, or a persistent sense of imbalance may also carry deeper energetic and emotional imprints beneath the surface.",
+  "The work focuses on understanding these deeper layers through the individual's energetic field. During the session, I intuitively work with the person's energy space to sense areas of emotional strain, energetic disturbances, internal blocks, stress patterns, and imbalances that may be contributing to the present concern. The process is deeply compassionate, aware, and individualized, allowing the person to feel supported while exploring the root of what they may be carrying physically, emotionally, or mentally.",
+  "Over the years, I have personally witnessed individuals experience relief in long-standing physical concerns that had remained unresolved despite multiple approaches. At times, physical issues are deeply connected with the individual's emotional state, stress patterns, lifestyle, and overall energetic condition. As these deeper layers begin to shift and regulate, the body also starts responding differently.",
+  "The work is not intended to replace medical treatment, but it may support the individual alongside existing medical or therapeutic care by helping improve emotional regulation, inner balance, stress reduction, and overall well-being.",
+  "Rather than offering only temporary relief, Intuitive Healing is approached as a process of restoring greater balance, emotional ease, inner stability, and alignment from within.",
 ];
 
-const features = [
-  "Intuitive energy work that scans and clears blockages",
-  "Gentle yoga and breath practices that unlock stuck patterns",
-  "Mindful activities that ground insights into real-life shifts",
-  "Lifestyle changes to break the existing patterns",
+const processParagraphs = [
+  "Each session is guided intuitively according to the individual's current physical, emotional, and mental state. While holding a calm and grounded space for the individual, I work with the person's energetic field to understand deeper imbalances, emotional patterns, stress responses, behavioural tendencies, or energetic disturbances that may be contributing to the present concern.",
+  "At times, the process may help bring awareness to the connection between emotional experiences, mental patterns, lifestyle habits, and physical well-being. Based on what emerges during the session, supportive interventions may be suggested in the form of breathwork, grounding practices, meditation, gentle movement practices, emotional awareness work, lifestyle adjustments, dietary changes, routine-based changes, or other holistic supportive approaches.",
+  "The process is highly personalized and evolves according to the individual's response and readiness. In some cases, individuals may experience noticeable shifts within a single session, while in others, the work may unfold more gradually over multiple sessions depending on the depth of the concern and the consistency with which the suggested practices are integrated into daily life.",
+  "Intuitive Healing is not approached as passive healing, but as a collaborative process where awareness, participation, consistency, and openness from the individual play an important role in the overall journey toward healing, regulation, and balance.",
 ];
 
 const instructions = [
@@ -36,24 +37,24 @@ const instructions = [
 
 const intuitiveFaqs = [
   {
-    question: "How long is a session?",
+    question: "What exactly happens during an Intuitive Healing session?",
     answer:
-      "Typically lasting 60-65 minutes, each session is designed to feel immersive, engaging, and thoughtfully paced from beginning to end.",
+      "Each session involves intuitive energy work, guided awareness, supportive conversation, and personalized practices designed according to the individual's physical, emotional, and mental state. Depending on the requirement, the session may also include breathwork, meditation, grounding practices, gentle movement, or lifestyle-based guidance.",
+  },
+  {
+    question: "What kind of concerns can Intuitive Healing support?",
+    answer:
+      "The work may support individuals experiencing emotional overwhelm, stress, anxiety, recurring emotional patterns, fatigue, inner heaviness, chronic stress-related physical discomfort, or deeper mind-body imbalances. The focus is on understanding and working with the deeper patterns that may be contributing to the present concern.",
   },
   {
     question: "Is online as effective as in-person?",
     answer:
-      "Yes - many participants describe online experiences as equally deep, engaging, and impactful as sessions held in person.",
+      "Yes, participants often report experiences online that are just as deep, engaging, and impactful as in-person sessions.",
   },
   {
-    question: "Is this a medical treatment?",
+    question: "Is this a substitute for medical treatment?",
     answer:
-      "This is an intuitive healing session for deeper support. It is not a substitute for licensed medical or mental-health care.",
-  },
-  {
-    question: "Can I seek guidance about someone else?",
-    answer:
-      "Yes, if the guidance is intended for the well-being of a loved one",
+      "No. Intuitive Healing is an awareness-based and alternative healing approach intended to support physical, emotional, and mental well-being. It is not a substitute for licensed medical or mental-health care, though it may work supportively alongside existing treatments and healing processes.",
   },
 ];
 
@@ -64,10 +65,7 @@ export default function IntuitiveHealingPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(199,214,189,0.55),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(255,255,255,0.72),transparent_30%),linear-gradient(135deg,#fbf8f1_0%,#f3eadb_58%,#eef4e9_100%)]" />
         <Reveal>
           <div className="mx-auto max-w-5xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#7d8b65]">
-              Healing
-            </p>
-            <h1 className="mt-4 text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
               Intuitive Healing
             </h1>
           </div>
@@ -78,45 +76,25 @@ export default function IntuitiveHealingPage() {
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <article className="space-y-8 text-justify text-lg leading-9 text-[#3f372f]">
-              <p>{introParagraphs[0]}</p>
+              {introParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
 
-              <div className="rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-6 shadow-sm sm:p-8">
-                <h2 className="text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
-                  Where Energy, Yoga & Awareness Transform Your Entire Being
-                </h2>
-              </div>
+              <h2 className="pt-4 text-left text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
+                How the Process Works
+              </h2>
 
-              <p>{introParagraphs[1]}</p>
-
-              <div className="rounded-[2rem] border border-[#e5d9c7] bg-[#f7f1e4] p-6 sm:p-8">
-                <p className="text-justify text-lg font-semibold leading-8 text-[#2f2822]">
-                  {introParagraphs[2]}
-                </p>
-                <ul className="mt-6 grid gap-4">
-                  {features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-justify text-base leading-7 text-[#51473f]">
-                      <span className="mt-2.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[#3f5f46]" />
-                      <span className="min-w-0 flex-1 text-justify">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p>{introParagraphs[3]}</p>
+              {processParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </article>
           </Reveal>
         </div>
       </section>
 
-      <FAQ
-        items={intuitiveFaqs}
-        title="Clear answers about intuitive healing sessions."
-        sectionClassName="bg-white px-5 py-14 sm:px-8 lg:px-10"
-      />
-
-      <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
         <Reveal>
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center gap-4">
               <div className="h-px flex-1 bg-[#cdbd9f]" />
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7d8b65]">
@@ -125,20 +103,37 @@ export default function IntuitiveHealingPage() {
               <div className="h-px flex-1 bg-[#cdbd9f]" />
             </div>
 
-            <div className="rounded-[2rem] border border-[#e5d9c7] bg-[#fbf8f1] p-6 shadow-sm sm:p-8 lg:p-10">
-              <h2 className="text-2xl font-semibold text-[#2f2822] sm:text-3xl">For Online Session</h2>
-              <ul className="mt-6 space-y-3 text-justify text-base leading-7 text-[#2f2822] sm:mt-7 sm:space-y-4 sm:text-xl sm:leading-9">
+            <details className="group rounded-2xl border border-[#e5d9c7] bg-[#fbf8f1] shadow-sm">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 text-left marker:hidden sm:px-7">
+                <div>
+                  <h2 className="text-xl font-semibold text-[#2f2822] sm:text-2xl">For Online Session</h2>
+                  <p className="mt-1 text-sm leading-6 text-[#74675c]">
+                    Tap to view the preparation checklist for online sessions.
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm font-semibold uppercase tracking-[0.14em] text-[#3f5f46]">
+                  <span className="group-open:hidden">View</span>
+                  <span className="hidden group-open:inline">Hide</span>
+                </span>
+              </summary>
+              <ul className="border-t border-[#e5d9c7] px-6 py-5 space-y-3 text-justify text-base leading-7 text-[#2f2822] sm:px-7 sm:py-6 sm:space-y-4">
                 {instructions.map((instruction) => (
                   <li key={instruction} className="flex gap-4">
-                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46] sm:mt-4 sm:h-2.5 sm:w-2.5" />
+                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46]" />
                     <span className="min-w-0 flex-1 text-justify">{instruction}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           </div>
         </Reveal>
       </section>
+
+      <FAQ
+        items={intuitiveFaqs}
+        title="Clarity about intuitive healing sessions"
+        sectionClassName="bg-white px-5 py-14 sm:px-8 lg:px-10"
+      />
     </main>
   );
 }
