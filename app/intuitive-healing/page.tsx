@@ -11,11 +11,10 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 const introParagraphs = [
-  "Intuitive Healing is an awareness-based energy healing approach that works with deeper physical, emotional, and mental imbalances. Often, what we repeatedly experience in the body or mind is not limited to the surface symptom alone. Emotional stress, recurring thought patterns, anxiety, fatigue, physical discomfort, heaviness, or a persistent sense of imbalance may also carry deeper energetic and emotional imprints beneath the surface.",
-  "The work focuses on understanding these deeper layers through the individual's energetic field. During the session, I intuitively work with the person's energy space to sense areas of emotional strain, energetic disturbances, internal blocks, stress patterns, and imbalances that may be contributing to the present concern. The process is deeply compassionate, aware, and individualized, allowing the person to feel supported while exploring the root of what they may be carrying physically, emotionally, or mentally.",
-  "Over the years, I have personally witnessed individuals experience relief in long-standing physical concerns that had remained unresolved despite multiple approaches. At times, physical issues are deeply connected with the individual's emotional state, stress patterns, lifestyle, and overall energetic condition. As these deeper layers begin to shift and regulate, the body also starts responding differently.",
-  "The work is not intended to replace medical treatment, but it may support the individual alongside existing medical or therapeutic care by helping improve emotional regulation, inner balance, stress reduction, and overall well-being.",
-  "Rather than offering only temporary relief, Intuitive Healing is approached as a process of restoring greater balance, emotional ease, inner stability, and alignment from within.",
+  "Intuitive Healing is an awareness-based energy healing approach that works with deeper physical, emotional, and mental imbalances. Often, what individuals repeatedly experience in the body or mind is not limited to the surface symptom alone. Emotional stress, anxiety, fatigue, physical discomfort, recurring patterns, or a persistent sense of imbalance may also carry deeper emotional and energetic layers beneath the surface.",
+  "The process works intuitively through the individual's energetic field to understand emotional strain, stress patterns, inner blocks, energetic disturbances, or imbalances that may be contributing to the present concern. The work is compassionate, aware, and deeply individualized, creating a supportive space to explore what may be affecting the person physically, emotionally, or mentally.",
+  "Over the years, individuals have shared experiencing relief in long-standing physical concerns such as chronic pain, severe back discomfort, stress-linked symptoms, emotional heaviness, fatigue, and nervous system overwhelm after working consistently with these practices.",
+  "At times, physical discomfort may also carry emotional, mental, stress-related, or energetic components beneath the surface. As emotional regulation, stress reduction, inner balance, and overall energetic awareness improve, individuals may also experience supportive shifts in their physical well-being.",
 ];
 
 const processParagraphs = [
@@ -24,6 +23,66 @@ const processParagraphs = [
   "The process is highly personalized and evolves according to the individual's response and readiness. In some cases, individuals may experience noticeable shifts within a single session, while in others, the work may unfold more gradually over multiple sessions depending on the depth of the concern and the consistency with which the suggested practices are integrated into daily life.",
   "Intuitive Healing is not approached as passive healing, but as a collaborative process where awareness, participation, consistency, and openness from the individual play an important role in the overall journey toward healing, regulation, and balance.",
 ];
+
+const supportAreas = [
+  "Emotional Stress",
+  "Anxiety & Mental Overload",
+  "Fatigue & Burnout",
+  "Emotional Heaviness",
+  "Stress-Linked Physical Discomfort",
+  "Recurring Emotional Patterns",
+  "Inner Imbalance",
+  "Emotional Regulation",
+  "Nervous System Grounding",
+  "Mind-Body Awareness",
+];
+
+const supportAreaRows = [
+  {
+    rowClassName: "grid w-full max-w-[23rem] grid-cols-2",
+    itemClassName: "w-full",
+    items: ["Emotional Stress", "Anxiety & Mental Overload"],
+  },
+  {
+    rowClassName: "grid w-full max-w-[21rem] grid-cols-2",
+    itemClassName: "w-full",
+    items: ["Fatigue & Burnout", "Emotional Heaviness"],
+  },
+  {
+    rowClassName: "flex w-full max-w-[21.5rem]",
+    itemClassName: "w-full",
+    items: ["Stress-Linked Physical Discomfort"],
+  },
+  {
+    rowClassName: "flex w-full max-w-[20rem]",
+    itemClassName: "w-full",
+    items: ["Recurring Emotional Patterns"],
+  },
+  {
+    rowClassName: "grid w-full max-w-[22rem] grid-cols-2",
+    itemClassName: "w-full",
+    items: ["Inner Imbalance", "Emotional Regulation"],
+  },
+  {
+    rowClassName: "grid w-full max-w-[23rem] grid-cols-2",
+    itemClassName: "w-full",
+    items: ["Nervous System Grounding", "Mind-Body Awareness"],
+  },
+];
+
+const processSupports = [
+  "Breathwork",
+  "Meditation",
+  "Grounding Practices",
+  "Emotional Awareness",
+  "Gentle Movement",
+  "Lifestyle & Routine Adjustments",
+  "Dietary Awareness",
+  "Nervous System Regulation",
+];
+
+const medicalDisclaimer =
+  "The work is not intended to replace medical treatment or licensed healthcare support. It is approached as a complementary and supportive healing practice that may work alongside existing medical or therapeutic care.";
 
 const instructions = [
   "Join 10 minutes early on a laptop, iPad, or tablet; strong internet required for online sessions",
@@ -60,14 +119,17 @@ const intuitiveFaqs = [
 
 export default function IntuitiveHealingPage() {
   return (
-    <main className="bg-[#fbf8f1]">
+    <main className="bg-[#fffdf8]">
       <section className="relative isolate overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(199,214,189,0.55),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(255,255,255,0.72),transparent_30%),linear-gradient(135deg,#fbf8f1_0%,#f3eadb_58%,#eef4e9_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(234,223,206,0.58),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(255,255,255,0.78),transparent_30%),linear-gradient(135deg,#fffdf8_0%,#fff7ec_58%,#f8f1e8_100%)]" />
         <Reveal>
           <div className="mx-auto max-w-5xl text-center">
-            <h1 className="text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-semibold leading-[1.08] text-[#241d18] sm:text-5xl lg:text-6xl">
               Intuitive Healing
             </h1>
+            <p className="mx-auto mt-5 max-w-5xl text-xs font-semibold uppercase leading-6 tracking-[0.14em] text-[#8d735f] sm:text-sm sm:leading-7 sm:tracking-[0.22em]">
+              Emotional Healing &bull; Energy Balance &bull; Stress Regulation &bull; Inner Stability &bull; Mind-Body Awareness
+            </p>
           </div>
         </Reveal>
       </section>
@@ -75,18 +137,76 @@ export default function IntuitiveHealingPage() {
       <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <article className="space-y-8 text-justify text-lg leading-9 text-[#3f372f]">
-              {introParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+            <article>
+              <div className="space-y-6 text-justify text-base leading-8 text-[#3f372f] sm:text-lg sm:leading-9">
+                {introParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
 
-              <h2 className="pt-4 text-left text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
-                How the Process Works
-              </h2>
+              <div className="mt-10 border-y border-[#e5d9c7] py-8">
+                <h2 className="text-2xl font-semibold text-[#2f2822]">
+                  What Intuitive Healing May Support
+                </h2>
+                <div className="mt-5 space-y-3 sm:hidden">
+                  {supportAreaRows.map((row) => (
+                    <ul key={row.items.join("-")} className={`mx-auto gap-2.5 ${row.rowClassName}`}>
+                      {row.items.map((area) => (
+                        <li
+                          key={area}
+                          className={`inline-flex min-h-12 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-2.5 text-center text-sm font-semibold leading-6 text-[#3f352d] shadow-sm ${row.itemClassName}`}
+                        >
+                          {area}
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+                <ul className="mt-6 hidden grid-cols-5 gap-3 sm:grid">
+                  {supportAreas.map((area) => (
+                    <li
+                      key={area}
+                      className="inline-flex min-h-14 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-3 text-center text-base font-semibold leading-7 text-[#3f352d] shadow-sm"
+                    >
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              {processParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              <div className="mt-10">
+                <h2 className="text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
+                  How the Process Works
+                </h2>
+                <div className="mt-6 space-y-6 text-justify text-base leading-8 text-[#3f372f] sm:text-lg sm:leading-9">
+                  {processParagraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+
+                <div className="mt-8 rounded-[1.5rem] border border-[#e5d9c7] bg-[#fbf8f1] p-5 sm:p-6">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
+                    Supportive Practices May Include
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2.5">
+                  {processSupports.map((support) => (
+                    <span
+                      key={support}
+                      className="rounded-full border border-[#d7c8ad] bg-white/75 px-3.5 py-2 text-sm font-semibold leading-6 text-[#3f352d]"
+                    >
+                      {support}
+                    </span>
+                  ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 rounded-[1.5rem] border border-[#e5d9c7] bg-[#fbf8f1] p-5 sm:p-6">
+                <h2 className="text-xl font-semibold text-[#2f2822]">Medical Disclaimer</h2>
+                <p className="mt-3 text-justify text-base leading-8 text-[#5d5045]">
+                  {medicalDisclaimer}
+                </p>
+              </div>
             </article>
           </Reveal>
         </div>

@@ -73,8 +73,8 @@ export default function FAQ({
       />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">{eyebrow}</p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#2f2822] sm:text-4xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#8d735f]">{eyebrow}</p>
+          <h2 className="mt-3 text-3xl font-semibold text-[#241d18] sm:text-4xl">
             {title}
           </h2>
         </Reveal>
@@ -85,15 +85,15 @@ export default function FAQ({
               const isOpen = openIndex === index;
 
               return (
-                <div key={faq.question} className="rounded-3xl border border-[#e5d9c7] bg-[#fbf8f1]">
+                <div key={faq.question} className="rounded-3xl border border-[#eadfce] bg-[#fffdf8]">
                   <button
                     type="button"
                     className="flex w-full items-center justify-between gap-5 px-6 py-5 text-left"
                     aria-expanded={isOpen}
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   >
-                    <span className="text-base font-semibold text-[#332b24]">{faq.question}</span>
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl text-[#3f5f46]">
+                    <span className="text-base font-semibold text-[#241d18]">{faq.question}</span>
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl text-[#8d735f]">
                       {isOpen ? "-" : "+"}
                     </span>
                   </button>
@@ -103,7 +103,7 @@ export default function FAQ({
                     }`}
                   >
                     <div className="min-h-0 overflow-hidden">
-                      <p className="px-6 pb-6 text-justify text-sm leading-7 text-[#6f6256]">{faq.answer}</p>
+                      <p className="px-6 pb-6 text-justify text-sm leading-7 text-[#4f463e]">{faq.answer}</p>
                     </div>
                   </div>
                 </div>

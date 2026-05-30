@@ -51,7 +51,7 @@ const tabs = [
     imageAlt: "Corporate team workshop and group learning visual",
     imageAspect: "aspect-[16/10]",
     imageFit: "object-cover",
-    heading: "One of a kind designs",
+    heading: "Our Approach",
     paragraphs: [
       "The program is designed as a capability-building experience, combining real-life scenarios, behavioural insights and experiential learning to strengthen awareness, decision-making, and response under pressure.",
       "Sessions are interactive and engagement-driven, using discussions, scenario-based exercises, group activities, and guided techniques to build focus, composure and clarity in real situations.",
@@ -86,6 +86,13 @@ const tabs = [
   },
 ];
 
+const contentCardClass =
+  "h-full rounded-[1.1rem] border border-[#e5d9c7] bg-[#fbf8f1] p-4 shadow-sm sm:rounded-[1.35rem] sm:p-5";
+
+const contentTitleClass = "text-base font-semibold leading-7 text-[#2f2822] sm:text-lg";
+
+const contentTextClass = "mt-2 text-left text-sm leading-7 text-[#66584d] sm:text-justify sm:text-base";
+
 export default function CorporateWorkshopTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeTab = tabs[activeIndex];
@@ -103,12 +110,12 @@ export default function CorporateWorkshopTabs() {
   };
 
   return (
-    <section className="bg-[#f4f1eb] px-5 py-16 sm:px-8 lg:px-10">
+    <section className="bg-[#f4f1eb] px-4 py-12 sm:px-8 sm:py-16 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div
           role="tablist"
           aria-label="Corporate workshop information"
-          className="sticky top-[76px] z-30 mb-10 rounded-[1.25rem] border border-[#d7c8ad] bg-white/85 p-1.5 shadow-sm backdrop-blur lg:rounded-full lg:p-1"
+          className="sticky top-[72px] z-30 mb-8 rounded-[1rem] border border-[#d7c8ad] bg-white/90 p-1.5 shadow-sm backdrop-blur sm:mb-10 lg:rounded-full lg:p-1"
         >
           <div className="grid grid-cols-2 gap-1.5 lg:flex lg:min-w-0 lg:gap-1">
             {tabs.map((tab, index) => {
@@ -125,7 +132,7 @@ export default function CorporateWorkshopTabs() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
-                  className={`relative min-h-12 rounded-full px-3 py-3 text-center text-[13px] font-medium leading-snug transition sm:px-5 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
+                  className={`relative min-h-11 rounded-full px-2 py-2.5 text-center text-xs font-medium leading-snug transition sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
                     isActive ? "text-[#26382a]" : "text-[#5f5349] hover:text-[#3f5f46]"
                   }`}
                 >
@@ -153,10 +160,10 @@ export default function CorporateWorkshopTabs() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.32, ease: "easeOut" }}
-            className="grid items-start gap-8 rounded-[2rem] border border-[#e1d4bf] bg-white p-5 shadow-xl shadow-[#6b513b]/8 sm:p-8 lg:grid-cols-[0.68fr_1.32fr] lg:gap-10 lg:p-10"
+            className="grid items-start gap-6 rounded-[1.35rem] border border-[#e1d4bf] bg-white p-4 shadow-xl shadow-[#6b513b]/8 sm:gap-8 sm:rounded-[2rem] sm:p-8 lg:grid-cols-[0.68fr_1.32fr] lg:gap-10 lg:p-10"
           >
-            <div className="group mx-auto w-full self-start overflow-hidden rounded-[1.5rem] border border-[#e5d9c7] bg-[#fbf8f1] p-3 shadow-lg shadow-[#6b513b]/8 lg:max-w-[430px]">
-              <div className={`relative ${activeTab.imageAspect} overflow-hidden rounded-[1.15rem] bg-[#dfe9d8] transition duration-500 group-hover:scale-[1.01]`}>
+            <div className="group mx-auto w-full self-start overflow-hidden rounded-[1.1rem] border border-[#e5d9c7] bg-[#fbf8f1] p-2 shadow-lg shadow-[#6b513b]/8 sm:rounded-[1.5rem] sm:p-3 lg:max-w-[430px]">
+              <div className={`relative ${activeTab.imageAspect} max-sm:aspect-[4/3] overflow-hidden rounded-[0.9rem] bg-[#dfe9d8] transition duration-500 group-hover:scale-[1.01] sm:rounded-[1.15rem]`}>
                 <Image
                   src={activeTab.imageSrc}
                   alt={activeTab.imageAlt}
@@ -171,70 +178,62 @@ export default function CorporateWorkshopTabs() {
             </div>
 
             <div className="self-center">
-              <h2 className="text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
+              <h2 className="text-2xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
                 {activeTab.heading}
               </h2>
 
               {"intro" in activeTab ? (
-                <p className="mt-6 text-justify text-lg leading-8 text-[#5d5045]">{activeTab.intro}</p>
+                <p className="mt-5 text-left text-base leading-8 text-[#5d5045] sm:mt-6 sm:text-justify sm:text-lg">{activeTab.intro}</p>
               ) : null}
 
               {activeTab.domains ? (
-                <div className="mt-8 grid gap-5">
+                <div className="mt-7 grid gap-x-7 gap-y-5 sm:mt-8 lg:grid-cols-2">
                   {activeTab.domains.map((domain) => (
-                    <div key={domain.title}>
-                      <h3 className="font-semibold text-[#2f2822]">{domain.title}</h3>
-                      <p className="mt-1 text-justify text-base leading-7 text-[#66584d]">{domain.text}</p>
+                    <div key={domain.title} className={contentCardClass}>
+                      <h3 className={contentTitleClass}>{domain.title}</h3>
+                      <p className={contentTextClass}>{domain.text}</p>
                     </div>
                   ))}
                 </div>
               ) : null}
 
               {activeTab.paragraphs ? (
-                <div className="mt-7 space-y-0">
-                  {activeTab.paragraphs.map((paragraph, index) => (
-                    <div key={paragraph}>
-                      <p className="py-5 text-justify text-lg leading-9 text-[#4b423b]">{paragraph}</p>
-                      {index < activeTab.paragraphs.length - 1 ? (
-                        <motion.div
-                          initial={{ scaleX: 0 }}
-                          whileInView={{ scaleX: 1 }}
-                          viewport={{ once: true }}
-                          className="h-px origin-left bg-[#d7c8ad]"
-                        />
-                      ) : null}
+                <div className="mt-7 grid gap-4 sm:mt-8">
+                  {activeTab.paragraphs.map((paragraph) => (
+                    <div key={paragraph} className={contentCardClass}>
+                      <p className="text-left text-base leading-8 text-[#4b423b] sm:text-justify sm:text-lg">
+                        {paragraph}
+                      </p>
                     </div>
                   ))}
                 </div>
               ) : null}
 
               {activeTab.cards ? (
-                <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="mt-7 grid gap-4 sm:mt-8 sm:grid-cols-3">
                   {activeTab.cards.map((card) => (
                     <motion.div
                       key={card}
                       whileHover={{ y: -6 }}
-                      className="rounded-[1.5rem] border border-[#e5d9c7] bg-[#fbf8f1] p-5 shadow-sm"
+                      className={contentCardClass}
                     >
-                      <div className="mb-4 h-10 w-10 rounded-2xl bg-[#dfe9d8]" />
-                      <p className="text-lg font-semibold leading-7 text-[#2f2822]">{card}</p>
+                      <p className={contentTitleClass}>{card}</p>
                     </motion.div>
                   ))}
                 </div>
               ) : null}
 
               {activeTab.bullets ? (
-                <ul className="mt-8 space-y-5 text-justify text-lg leading-8 text-[#2f2822]">
+                <ul className="mt-7 grid gap-4 text-base leading-8 text-[#2f2822] sm:mt-8 sm:grid-cols-3 sm:text-lg">
                   {activeTab.bullets.map((bullet) => (
                     <motion.li
                       key={bullet}
                       initial={{ opacity: 0, x: 16 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      className="flex gap-4"
+                      className={contentCardClass}
                     >
-                      <span className="mt-4 h-2.5 w-2.5 shrink-0 rounded-full bg-[#3f5f46]" />
-                      <span className="min-w-0 flex-1 text-justify">{bullet}</span>
+                      <span className={`block min-w-0 text-left ${contentTitleClass}`}>{bullet}</span>
                     </motion.li>
                   ))}
                 </ul>

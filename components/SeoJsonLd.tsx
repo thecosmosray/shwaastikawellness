@@ -14,7 +14,7 @@ const services = [
       "Intuitive healing sessions using energy awareness, breath, gentle practices, and inner guidance for whole-being support.",
   },
   {
-    name: "Inner Clarity Session",
+    name: "Inner Clarity",
     url: `${siteUrl}/inner-clarity-session`,
     description:
       "Guided inner clarity sessions for emotional awareness, intuitive guidance, life transitions, and deeper self-connection.",

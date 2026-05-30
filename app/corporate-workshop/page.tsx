@@ -5,40 +5,51 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Corporate Wellness Workshop | Preeti Semwal",
+  title: "Corporate Wellness Workshops | Preeti Semwal",
   description:
     "Corporate wellness workshops by Preeti Semwal support workplace resilience, leadership presence, emotional intelligence, safety awareness, and well-being.",
   path: "/corporate-workshop",
 });
 
-const introParagraphs = [
-  "With over 25 years of experience across defence, security and corporate environments, I bring a strong foundation of operational expertise and real-world insight into every program I deliver. As a veteran from the Indian Air Force and a seasoned safety and security professional, my work is shaped by exposure to high-pressure environments, risk assessment and real-world decision-making.",
-  "Alongside this, my personal journey has been equally rooted in building resilience through experiences as a mountaineer, expedition leader, endurance runner, motorcyclist and solo traveller across multiple countries. These experiences have shaped not just physical endurance but also mental clarity, emotional balance and the ability to stay composed in uncertain situations.",
-  "My approach to training reflects this integration. Each session is designed to be practical, engaging and experience-driven while also helping participants develop awareness, presence and confidence from within. The focus is not only on understanding situations but on how individuals think, respond and carry themselves within those situations.",
-  "I work extensively with organisations to design and deliver programs that support both professional capability and overall well-being. These include areas such as workplace behaviour, safety awareness, leadership presence and personal effectiveness - delivered in a way that is relatable, applicable and grounded in real-life contexts.",
-  "In today's evolving workplace, where automation and AI continue to transform roles and expectations, human capabilities such as awareness, resilience, communication, and clarity of thought are becoming increasingly critical. My programs are designed to strengthen these capabilities, enabling individuals to perform effectively while maintaining balance, confidence, and a strong sense of self.",
+const foundations = [
+  {
+    title: "Real-World Experience",
+    text: "25+ years of experience across defence, security, and corporate environments, including leadership, risk management, crisis response, workplace safety, and decision-making under pressure.",
+  },
+  {
+    title: "Human Performance & Resilience",
+    text: "Insights shaped through mountaineering, endurance sports, expedition leadership, solo travel, and years of working in demanding environments where resilience, adaptability, and composure are essential.",
+  },
+  {
+    title: "Practical Workplace Application",
+    text: "Programs designed to strengthen awareness, communication, emotional intelligence, leadership presence, confidence, and workplace effectiveness through practical, experience-driven learning.",
+  },
+  {
+    title: "Human Skills for the Future Workplace",
+    text: "As automation and AI continue to transform workplaces, human capabilities such as awareness, resilience, communication, adaptability, emotional intelligence, and clarity of thought are becoming increasingly important. These programs are designed to strengthen those capabilities in practical and meaningful ways.",
+  },
 ];
 
 export default function CorporateWorkshopPage() {
   return (
-    <main className="bg-[#fbf8f1]">
-      <section className="relative isolate overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(199,214,189,0.55),transparent_28%),linear-gradient(135deg,#fbf8f1_0%,#f3eadb_58%,#eef4e9_100%)]" />
+    <main className="bg-[#fffdf8]">
+      <section className="relative isolate overflow-hidden px-4 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(234,223,206,0.58),transparent_28%),linear-gradient(135deg,#fffdf8_0%,#fff7ec_58%,#f8f1e8_100%)]" />
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#7d8b65]">
-                Corporate Wellness
-              </p>
-              <h1 className="mt-4 text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
-                Corporate Workshop
+              <h1 className="text-4xl font-semibold leading-[1.08] text-[#241d18] sm:text-5xl lg:text-6xl">
+                Corporate Workshops
               </h1>
+              <p className="mx-auto mt-5 max-w-[20rem] text-xs font-semibold uppercase leading-6 tracking-[0.14em] text-[#8d735f] sm:max-w-4xl sm:text-sm sm:leading-7 sm:tracking-[0.22em]">
+                Safety &bull; Leadership &bull; Emotional Intelligence &bull; Workplace Resilience &bull; Well-being
+              </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div className="group mt-9 overflow-hidden rounded-[1.75rem] border border-[#e5d9c7] bg-[#fbf8f1] p-3 shadow-xl shadow-[#6b513b]/10">
-              <div className="relative aspect-[16/5] min-h-[220px] overflow-hidden rounded-[1.35rem] bg-[#dfe9d8] transition duration-700 group-hover:scale-[1.008]">
+            <div className="group mt-8 overflow-hidden rounded-[1.25rem] border border-[#e5d9c7] bg-[#fbf8f1] p-2 shadow-xl shadow-[#6b513b]/10 sm:mt-9 sm:rounded-[1.75rem] sm:p-3">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1rem] bg-[#dfe9d8] transition duration-700 group-hover:scale-[1.008] sm:aspect-[16/5] sm:min-h-[220px] sm:rounded-[1.35rem]">
                 <Image
                   src="/images/corporate%20workshop/Hero.JPG"
                   alt="Corporate workshop setting and group learning visual"
@@ -54,33 +65,40 @@ export default function CorporateWorkshopPage() {
           </Reveal>
 
           <Reveal delay={0.18}>
-            <h2 className="mx-auto mt-10 max-w-6xl text-center text-3xl font-semibold leading-[1.1] text-[#120f0c] sm:text-4xl">
-              Empowering People, Energizing Organizations
+            <h2 className="mx-auto mt-9 max-w-6xl text-center text-2xl font-semibold leading-[1.15] text-[#120f0c] sm:mt-10 sm:text-4xl">
+              The Foundation Behind the Programs
             </h2>
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-16 sm:px-8 lg:px-10">
-        <article className="mx-auto max-w-6xl">
+      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16 lg:px-10">
+        <article className="mx-auto grid max-w-6xl gap-9 lg:grid-cols-[0.36fr_0.64fr] lg:gap-14">
           <Reveal>
-            <div className="mb-9 max-w-4xl">
+            <div className="lg:sticky lg:top-28">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-                Corporate Wellness
+                Corporate Capability
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
-                Practical workshops for resilient, aware and confident teams.
+              <h2 className="mt-3 text-2xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
+                Practical workshops for resilient, aware, and confident teams.
               </h2>
-              <div className="mt-7 h-px w-24 bg-[#d7c6a9]" />
+              <div className="mt-6 h-px w-24 bg-[#d7c6a9] sm:mt-7" />
             </div>
           </Reveal>
 
-          <div className="space-y-8 text-justify text-lg leading-9 text-[#3f372f]">
-          {introParagraphs.map((paragraph, index) => (
-            <Reveal key={paragraph} delay={index * 0.04}>
-              <p>{paragraph}</p>
-            </Reveal>
-          ))}
+          <div className="space-y-7 text-base leading-8 text-[#3f372f] sm:space-y-8 sm:text-lg sm:leading-9">
+            {foundations.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.04}>
+                <section className="border-l border-[#d7c6a9] pl-4 sm:pl-6">
+                  <h3 className="text-left text-xl font-semibold leading-tight text-[#2f2822] sm:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-left sm:text-justify">
+                    {item.text}
+                  </p>
+                </section>
+              </Reveal>
+            ))}
           </div>
         </article>
       </section>

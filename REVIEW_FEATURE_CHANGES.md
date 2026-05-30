@@ -4,7 +4,7 @@
 
 - `data/reviews.ts` - static review data extracted from the provided screenshots.
 - `components/ReviewCard.tsx` - reusable Google-style review card with avatar, Google badge, rating, and full review text in an equal-height card.
-- `components/ReviewsSection.tsx` - review grid, "Write a Review" modal, validation, localStorage merging, and "Load more reviews" behavior.
+- `components/ReviewsSection.tsx` - curated mobile and desktop review carousels, review detail lightbox, and legacy localStorage cleanup.
 - `app/testimonials/page.tsx` - replaces the placeholder Google Reviews carousel with the new reviews section.
 - `REVIEW_FEATURE_CHANGES.md` - documents the implementation.
 
@@ -36,25 +36,17 @@ Use a stable unique `id` for each review, keep `rating` between `1` and `5`, and
 
 ## Frontend review submissions
 
-The `Write a Review` button opens a modal form with:
+Public frontend review submissions are disabled.
 
-- Name
-- Rating
-- Review message
+The testimonials page now displays only curated static reviews from `data/reviews.ts`. This prevents unmoderated reviews from appearing on the live site.
 
-All fields are required. Submitted reviews appear immediately at the top of the review section with `time: "Just now"`.
-No backend or API is used.
+## Legacy localStorage cleanup
 
-## localStorage usage
-
-The feature uses browser storage only on the client side to avoid Next.js hydration errors.
-
-- `shwaastika-user-reviews` stores reviews submitted through the modal.
-
-Static screenshot reviews and locally submitted reviews are merged in `components/ReviewsSection.tsx`.
+Earlier versions stored browser-only submitted reviews under `shwaastika-user-reviews`.
+`components/ReviewsSection.tsx` now removes that key on page load and does not read or display browser-submitted reviews.
 
 ## Display behavior
 
 The reviews section is shown only on the `/testimonials` page.
-It displays 5 reviews initially and reveals 5 more each time `Load more reviews` is clicked.
+It uses arrow-controlled carousels on mobile and desktop. Desktop shows 3 reviews on wide screens and uses 3 matching carousel indicator dots.
 Each visible card keeps the same height for visual symmetry. Full review text is preserved inside the card with an internal scroll area when a review is long.

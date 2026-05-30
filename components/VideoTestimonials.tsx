@@ -5,20 +5,20 @@ import { useEffect, useRef, useState } from "react";
 
 const videoTestimonials = [
   {
-    title: "Healing Experience",
-    label: "Video testimonial 1",
+    title: "Intuitive Healing",
+    label: "Client Experience",
     note: "A personal reflection on clarity and emotional alignment.",
     src: "/images/testimonial/WhatsApp%20Video%202025-09-11%20at%2017.13.47.mp4",
   },
   {
-    title: "Mind Body Spirit Alignment",
-    label: "Video testimonial 2",
+    title: "Inner Clarity",
+    label: "Client Experience",
     note: "A shared experience after a guided wellness session.",
     src: "/images/testimonial/WhatsApp%20Video%202025-09-11%20at%2017.25.48.mp4",
   },
   {
-    title: "Journey of Support",
-    label: "Video testimonial 3",
+    title: "Intuitive Healing",
+    label: "Client Experience",
     note: "A story of feeling supported and seen.",
     src: "/images/testimonial/WhatsApp%20Video%202025-09-11%20at%2017.30.10.mp4",
   },
@@ -68,10 +68,7 @@ export default function VideoTestimonials() {
           transition={{ duration: 0.75 }}
           className="mb-8 text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
-            Video Testimonials
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#2f2822] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold text-[#17120f] sm:text-4xl">
             Video Experiences
           </h2>
         </motion.div>
@@ -81,13 +78,13 @@ export default function VideoTestimonials() {
           className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.98fr)_minmax(320px,0.58fr)]"
         >
           <motion.div
-            key={activeVideo.title}
+            key={activeVideo.src}
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.45 }}
-            className="relative mx-auto w-full max-w-[820px] overflow-hidden rounded-[1.75rem] border border-[#e5d9c7] bg-[#fbf8f1] p-3 shadow-xl shadow-[#6b513b]/10"
+            className="relative mx-auto w-full max-w-[820px] overflow-hidden rounded-[1.75rem] border border-[#eadfce] bg-[#fffdf8] p-3 shadow-xl shadow-[#6b513b]/7"
           >
-            <div className="relative mx-auto aspect-[9/16] w-full max-w-[430px] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(135deg,#ead7c8,#fff8ef_48%,#dfe9d8)] sm:aspect-video sm:max-w-none">
+            <div className="relative mx-auto aspect-[9/16] w-full max-w-[430px] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(135deg,#f4eadc,#fffdf8_48%,#f1eadf)] sm:aspect-video sm:max-w-none">
               <video
                 key={activeVideo.src}
                 ref={videoRef}
@@ -103,13 +100,13 @@ export default function VideoTestimonials() {
               />
               {!isPlaying ? (
                 <div className="pointer-events-none absolute left-3 top-3 max-w-[calc(100%-1.5rem)] rounded-2xl bg-white/78 p-3 backdrop-blur transition-opacity sm:left-5 sm:top-5 sm:max-w-sm sm:p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7d8b65]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8d735f]">
                     {activeVideo.label}
                   </p>
-                  <h3 className="mt-1 text-lg font-semibold text-[#2f2822] sm:mt-2 sm:text-2xl">
+                  <h3 className="mt-1 text-lg font-semibold text-[#241d18] sm:mt-2 sm:text-2xl">
                     {activeVideo.title}
                   </h3>
-                  <p className="mt-1 hidden text-justify text-sm text-[#66584d] sm:block">{activeVideo.note}</p>
+                  <p className="mt-1 hidden text-sm text-[#4f463e] sm:block">{activeVideo.note}</p>
                 </div>
               ) : null}
             </div>
@@ -118,13 +115,13 @@ export default function VideoTestimonials() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {videoTestimonials.map((video, index) => (
               <button
-                key={video.title}
+                key={video.src}
                 type="button"
                 onClick={() => selectVideo(index)}
                 className={`rounded-[1.5rem] border p-3 text-left transition ${
                   activeIndex === index
-                    ? "border-[#3f5f46] bg-[#f3eadb]"
-                    : "border-[#e5d9c7] bg-white hover:bg-[#fbf8f1]"
+                    ? "border-[#8d735f] bg-[#fff7ec]"
+                    : "border-[#eadfce] bg-white hover:bg-[#fffdf8]"
                 }`}
                 aria-pressed={activeIndex === index}
               >
@@ -143,10 +140,10 @@ export default function VideoTestimonials() {
                     </span>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
-                      Preview
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8d735f]">
+                      Client Experience
                     </p>
-                    <h3 className="mt-1 font-semibold text-[#2f2822]">{video.title}</h3>
+                    <h3 className="mt-1 font-semibold text-[#241d18]">{video.title}</h3>
                   </div>
                 </div>
               </button>

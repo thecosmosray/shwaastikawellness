@@ -8,32 +8,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const testimonials = [
   {
-    title: "Intuitive Healing Session",
-    note: "A shared client experience from a healing session.",
-    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.24%20(1).webp",
-    alt: "Client review about feeling freshness after practice",
-    imageClassName: "object-cover object-[50%_46%] scale-[1.62]",
+    title: "Intuitive Healing",
+    note: "A shared client experience from an Intuitive Healing session.",
+    image: "/images/testimonial/Sai%20GokulIntuitive%20Healing.png",
+    alt: "Sai Gokul Intuitive Healing testimonial",
+    imageClassName: "object-contain p-4",
   },
   {
-    title: "Inner Clarity Session",
-    note: "A client message about clarity and choosing the right path.",
-    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.25.webp",
-    alt: "Client review for craniosacral therapy and healing session",
-    imageClassName: "object-cover object-[50%_46%] scale-[1.12]",
+    title: "Womb Healing",
+    note: "A practice review shared after Womb Healing support.",
+    image: "/images/testimonial/Practice%20ReviewWomb%20Healing.png",
+    alt: "Practice Review Womb Healing testimonial",
+    imageClassName: "object-contain p-4",
   },
   {
-    title: "Womb Healing Session",
-    note: "A review shared after personal guidance and support.",
-    image: "/images/testimonial/WhatsApp%20Image%202026-05-12%20at%2013.10.35.webp",
-    alt: "Client review shared for Preeti Semwal",
-    imageClassName: "object-contain",
+    title: "Intuitive Healing",
+    note: "A client reflection from an Intuitive Healing session.",
+    image: "/images/testimonial/Intuitive%20Healing.png",
+    alt: "Intuitive Healing testimonial",
+    imageClassName: "object-contain p-4",
   },
 ];
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[number] }) {
   return (
-    <article className="h-full rounded-[1.5rem] border border-[#e5d9c7] bg-white p-3 shadow-sm">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[#fbf8f1]">
+    <article className="h-full rounded-[1.35rem] border border-[#eadfce] bg-white p-3 shadow-sm shadow-[#6b513b]/4 sm:rounded-[1.5rem]">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.05rem] bg-[#fff7ec] p-3 sm:rounded-[1.2rem]">
+        <div className="absolute inset-3 rounded-[0.9rem] bg-white shadow-inner" />
         <Image
           src={testimonial.image}
           alt={testimonial.alt}
@@ -45,8 +46,8 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[num
         />
       </div>
       <div className="px-3 py-5">
-        <h3 className="text-xl font-semibold text-[#332b24]">{testimonial.title}</h3>
-        <p className="mt-2 text-justify text-sm leading-6 text-[#6a5d52]">{testimonial.note}</p>
+        <h3 className="text-xl font-bold text-[#17120f]">{testimonial.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-[#4f463e]">{testimonial.note}</p>
       </div>
     </article>
   );
@@ -54,16 +55,17 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[num
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#fbf8f1] px-5 py-14 sm:px-8 lg:px-10">
+    <section className="relative isolate overflow-hidden bg-[#fffdf8] px-4 py-12 sm:px-8 sm:py-14 lg:px-10">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#fffdf8_0%,#fff8ef_52%,#ffffff_100%)]" />
       <div className="mx-auto max-w-7xl">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">Testimonials</p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#2f2822] sm:text-4xl">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#9a6f55]">Testimonials</p>
+          <h2 className="mt-3 text-3xl font-bold text-[#17120f] sm:text-4xl">
             Shared Experiences
           </h2>
           <Link
             href="/testimonials"
-            className="mt-7 inline-flex rounded-full border border-[#cdbd9f] bg-white px-6 py-3 text-sm font-semibold text-[#3f352d] transition hover:border-[#8a9b72] hover:bg-[#fbf8f1]"
+            className="mt-7 inline-flex rounded-full border border-[#d8c7ad] bg-white px-6 py-3 text-sm font-semibold text-[#3f352d] transition hover:border-[#8d735f] hover:bg-[#fffdf8]"
           >
             View All Testimonials
           </Link>

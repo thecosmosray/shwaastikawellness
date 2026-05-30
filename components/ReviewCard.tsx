@@ -76,7 +76,9 @@ export default function ReviewCard({ review, variant = "default", onClick }: Rev
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <h3 className="truncate text-base font-semibold text-[#2f2822]">{review.name}</h3>
+            <h3 className="truncate text-lg font-semibold leading-tight text-[#2f2822]">
+              {review.name}
+            </h3>
             <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#1a73e8] text-xs font-bold text-white" aria-label="Verified public review">
               &#10003;
             </span>

@@ -14,6 +14,8 @@ import {
   siteUrl,
   socialDescription,
 } from "./seo";
+import "swiper/css";
+import "swiper/css/pagination";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -75,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbf8f1",
+  themeColor: "#fffdf8",
   colorScheme: "light",
 };
 
@@ -92,7 +94,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="relative min-h-full bg-[#fbf8f1] text-[#2f2822]"
+        className="relative min-h-full bg-[#fffdf8] text-[#241d18]"
         suppressHydrationWarning
       >
         <SeoJsonLd />

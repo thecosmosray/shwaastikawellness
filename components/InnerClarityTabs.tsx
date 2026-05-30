@@ -31,6 +31,8 @@ const tabs = [
   },
   {
     label: "Is Inner Clarity Right for You?",
+    imageAlt: "Calm reflective visual for Inner Clarity suitability",
+    imageSrc: "/images/inner%20clarity/who%20benifits.jpg",
     items: [
       "Inner Clarity isn't about mystifying the process, it's for anyone who senses there's more beneath the surface of their life and wants to translate subtle signals into real-world clarity. Book a session when you:",
       "Feel stuck or overwhelmed by a decision",
@@ -71,7 +73,7 @@ export default function InnerClarityTabs() {
       <div className="mx-auto max-w-7xl">
         <div
           role="tablist"
-          aria-label="Inner clarity session information"
+          aria-label="Inner clarity information"
           className="rounded-[1.25rem] border border-[#e6dac7] bg-[#fbf8f1] p-1.5 shadow-sm lg:rounded-full lg:p-1"
         >
           <div className="grid grid-cols-2 gap-1.5 lg:flex lg:min-w-0 lg:gap-1">

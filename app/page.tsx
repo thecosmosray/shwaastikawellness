@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import HomeDeferredSections from "@/components/HomeDeferredSections";
+import HomeHealingSessions from "@/components/HomeHealingSessions";
 import HomeIntro from "@/components/HomeIntro";
+import WhyWorkWithPreeti from "@/components/WhyWorkWithPreeti";
 import { createPageMetadata } from "./seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -16,6 +18,8 @@ export default function Home() {
     <main>
       <Hero />
       <HomeIntro />
+      <HomeHealingSessions />
+      <WhyWorkWithPreeti />
       <HomeDeferredSections />
     </main>
   );

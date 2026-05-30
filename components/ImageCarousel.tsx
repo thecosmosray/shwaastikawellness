@@ -9,10 +9,12 @@ import LightboxModal from "@/components/LightboxModal";
 
 export type CarouselImage = {
   title: string;
-  label: string;
+  label?: string;
   tone: string;
   src?: string;
   alt?: string;
+  imageClassName?: string;
+  lightboxImageClassName?: string;
 };
 
 type ImageCarouselProps = {
@@ -29,14 +31,14 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
   const activeLightboxImage = lightboxIndex === null ? null : images[lightboxIndex];
 
   return (
-    <section className="bg-[#fbf8f1] px-5 py-16 sm:px-8 lg:px-10">
+    <section className="bg-[#fffdf8] px-5 py-16 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7d8b65]">
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#9a6f55]">
               {eyebrow}
             </p>
-            <h2 className="mt-3 text-3xl font-semibold text-[#2f2822] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold text-[#17120f] sm:text-4xl">
               {heading}
             </h2>
           </div>
@@ -44,7 +46,7 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
             <button
               type="button"
               onClick={() => swiperRef.current?.slidePrev()}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#cdbd9f] bg-white text-xl text-[#2f2822] shadow-sm hover:bg-[#f3eadb]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d8c7ad] bg-white text-xl text-[#241d18] shadow-sm transition hover:bg-[#fff7ec]"
               aria-label={`Previous ${heading}`}
             >
               &larr;
@@ -52,7 +54,7 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
             <button
               type="button"
               onClick={() => swiperRef.current?.slideNext()}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#cdbd9f] bg-white text-xl text-[#2f2822] shadow-sm hover:bg-[#f3eadb]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#d8c7ad] bg-white text-xl text-[#241d18] shadow-sm transition hover:bg-[#fff7ec]"
               aria-label={`Next ${heading}`}
             >
               &rarr;
@@ -73,64 +75,67 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
           }}
           speed={850}
           loop={images.length > 3}
-          slidesPerView={1.08}
+          slidesPerView={1}
           spaceBetween={16}
           breakpoints={{
             640: {
-              slidesPerView: 1.65,
+              slidesPerView: 1,
               spaceBetween: 18,
             },
             900: {
-              slidesPerView: 2.35,
+              slidesPerView: 2,
               spaceBetween: 20,
             },
             1180: {
-              slidesPerView: 3.15,
-              spaceBetween: 20,
+              slidesPerView: 3,
+              spaceBetween: 22,
             },
           }}
           className="testimonial-swiper"
         >
           {images.map((image, index) => (
-            <SwiperSlide key={image.title}>
+            <SwiperSlide key={image.src ?? `${image.title}-${index}`}>
               <button
                 type="button"
                 onClick={() => setLightboxIndex(index)}
-                className="group w-full rounded-[1.5rem] border border-[#e5d9c7] bg-white p-2.5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#6b513b]/10"
-                aria-label={`Open ${image.title}`}
+                className="group w-full rounded-[1.5rem] border border-[#eadfce] bg-white p-2.5 text-left shadow-sm shadow-[#6b513b]/4 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#6b513b]/8"
+                aria-label={`Open ${image.label ? `${image.label} ` : ""}${image.title}`}
               >
                 <div
                   className={`relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[1.15rem] bg-gradient-to-br ${image.tone} p-4`}
                   style={{ position: "relative" }}
                 >
                   {image.src ? (
-                    <>
-                      <Image
-                        src={image.src}
-                        alt={image.alt ?? image.title}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 640px) 92vw, (max-width: 1180px) 45vw, 320px"
-                        loading="lazy"
-                        quality={88}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#17130f]/22 via-transparent to-white/5" />
-                      <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-white/86 p-4 text-center shadow-lg shadow-black/10 backdrop-blur">
+                    <Image
+                      src={image.src}
+                      alt={image.alt ?? image.title}
+                      fill
+                      className={image.imageClassName ?? "object-contain"}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1180px) 45vw, 320px"
+                      loading="lazy"
+                      quality={88}
+                    />
+                  ) : (
+                    <div className="rounded-2xl bg-white/78 p-4 text-center backdrop-blur">
+                      {image.label ? (
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
                           {image.label}
                         </p>
-                        <h3 className="mt-2 text-lg font-semibold text-[#2f2822] sm:text-xl">{image.title}</h3>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="rounded-2xl bg-white/78 p-4 text-center backdrop-blur">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
-                        {image.label}
-                      </p>
+                      ) : null}
                       <h3 className="mt-3 text-xl font-semibold text-[#2f2822] sm:text-2xl">{image.title}</h3>
                       <p className="mt-3 text-sm text-[#66584d]">Open client reflection</p>
                     </div>
                   )}
+                </div>
+                <div className="px-2 pb-2 pt-4 text-center">
+                  {image.label ? (
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7d8b65]">
+                      {image.label}
+                    </p>
+                  ) : null}
+                  <h3 className={image.label ? "mt-1 text-lg font-bold text-[#17120f] sm:text-xl" : "text-lg font-bold text-[#17120f] sm:text-xl"}>
+                    {image.title}
+                  </h3>
                 </div>
               </button>
             </SwiperSlide>
@@ -168,16 +173,18 @@ export default function ImageCarousel({ eyebrow, heading, images }: ImageCarouse
                   src={activeLightboxImage.src}
                   alt={activeLightboxImage.alt ?? activeLightboxImage.title}
                   fill
-                  className="object-contain"
+                  className={activeLightboxImage.lightboxImageClassName ?? "object-contain"}
                   sizes="(max-width: 768px) 92vw, 720px"
                   quality={92}
                 />
               </div>
             ) : (
               <div className="max-w-xl rounded-[1.5rem] bg-white/85 p-8 text-center shadow-xl backdrop-blur">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7d8b65]">
-                  {activeLightboxImage.label}
-                </p>
+                {activeLightboxImage.label ? (
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7d8b65]">
+                    {activeLightboxImage.label}
+                  </p>
+                ) : null}
                 <h3 className="mt-4 text-3xl font-semibold text-[#2f2822]">
                   {activeLightboxImage.title}
                 </h3>

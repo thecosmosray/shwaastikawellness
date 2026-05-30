@@ -44,19 +44,19 @@ const aboutImages = [
 export default function AboutPage() {
   return (
     <main>
-      <section className="relative isolate overflow-hidden bg-[#f3eadb] px-5 pb-7 pt-10 sm:px-8 sm:pb-8 sm:pt-12 lg:px-10 lg:pb-9 lg:pt-12">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(199,214,189,0.65),transparent_26%),radial-gradient(circle_at_85%_8%,rgba(255,255,255,0.75),transparent_30%),linear-gradient(135deg,#f6eddd_0%,#fbf8f1_58%,#f9f7f0_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-b from-transparent to-[#fbf8f1]" />
+      <section className="relative isolate overflow-hidden bg-[#fffdf8] px-5 pb-7 pt-10 sm:px-8 sm:pb-8 sm:pt-12 lg:px-10 lg:pb-9 lg:pt-12">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(234,223,206,0.58),transparent_26%),radial-gradient(circle_at_85%_8%,rgba(255,255,255,0.82),transparent_30%),linear-gradient(135deg,#fff7ec_0%,#fffdf8_58%,#f8f1e8_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-b from-transparent to-[#fffdf8]" />
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="max-w-4xl lg:pl-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#7d8b65]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#8d735f]">
                 Shwaastika Wellness
               </p>
-              <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.08] text-[#2f2822] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-[1.08] text-[#241d18] sm:text-5xl lg:text-6xl">
                 About Preeti Semwal
               </h1>
-              <p className="mt-4 max-w-2xl text-justify text-lg leading-8 text-[#675b50] sm:text-xl sm:leading-9">
+              <p className="mt-4 max-w-2xl text-justify text-lg leading-8 text-[#4f463e] sm:text-xl sm:leading-9">
                 Guided healing rooted in intuition, ancestral wisdom, and holistic well-being.
               </p>
               <div className="mt-5 h-px w-24 bg-[#b9a27e]" />
@@ -145,11 +145,8 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {featureBlocks.map((block, index) => (
               <Reveal key={block.title} delay={index * 0.08}>
-                <article className="h-full rounded-[2rem] border border-[#e5d9c7] bg-white p-7 shadow-sm shadow-[#6b513b]/5">
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e5eddf]">
-                    <span className="h-5 w-5 rounded-full border-2 border-[#6b7d55]" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-[#2f2822]">{block.title}</h3>
+                <article className="h-full rounded-[2rem] border border-[#eadfce] bg-white p-7 shadow-sm shadow-[#6b513b]/5">
+                  <h3 className="text-2xl font-semibold text-[#241d18]">{block.title}</h3>
                   <div className="mt-5 space-y-4 text-justify text-base leading-8 text-[#675b50]">
                     {block.text.split("\n\n").map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>

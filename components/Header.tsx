@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 const mainLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Inner Clarity Sessions", href: "/inner-clarity-session" },
+  { label: "Inner Clarity", href: "/inner-clarity-session" },
   { label: "Intuitive Healing", href: "/intuitive-healing" },
   { label: "Womb Healing", href: "/womb-healing" },
 ];
@@ -27,6 +27,7 @@ export default function Header() {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const moreDropdownRef = useRef<HTMLLIElement>(null);
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     if (!isMoreOpen) {
@@ -60,7 +61,7 @@ export default function Header() {
   }, [isMoreOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/70 bg-[#f7f2e8]/88 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[#eadfce]/70 bg-[#fffdf8]/90 backdrop-blur-xl">
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-[86rem] items-center justify-between gap-6 px-5 py-4 sm:px-6 lg:px-10"
@@ -72,7 +73,7 @@ export default function Header() {
         >
           <span
             aria-hidden="true"
-            className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#c8d9e5] bg-white/75 shadow-sm sm:h-14 sm:w-14"
+            className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#eadfce] bg-white shadow-sm sm:h-14 sm:w-14"
           >
             <Image
               src="/images/logo.png"
@@ -84,7 +85,7 @@ export default function Header() {
           </span>
 
           <div className="leading-tight">
-            <p className="text-base font-semibold tracking-[0.04em] text-[#263542] sm:text-lg">
+            <p className="text-base font-semibold tracking-[0.04em] text-[#241d18] sm:text-lg">
               Shwaastika Wellness
             </p>
             <p className="text-xs italic text-[#8a7764] sm:text-[13px]">
@@ -101,8 +102,8 @@ export default function Header() {
                 scroll
                 className={`block rounded-full px-4 py-2 text-[13px] font-medium transition ${
                   pathname === link.href
-                    ? "bg-white text-[#24394a] shadow-sm"
-                    : "text-[#41515d] hover:bg-white/65 hover:text-[#24394a]"
+                    ? "bg-white text-[#241d18] shadow-sm"
+                    : "text-[#5f5349] hover:bg-white/75 hover:text-[#241d18]"
                 }`}
               >
                 {link.label}
@@ -116,14 +117,14 @@ export default function Header() {
               aria-expanded={isMoreOpen}
               aria-haspopup="menu"
               onClick={() => setIsMoreOpen((value) => !value)}
-              className="rounded-full px-4 py-2 text-[13px] font-medium text-[#41515d] transition hover:bg-white/65 hover:text-[#24394a]"
+              className="rounded-full px-4 py-2 text-[13px] font-medium text-[#5f5349] transition hover:bg-white/75 hover:text-[#241d18]"
             >
               More
             </button>
 
             <div
               role="menu"
-              className={`absolute left-1/2 top-11 w-56 -translate-x-1/2 rounded-2xl border border-white/70 bg-[#f7f2e8] p-2 shadow-xl shadow-black/10 transition ${
+              className={`absolute left-1/2 top-11 w-56 -translate-x-1/2 rounded-2xl border border-[#eadfce]/80 bg-[#fffdf8] p-2 shadow-xl shadow-[#6b513b]/10 transition ${
                 isMoreOpen ? "visible opacity-100" : "invisible opacity-0"
               }`}
             >
@@ -136,8 +137,8 @@ export default function Header() {
                   onClick={() => setIsMoreOpen(false)}
                   className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
                     pathname === link.href
-                      ? "bg-white text-[#24394a] shadow-sm"
-                      : "text-[#41515d] hover:bg-white/70 hover:text-[#24394a]"
+                      ? "bg-white text-[#241d18] shadow-sm"
+                      : "text-[#5f5349] hover:bg-white/80 hover:text-[#241d18]"
                   }`}
                 >
                   {link.label}
@@ -147,19 +148,21 @@ export default function Header() {
           </li>
         </ul>
 
-        <div className="hidden shrink-0 items-center xl:flex">
-          <Link
-            href="/book-a-session"
-            scroll
-            className="rounded-full bg-[#2f3033] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#2f3033]/12 transition hover:-translate-y-0.5 hover:bg-[#4f6574]"
-          >
-            Book a Consultation
-          </Link>
-        </div>
+        {!isHomePage ? (
+          <div className="hidden shrink-0 items-center xl:flex">
+            <Link
+              href="/book-a-session"
+              scroll
+              className="rounded-full bg-[#2b211a] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#2b211a]/12 transition hover:-translate-y-0.5 hover:bg-[#5f4a38]"
+            >
+              Book a Consultation
+            </Link>
+          </div>
+        ) : null}
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#dce8ef] bg-white/80 text-[#263542] shadow-sm xl:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#eadfce] bg-white text-[#241d18] shadow-sm xl:hidden"
           aria-label="Toggle mobile menu"
           aria-expanded={isOpen}
           onClick={() => setIsOpen((value) => !value)}
@@ -185,7 +188,7 @@ export default function Header() {
       </nav>
 
       <div
-        className={`overflow-hidden border-t border-white/70 bg-[#f7f2e8] transition-[max-height,opacity] duration-300 xl:hidden ${
+        className={`overflow-hidden border-t border-[#eadfce]/70 bg-[#fffdf8] transition-[max-height,opacity] duration-300 xl:hidden ${
           isOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -200,8 +203,8 @@ export default function Header() {
                       onClick={() => setIsOpen(false)}
                       className={`block rounded-full px-4 py-3 text-sm font-semibold ${
                         pathname === link.href
-                          ? "bg-white text-[#24394a] shadow-sm"
-                          : "text-[#41515d] hover:bg-white/65"
+                          ? "bg-white text-[#241d18] shadow-sm"
+                          : "text-[#5f5349] hover:bg-white/75"
                       }`}
                     >
                       {link.label}
@@ -210,14 +213,16 @@ export default function Header() {
                 ))}
               </ul>
 
-              <Link
-                href="/book-a-session"
-                scroll
-                onClick={() => setIsOpen(false)}
-                className="mt-3 block rounded-full bg-[#2f3033] px-5 py-3 text-center text-sm font-semibold text-white"
-              >
-                Book a Consultation
-              </Link>
+              {!isHomePage ? (
+                <Link
+                  href="/book-a-session"
+                  scroll
+                  onClick={() => setIsOpen(false)}
+                  className="mt-3 block rounded-full bg-[#2b211a] px-5 py-3 text-center text-sm font-semibold text-white"
+                >
+                  Book a Consultation
+                </Link>
+              ) : null}
             </div>
         ) : null}
       </div>
