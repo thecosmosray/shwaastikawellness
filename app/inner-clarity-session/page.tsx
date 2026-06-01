@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AreasOfSupport from "@/components/AreasOfSupport";
 import InnerClarityTabs from "@/components/InnerClarityTabs";
 import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
@@ -17,50 +18,18 @@ const introParagraphs = [
   "Many individuals leave the sessions feeling emotionally lighter, mentally clearer, more balanced, and better able to move forward with awareness and confidence.",
 ];
 
-const sessionOfferRows = [
-  {
-    rowClassName: "grid w-full max-w-[23rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Clarity on relationships", "Career choices"],
-  },
-  {
-    rowClassName: "grid w-full max-w-[21rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Emotional patterns", "Life transitions"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[17rem]",
-    itemClassName: "w-full",
-    items: ["Understanding recurring cycles"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[19rem]",
-    itemClassName: "w-full",
-    items: ["Boundaries & emotional balance"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[21.5rem]",
-    itemClassName: "w-full",
-    items: ["Breath practices & journaling prompts"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[20.25rem]",
-    itemClassName: "w-full",
-    items: ["Practical guidance & self-reflection"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[18rem]",
-    itemClassName: "w-full",
-    items: ["Space to ask questions openly"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[18rem]",
-    itemClassName: "w-full",
-    items: ["Emotional grounding & clarity"],
-  },
+const sessionOffers = [
+  "Clarity on relationships",
+  "Career choices",
+  "Emotional patterns",
+  "Life transitions",
+  "Understanding recurring cycles",
+  "Boundaries & emotional balance",
+  "Breath practices & journaling prompts",
+  "Practical guidance & self-reflection",
+  "Space to ask questions openly",
+  "Emotional grounding & clarity",
 ];
-
-const sessionOffers = sessionOfferRows.flatMap((row) => row.items);
 
 export default function InnerClaritySessionPage() {
   return (
@@ -81,58 +50,38 @@ export default function InnerClaritySessionPage() {
 
       <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
         <Reveal>
-          <article className="mx-auto max-w-[52rem]">
-            <h2 className="text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
-              What Inner Clarity Is
-            </h2>
-            <div className="editorial-prose mt-8">
-              <p>{introParagraphs[0]}</p>
-              <p>
-                The difference however is that these sessions do not work through any
-                external tools or fixed systems. Instead the process works intuitively
-                through the individual&apos;s own{" "}
-                <span className="editorial-highlight">emotional and energetic field</span>.
-              </p>
-              <p>
-                The intention is not to provide dependency-based answers but to support{" "}
-                <span className="editorial-highlight">greater self-awareness</span>,
-                emotional understanding, practical clarity, and a more grounded connection
-                with oneself.
-              </p>
-              <p>
-                Many individuals leave the sessions feeling emotionally lighter, mentally
-                clearer, more balanced, and better able to move forward with{" "}
-                <span className="editorial-highlight">awareness and confidence</span>.
-              </p>
+          <article className="mx-auto max-w-[75rem]">
+            <div className="mx-auto max-w-[52rem]">
+              <h2 className="text-3xl font-semibold leading-tight text-[#2f2822] sm:text-4xl">
+                What Inner Clarity Is
+              </h2>
+              <div className="editorial-prose mt-8">
+                <p>{introParagraphs[0]}</p>
+                <p>
+                  The difference however is that these sessions do not work through any
+                  external tools or fixed systems. Instead the process works intuitively
+                  through the individual&apos;s own{" "}
+                  <span className="editorial-highlight">emotional and energetic field</span>.
+                </p>
+                <p>
+                  The intention is not to provide dependency-based answers but to support{" "}
+                  <span className="editorial-highlight">greater self-awareness</span>,
+                  emotional understanding, practical clarity, and a more grounded connection
+                  with oneself.
+                </p>
+                <p>
+                  Many individuals leave the sessions feeling emotionally lighter, mentally
+                  clearer, more balanced, and better able to move forward with{" "}
+                  <span className="editorial-highlight">awareness and confidence</span>.
+                </p>
+              </div>
             </div>
 
-            <div className="mt-10 border-y border-[#e5d9c7] py-8">
-              <h2 className="text-2xl font-semibold text-[#2f2822]">What This Session Offers</h2>
-              <div className="mt-5 space-y-3 sm:hidden">
-                {sessionOfferRows.map((row) => (
-                  <ul key={row.items.join("-")} className={`mx-auto gap-2.5 ${row.rowClassName}`}>
-                    {row.items.map((offer) => (
-                      <li
-                        key={offer}
-                        className={`inline-flex min-h-12 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-2.5 text-center text-sm font-semibold leading-6 text-[#3f352d] shadow-sm sm:px-5 sm:text-base ${row.itemClassName}`}
-                      >
-                        {offer}
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </div>
-              <ul className="mt-6 hidden grid-cols-5 gap-3 sm:grid">
-                {sessionOffers.map((offer) => (
-                  <li
-                    key={offer}
-                    className="inline-flex min-h-14 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-3 text-center text-base font-semibold leading-7 text-[#3f352d] shadow-sm"
-                  >
-                    {offer}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <AreasOfSupport
+              eyebrow="Areas of support"
+              title="What This Session Offers"
+              items={sessionOffers}
+            />
           </article>
         </Reveal>
       </section>

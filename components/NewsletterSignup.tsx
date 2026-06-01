@@ -6,6 +6,7 @@ type FormErrors = {
   firstName?: string;
   email?: string;
   consent?: string;
+  form?: string;
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,6 +17,7 @@ export default function NewsletterSignup() {
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const nextErrors: FormErrors = {};
@@ -52,22 +54,39 @@ export default function NewsletterSignup() {
       consent,
     };
 
-    // TODO: Connect this to Mailchimp, Brevo, ConvertKit, or a custom API route.
-    // Example custom route shape:
-    // await fetch("/api/newsletter", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(subscriber),
-    // });
-    void subscriber;
+    setIsSubmitting(true);
 
-    setFirstName("");
-    setEmail("");
-    setConsent(false);
-    setErrors({});
-    setSuccessMessage(
-      "Thank you for joining. You'll receive updates from Shwaastika Wellness soon.",
-    );
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(subscriber),
+      });
+      const result = (await response.json()) as { message?: string; field?: keyof FormErrors };
+
+      if (!response.ok) {
+        if (result.field) {
+          setErrors({ [result.field]: result.message || "Please check this field." });
+        } else {
+          setErrors({
+            form: result.message || "Unable to process subscription. Please try again later.",
+          });
+        }
+        return;
+      }
+
+      setFirstName("");
+      setEmail("");
+      setConsent(false);
+      setErrors({});
+      setSuccessMessage(
+        result.message || "Thank you for subscribing.",
+      );
+    } catch {
+      setErrors({ form: "Unable to process subscription. Please try again later." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,27 +107,6 @@ export default function NewsletterSignup() {
           <form onSubmit={handleSubmit} className="mx-auto mt-10 max-w-4xl text-left" noValidate>
             <div className="grid gap-5">
               <div>
-                <label className="sr-only" htmlFor="newsletter-first-name">
-                  First Name
-                </label>
-                <input
-                  id="newsletter-first-name"
-                  type="text"
-                  value={firstName}
-                  onChange={(event) => setFirstName(event.target.value)}
-                  placeholder="First Name"
-                  className="w-full rounded-full border border-white/70 bg-white/88 px-6 py-4 text-base text-[#2f2822] shadow-sm outline-none transition placeholder:text-[#76695d] focus:border-[#bda98b] focus:bg-white focus:ring-2 focus:ring-[#bda98b]/20"
-                  aria-invalid={Boolean(errors.firstName)}
-                  aria-describedby={errors.firstName ? "newsletter-first-name-error" : undefined}
-                />
-                {errors.firstName ? (
-                  <p id="newsletter-first-name-error" className="mt-2 px-5 text-sm text-[#8f453a]">
-                    {errors.firstName}
-                  </p>
-                ) : null}
-              </div>
-
-              <div>
                 <label className="sr-only" htmlFor="newsletter-email">
                   Email Address
                 </label>
@@ -116,7 +114,11 @@ export default function NewsletterSignup() {
                   id="newsletter-email"
                   type="email"
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                    setErrors((current) => ({ ...current, email: undefined, form: undefined }));
+                    setSuccessMessage("");
+                  }}
                   placeholder="Email Address"
                   className="w-full rounded-full border border-white/70 bg-white/88 px-6 py-4 text-base text-[#2f2822] shadow-sm outline-none transition placeholder:text-[#76695d] focus:border-[#bda98b] focus:bg-white focus:ring-2 focus:ring-[#bda98b]/20"
                   aria-invalid={Boolean(errors.email)}
@@ -128,6 +130,31 @@ export default function NewsletterSignup() {
                   </p>
                 ) : null}
               </div>
+
+              <div>
+                <label className="sr-only" htmlFor="newsletter-first-name">
+                  First Name
+                </label>
+                <input
+                  id="newsletter-first-name"
+                  type="text"
+                  value={firstName}
+                  onChange={(event) => {
+                    setFirstName(event.target.value);
+                    setErrors((current) => ({ ...current, firstName: undefined, form: undefined }));
+                    setSuccessMessage("");
+                  }}
+                  placeholder="First Name"
+                  className="w-full rounded-full border border-white/70 bg-white/88 px-6 py-4 text-base text-[#2f2822] shadow-sm outline-none transition placeholder:text-[#76695d] focus:border-[#bda98b] focus:bg-white focus:ring-2 focus:ring-[#bda98b]/20"
+                  aria-invalid={Boolean(errors.firstName)}
+                  aria-describedby={errors.firstName ? "newsletter-first-name-error" : undefined}
+                />
+                {errors.firstName ? (
+                  <p id="newsletter-first-name-error" className="mt-2 px-5 text-sm text-[#8f453a]">
+                    {errors.firstName}
+                  </p>
+                ) : null}
+              </div>
             </div>
 
             <div className="mx-auto mt-6 max-w-3xl">
@@ -135,7 +162,11 @@ export default function NewsletterSignup() {
                 <input
                   type="checkbox"
                   checked={consent}
-                  onChange={(event) => setConsent(event.target.checked)}
+                  onChange={(event) => {
+                    setConsent(event.target.checked);
+                    setErrors((current) => ({ ...current, consent: undefined, form: undefined }));
+                    setSuccessMessage("");
+                  }}
                   className="mt-1 h-4 w-4 rounded border-[#bda98b] text-[#5f4a38] focus:ring-[#bda98b]"
                   aria-invalid={Boolean(errors.consent)}
                   aria-describedby={errors.consent ? "newsletter-consent-error" : undefined}
@@ -152,11 +183,18 @@ export default function NewsletterSignup() {
             <div className="mt-9 text-center">
               <button
                 type="submit"
-                className="rounded-full bg-[#5f4a38] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-[#5f4a38]/14 transition hover:-translate-y-0.5 hover:bg-[#2f2822]"
+                disabled={isSubmitting}
+                className="rounded-full bg-[#5f4a38] px-10 py-4 text-base font-semibold text-white shadow-lg shadow-[#5f4a38]/14 transition hover:-translate-y-0.5 hover:bg-[#2f2822] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
               >
-                Subscribe
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
               </button>
             </div>
+
+            {errors.form ? (
+              <p className="mx-auto mt-7 max-w-2xl rounded-full bg-white/72 px-5 py-3 text-center text-sm font-semibold text-[#8f453a]">
+                {errors.form}
+              </p>
+            ) : null}
 
             {successMessage ? (
               <p className="mx-auto mt-7 max-w-2xl rounded-full bg-white/72 px-5 py-3 text-center text-sm font-semibold text-[#3f5f46]">

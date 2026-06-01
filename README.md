@@ -117,3 +117,39 @@ Maintainable scalability
 This project is intended for personal/business wellness platform usage.
 
 🌿 “Healing begins when awareness meets intention.”
+
+Newsletter setup with Brevo
+
+The newsletter form posts to a secure Next.js API route at `/api/newsletter`.
+The Brevo API key is read only on the server and is never exposed to the
+frontend.
+
+Required environment variables:
+
+```bash
+# Place this in your local .env file. Use your Brevo API key from Brevo account settings.
+BREVO_API_KEY=YOUR_API_KEY_HERE
+
+# Place this in your local .env file. Use the numeric ID of the Brevo newsletter list.
+BREVO_LIST_ID=YOUR_LIST_ID_HERE
+```
+
+Local setup:
+
+1. Create a `.env` file in the project root.
+2. Add `BREVO_API_KEY` and `BREVO_LIST_ID` as shown above.
+3. Install dependencies with `npm install`.
+4. Run the site with `npm run dev`.
+5. Submit the newsletter form and confirm the contact appears in the selected Brevo list.
+
+Deployment setup:
+
+1. Add `BREVO_API_KEY` and `BREVO_LIST_ID` in your hosting provider's environment settings.
+2. Redeploy the application after adding or changing environment variables.
+3. Do not prefix these values with `NEXT_PUBLIC_`; they must remain server-only.
+
+Notes:
+
+- `.env*` is already ignored in `.gitignore`, so local secrets are not committed.
+- The integration uses Brevo's official REST API directly, so no extra package dependency is required.
+- Duplicate subscribers are handled gracefully by updating the existing Brevo contact and ensuring it is attached to the configured list.

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AreasOfSupport from "@/components/AreasOfSupport";
 import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
@@ -35,39 +36,6 @@ const supportAreas = [
   "Emotional Regulation",
   "Nervous System Grounding",
   "Mind-Body Awareness",
-];
-
-const supportAreaRows = [
-  {
-    rowClassName: "grid w-full max-w-[23rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Emotional Stress", "Anxiety & Mental Overload"],
-  },
-  {
-    rowClassName: "grid w-full max-w-[21rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Fatigue & Burnout", "Emotional Heaviness"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[21.5rem]",
-    itemClassName: "w-full",
-    items: ["Stress-Linked Physical Discomfort"],
-  },
-  {
-    rowClassName: "flex w-full max-w-[20rem]",
-    itemClassName: "w-full",
-    items: ["Recurring Emotional Patterns"],
-  },
-  {
-    rowClassName: "grid w-full max-w-[22rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Inner Imbalance", "Emotional Regulation"],
-  },
-  {
-    rowClassName: "grid w-full max-w-[23rem] grid-cols-2",
-    itemClassName: "w-full",
-    items: ["Nervous System Grounding", "Mind-Body Awareness"],
-  },
 ];
 
 const processSupports = [
@@ -135,10 +103,10 @@ export default function IntuitiveHealingPage() {
       </section>
 
       <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[52rem]">
+        <div className="mx-auto max-w-[75rem]">
           <Reveal>
             <article>
-              <div className="editorial-prose">
+              <div className="editorial-prose mx-auto">
                 <p>
                   Intuitive Healing is an{" "}
                   <span className="editorial-highlight">awareness-based energy healing</span>{" "}
@@ -167,37 +135,13 @@ export default function IntuitiveHealingPage() {
                 </p>
               </div>
 
-              <div className="mt-10 border-y border-[#e5d9c7] py-8">
-                <h2 className="text-2xl font-semibold text-[#2f2822]">
-                  What Intuitive Healing May Support
-                </h2>
-                <div className="mt-5 space-y-3 sm:hidden">
-                  {supportAreaRows.map((row) => (
-                    <ul key={row.items.join("-")} className={`mx-auto gap-2.5 ${row.rowClassName}`}>
-                      {row.items.map((area) => (
-                        <li
-                          key={area}
-                          className={`inline-flex min-h-12 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-2.5 text-center text-sm font-semibold leading-6 text-[#3f352d] shadow-sm ${row.itemClassName}`}
-                        >
-                          {area}
-                        </li>
-                      ))}
-                    </ul>
-                  ))}
-                </div>
-                <ul className="mt-6 hidden grid-cols-5 gap-3 sm:grid">
-                  {supportAreas.map((area) => (
-                    <li
-                      key={area}
-                      className="inline-flex min-h-14 items-center justify-center rounded-xl border border-[#e5d9c7] bg-white/72 px-4 py-3 text-center text-base font-semibold leading-7 text-[#3f352d] shadow-sm"
-                    >
-                      {area}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <AreasOfSupport
+                eyebrow="Areas of support"
+                title="What Intuitive Healing May Support"
+                items={supportAreas}
+              />
 
-              <div className="mt-10">
+              <div className="mx-auto mt-10 max-w-[52rem]">
                 <h2 className="text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
                   How the Process Works
                 </h2>

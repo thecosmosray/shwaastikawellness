@@ -58,7 +58,7 @@ export default function Hero() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-              className="rounded-full bg-[#17120f] px-7 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-[#2b211a]/16 transition hover:-translate-y-0.5 hover:bg-[#5f4a38]"
+                className="rounded-full bg-[#5f4a38] px-7 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-[#2b211a]/16 transition hover:-translate-y-0.5 hover:bg-[#17120f]"
               >
                 Book a Consultation
               </a>
