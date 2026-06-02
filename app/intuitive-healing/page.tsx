@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import AreasOfSupport from "@/components/AreasOfSupport";
 import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
-import ServiceContentSection from "@/components/ServiceContentSection";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -107,42 +106,39 @@ export default function IntuitiveHealingPage() {
         <div className="mx-auto max-w-[75rem]">
           <Reveal>
             <article>
-              <ServiceContentSection
-                imageSrc="/images/Book%20a%20Session/Intutive%20healing%20book%20a%20seesion.png"
-                imageAlt="Intuitive Healing session visual"
-                eyebrow="Intuitive Healing"
-                title="Intuitive Healing"
-                imagePosition="object-center"
-              >
-                <div className="editorial-prose">
-                <p>
-                  Intuitive Healing is an{" "}
-                  <span className="editorial-highlight">awareness-based energy healing</span>{" "}
-                  approach that works with deeper physical, emotional, and mental imbalances.
-                  Often, what individuals repeatedly experience in the body or mind is not
-                  limited to the surface symptom alone. Emotional stress, anxiety, fatigue,
-                  physical discomfort, recurring patterns, or a persistent sense of imbalance
-                  may also carry deeper emotional and energetic layers beneath the surface.
-                </p>
-                <p>
-                  The process works intuitively through the individual&apos;s energetic field to
-                  understand emotional strain, stress patterns, inner blocks, energetic
-                  disturbances, or imbalances that may be contributing to the present concern.
-                  The work is compassionate, aware, and deeply individualized, creating a{" "}
-                  <span className="editorial-highlight">supportive space</span> to explore
-                  what may be affecting the person physically, emotionally, or mentally.
-                </p>
-                <p>{introParagraphs[2]}</p>
-                <p>
-                  At times, physical discomfort may also carry emotional, mental,
-                  stress-related, or energetic components beneath the surface. As{" "}
-                  <span className="editorial-highlight">emotional regulation</span>, stress
-                  reduction, inner balance, and overall energetic awareness improve,
-                  individuals may also experience supportive shifts in their physical
-                  well-being.
-                </p>
+              <div className="mx-auto max-w-[52rem]">
+                <h2 className="text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
+                  Intuitive Healing
+                </h2>
+                <div className="editorial-prose mt-6">
+                  <p>
+                    Intuitive Healing is an{" "}
+                    <span className="editorial-highlight">awareness-based energy healing</span>{" "}
+                    approach that works with deeper physical, emotional, and mental imbalances.
+                    Often, what individuals repeatedly experience in the body or mind is not
+                    limited to the surface symptom alone. Emotional stress, anxiety, fatigue,
+                    physical discomfort, recurring patterns, or a persistent sense of imbalance
+                    may also carry deeper emotional and energetic layers beneath the surface.
+                  </p>
+                  <p>
+                    The process works intuitively through the individual&apos;s energetic field to
+                    understand emotional strain, stress patterns, inner blocks, energetic
+                    disturbances, or imbalances that may be contributing to the present concern.
+                    The work is compassionate, aware, and deeply individualized, creating a{" "}
+                    <span className="editorial-highlight">supportive space</span> to explore
+                    what may be affecting the person physically, emotionally, or mentally.
+                  </p>
+                  <p>{introParagraphs[2]}</p>
+                  <p>
+                    At times, physical discomfort may also carry emotional, mental,
+                    stress-related, or energetic components beneath the surface. As{" "}
+                    <span className="editorial-highlight">emotional regulation</span>, stress
+                    reduction, inner balance, and overall energetic awareness improve,
+                    individuals may also experience supportive shifts in their physical
+                    well-being.
+                  </p>
+                </div>
               </div>
-              </ServiceContentSection>
 
               <AreasOfSupport
                 eyebrow="Areas of support"
@@ -215,17 +211,28 @@ export default function IntuitiveHealingPage() {
               <div className="h-px flex-1 bg-[#cdbd9f]" />
             </div>
 
-            <div className="border-y border-[#eadfce] py-6">
-              <h2 className="text-xl font-semibold text-[#2f2822] sm:text-2xl">For Online Session</h2>
-              <ul className="mt-5 grid gap-x-8 gap-y-3 text-base leading-7 text-[#2f2822] sm:mt-6 sm:grid-cols-2 sm:gap-y-4 sm:leading-8">
+            <details className="group rounded-2xl border border-[#eadfce] bg-[#fffaf2] shadow-sm">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 text-left marker:hidden sm:px-7">
+                <div>
+                  <h2 className="text-xl font-semibold text-[#2f2822] sm:text-2xl">For Online Session</h2>
+                  <p className="mt-1 text-sm leading-6 text-[#74675c]">
+                    Tap to view the preparation checklist for online sessions.
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm font-semibold uppercase tracking-[0.14em] text-[#3f5f46]">
+                  <span className="group-open:hidden">View</span>
+                  <span className="hidden group-open:inline">Hide</span>
+                </span>
+              </summary>
+              <ul className="space-y-3 border-t border-[#eadfce] px-6 py-5 text-base leading-8 text-[#2f2822] sm:space-y-4 sm:px-7 sm:py-6">
                 {instructions.map((instruction) => (
                   <li key={instruction} className="flex gap-4">
-                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8a9f78] sm:h-2 sm:w-2" />
-                    <span className="min-w-0 flex-1">{instruction}</span>
+                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-[#3f5f46]" />
+                    <span className="min-w-0 flex-1 text-justify">{instruction}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           </div>
         </Reveal>
       </section>

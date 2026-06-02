@@ -62,9 +62,9 @@ const tabs = [
   },
   {
     label: "Delivery Options",
-    imageSrc: "/images/corporate%20workshop/Delivery%20option.webp",
+    imageSrc: "/images/corporate%20workshop/Delivery%20option%20v2.webp",
     imageAlt: "Corporate workshop delivery options visual",
-    imageFit: "object-contain",
+    imageFit: "object-cover",
     heading: "Delivery Options",
     cards: [
       "On-site, off-site or online",
@@ -112,7 +112,7 @@ export default function CorporateWorkshopTabs() {
         <div
           role="tablist"
           aria-label="Corporate workshop information"
-          className="sticky top-[72px] z-30 rounded-[1rem] border border-[#e2d4bd] bg-white/90 p-1.5 shadow-sm shadow-[#6b513b]/5 backdrop-blur lg:rounded-full lg:p-1"
+          className="sticky top-[72px] z-30 rounded-[1rem] border border-[#e2d4bd] bg-white lg:bg-white/90 p-1.5 shadow-sm shadow-[#6b513b]/5 lg:backdrop-blur lg:rounded-full lg:p-1"
         >
           <div className="grid grid-cols-2 gap-1.5 lg:flex lg:min-w-0 lg:gap-1">
             {tabs.map((tab, index) => {
@@ -129,7 +129,7 @@ export default function CorporateWorkshopTabs() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
-                  className={`relative min-h-11 rounded-full px-2.5 py-2.5 text-center text-xs font-medium leading-snug transition sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
+                  className={`relative min-h-11 rounded-full px-2.5 py-2.5 text-center text-xs font-medium leading-snug transition-colors sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm lg:flex-1 lg:whitespace-nowrap lg:px-6 ${
                     isActive
                       ? "bg-[#a8bc98] text-[#26382a] shadow-sm shadow-[#6b513b]/5"
                       : "text-[#5f5349] hover:bg-white hover:text-[#3f5f46]"
@@ -158,7 +158,6 @@ export default function CorporateWorkshopTabs() {
               imageSrc={activeTab.imageSrc}
               imageAlt={activeTab.imageAlt}
               imageFit={activeTab.imageFit as "object-cover" | "object-contain"}
-              title={activeTab.heading}
             >
               {"intro" in activeTab ? (
                 <p className={serviceBodyClass}>{activeTab.intro}</p>

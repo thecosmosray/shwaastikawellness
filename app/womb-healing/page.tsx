@@ -74,9 +74,10 @@ export default function WombHealingPage() {
             <ServiceContentSection
               imageSrc="/images/womb%20healing.jpg"
               imageAlt="Womb Healing and prenatal support session"
-              eyebrow="Womb Healing"
               title="Womb Healing"
               imagePosition="object-top"
+              imageFit="object-contain"
+              imageAspectRatio="aspect-[2/3]"
             >
               <div className="editorial-prose">
                 <p>

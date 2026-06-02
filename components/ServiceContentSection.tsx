@@ -13,6 +13,7 @@ type ServiceContentSectionProps = {
   imagePriority?: boolean;
   panelClassName?: string;
   contentClassName?: string;
+  imageAspectRatio?: string;
 };
 
 export const serviceEyebrowClass =
@@ -54,10 +55,11 @@ export default function ServiceContentSection({
   children,
   imageFit = "object-cover",
   imagePosition = "object-center",
-  imageSizes = "(max-width: 1024px) 21rem, 21rem",
+  imageSizes = "(max-width: 640px) 100vw, 24rem",
   imagePriority = false,
   panelClassName = "",
   contentClassName = "",
+  imageAspectRatio = "aspect-[4/3]",
 }: ServiceContentSectionProps) {
   return (
     <div
@@ -73,8 +75,8 @@ export default function ServiceContentSection({
         <div className={title || eyebrow ? "mt-5 sm:mt-6" : ""}>{children}</div>
       </div>
 
-      <div className="group w-full max-w-[21rem] overflow-hidden rounded-[1rem] border border-[#eadfce] bg-[#fffaf2] lg:justify-self-end">
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#dfe9d8] transition duration-500 group-hover:scale-[1.01]">
+      <div className="group w-full max-w-[24rem] overflow-hidden rounded-[1rem] border border-[#eadfce] bg-[#fffaf2] lg:justify-self-end order-first lg:order-none">
+        <div className={`relative ${imageAspectRatio} overflow-hidden bg-[#dfe9d8] transition duration-500 group-hover:scale-[1.01]`}>
           <Image
             src={imageSrc}
             alt={imageAlt}
