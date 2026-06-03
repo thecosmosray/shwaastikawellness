@@ -111,63 +111,82 @@ type Service = (typeof services)[number];
 function InvestmentDetails({ service }: { service: Service }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.32, ease: "easeOut" }}
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
       className="overflow-hidden"
     >
-      <div className="rounded-[2rem] bg-[#fffefa] p-6 text-left shadow-[0_24px_70px_rgba(77,75,55,0.08)] sm:rounded-[2.25rem] sm:p-7 lg:p-9">
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8d7158]">
-            Session Details
-          </p>
-          <h3 className="mt-4 text-2xl leading-tight text-[#171412] sm:text-3xl">
-            {service.title}
-          </h3>
-          <p className="mt-4 max-w-[42rem] text-[1.02rem] leading-8 text-[#4f463e]">
-            {service.description}
-          </p>
-          <p className="mt-4 text-sm text-[#6c6259]">
-            <span className="font-semibold text-[#171412]">Duration:</span> {service.duration}
-          </p>
-        </div>
-
-        <div className="mt-5">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8d7158]">
-            What Is Included
-          </p>
-          <ul className="mt-4 space-y-3 text-sm leading-7 text-[#4f463e]">
-            {service.included.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-3 h-px w-5 shrink-0 bg-[#bda98b]" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-5 space-y-2.5">
-          {service.pricing.map(([name, price, note]) => (
-            <div key={name} className="border-t border-[#efe6d8] pt-3">
-              <div>
-                <p className="font-medium text-[#171412]">{name}</p>
-                {note ? <p className="mt-1 text-sm text-[#7a6b5e]">{note}</p> : null}
+      <div className="w-full text-left bg-transparent pt-6 pb-2 px-1 mt-6 border-t border-[#efe6d8]/70 lg:pt-10 lg:pb-10 lg:px-9 lg:mt-0 lg:border-t-0 lg:rounded-[2.25rem] lg:bg-[#fffefa] lg:shadow-[0_24px_70px_rgba(77,75,55,0.06)] lg:border lg:border-[#f2ede4]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {/* Left Column: Details & Pricing */}
+          <div className="flex flex-col justify-between">
+            <div>
+              {/* Only show "Session Details" heading on desktop since it is redundant inside the card on mobile */}
+              <p className="hidden lg:block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8d7158] opacity-80">
+                Session Details
+              </p>
+              <h3 className="hidden lg:block mt-1 lg:mt-3 text-xl font-serif text-[#171412] leading-tight font-normal lg:text-2xl">
+                {service.title}
+              </h3>
+              
+              {/* Show description and duration on all screen sizes */}
+              <p className="text-sm sm:text-[0.95rem] leading-7 text-[#5c5249] lg:mt-3">
+                {service.description}
+              </p>
+              
+              <div className="mt-4 flex items-center gap-2 text-xs text-[#7c6e62]">
+                <span className="font-semibold text-[#171412] uppercase tracking-[0.1em] text-[9px]">Duration:</span>
+                <span className="bg-[#eeede5]/80 text-[#4f463e] px-2.5 py-0.5 rounded-full font-medium text-xs">{service.duration}</span>
               </div>
-              <p className="mt-1 text-sm font-semibold text-[#5f6f55]">{price}</p>
             </div>
-          ))}
-        </div>
 
-        <div className="mt-6">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full justify-center rounded-full bg-[#565c43] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-white shadow-[0_14px_30px_rgba(86,92,67,0.18)] transition hover:bg-[#4b513a]"
-          >
-            WhatsApp / Contact
-          </a>
+            {/* Pricing Section inside the Left Column */}
+            <div className="mt-6 border-t border-[#efe6d8]/60 pt-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8d7158] opacity-80 mb-3.5">
+                Investment
+              </p>
+              <div className="space-y-3">
+                {service.pricing.map(([name, price, note]) => (
+                  <div key={name} className="flex flex-col gap-0.5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+                      <span className="text-sm font-medium text-[#241d18]">{name}</span>
+                      <span className="text-sm font-semibold text-[#565c43]">{price}</span>
+                    </div>
+                    {note ? <p className="text-xs text-[#7c7062] leading-relaxed">{note}</p> : null}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Inclusions & CTA */}
+          <div className="md:h-full flex flex-col justify-between">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8d7158] opacity-80">
+                What Is Included
+              </p>
+              <ul className="mt-3.5 space-y-2.5 text-[0.92rem] leading-relaxed text-[#4f463e]">
+                {service.included.map((item) => (
+                  <li key={item} className="flex gap-2.5 items-start">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#bda98b]/80" />
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6 md:mt-0 pt-4 md:pt-0">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full justify-center rounded-full bg-[#565c43] px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white shadow-[0_8px_20px_rgba(86,92,67,0.15)] transition-all duration-300 hover:bg-[#4b513a] hover:shadow-[0_12px_24px_rgba(86,92,67,0.25)] hover:-translate-y-0.5 active:translate-y-0"
+              >
+                WhatsApp / Contact
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -188,8 +207,7 @@ function ServiceCard({
   onSelect: (expand?: boolean) => void;
 }) {
   return (
-    <motion.article
-      layout
+    <article
       className={`mx-auto w-full max-w-[29rem] overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_68px_rgba(77,75,55,0.10)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_32px_80px_rgba(77,75,55,0.13)] sm:rounded-[2.25rem] ${
         isActive ? "ring-1 ring-[#565c43]/40" : ""
       }`}
@@ -227,11 +245,16 @@ function ServiceCard({
         <button
           type="button"
           onClick={() => onSelect(true)}
-          className="inline-flex items-center justify-center gap-3 rounded-full bg-[#565c43] px-7 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-[0_14px_30px_rgba(86,92,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#4b513a]"
+          className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#cdbd9f] bg-[#fffdf8] px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#3f352d] shadow-sm transition-all duration-300 hover:border-[#8a9b72] hover:bg-[#fbf8f1] hover:-translate-y-0.5"
           aria-expanded={isActive && isExpanded}
         >
           {isActive && isExpanded ? "Hide Details" : "View Details"}
-          <span aria-hidden="true" className="text-lg leading-none">
+          <span
+            aria-hidden="true"
+            className={`text-lg leading-none transition-transform duration-300 inline-block ${
+              isActive && isExpanded ? "rotate-90" : ""
+            }`}
+          >
             &rarr;
           </span>
         </button>
@@ -246,7 +269,7 @@ function ServiceCard({
           </AnimatePresence>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -265,7 +288,7 @@ export default function SessionExperience() {
       <div className="mx-auto max-w-[118rem] rounded-b-[2.75rem] bg-[#eeede5] px-5 pb-14 pt-12 sm:rounded-b-[4rem] sm:px-8 sm:pb-16 sm:pt-14 lg:px-12">
         <div className="mx-auto mb-11 max-w-3xl text-center lg:mb-10">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8d7158]">
-            Book a Session
+            Ways We Can Work Together
           </p>
           <h1 className="mt-5 text-4xl leading-[1.08] text-[#2f312d] sm:text-5xl lg:text-[3.35rem]">
             Choose the experience that supports this season of your life.
@@ -278,9 +301,8 @@ export default function SessionExperience() {
             const isReversed = index % 2 === 1;
 
             return (
-              <motion.section
+              <section
                 key={service.title}
-                layout
                 className={`grid items-center gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8 xl:gap-10 ${
                   isReversed ? "lg:grid-cols-[1.05fr_0.95fr]" : ""
                 }`}
@@ -316,7 +338,7 @@ export default function SessionExperience() {
                     </AnimatePresence>
                   </div>
                 ) : null}
-              </motion.section>
+              </section>
             );
           })}
         </div>
