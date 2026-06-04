@@ -60,8 +60,7 @@ export default function ReviewsSection() {
               What Our Clients Say
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-[#4f463e]">
-              Curated client experiences preserved from earlier{" "}
-              <span className="editorial-highlight">public Google reviews</span>.
+              <span className="editorial-highlight">Google reviews</span> of our clients.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">

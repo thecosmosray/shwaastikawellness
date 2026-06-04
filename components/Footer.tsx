@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const whatsappUrl =
   "https://api.whatsapp.com/send/?phone=919310685448&text=Hello%0AWelcome+to+SHWAASTIKA+WELLNESS.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.&type=phone_number&app_absent=0";
@@ -10,9 +11,18 @@ const whatsappUrl =
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (status !== "idle") {
+      setStatus("idle");
+      setMessage("");
+      setEmail("");
+    }
+  }, [pathname]);
 
   const handleSubscribe = async (e: FormEvent) => {
     e.preventDefault();
@@ -51,13 +61,13 @@ export default function Footer() {
   return (
     <footer className="bg-[#5d686f] text-[#f2f5f6]">
       {/* Super compact padding based on Stojo inspiration */}
-      <div className="mx-auto max-w-[90rem] px-6 py-10 lg:px-12">
-        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-16">
+      <div className="mx-auto max-w-[90rem] px-6 py-7 lg:px-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12">
           
           {/* Left Column: Newsletter Signup */}
           <div className="max-w-md w-full">
             {/* Brand Logo & Name (Moved to top left to avoid WhatsApp overlap) */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-5">
               <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm">
                 <Image
                   src="/images/logo.png"
@@ -77,7 +87,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <h3 className="font-serif text-[1.5rem] leading-[1.25] tracking-tight text-white mb-6 md:text-[1.75rem]">
+            <h3 className="font-serif text-[1.5rem] leading-[1.25] tracking-tight text-white mb-4 md:text-[1.75rem]">
               Stay connected with insights, reflections and offerings from Shwaastika.
             </h3>
             
@@ -122,13 +132,13 @@ export default function Footer() {
           </div>
 
           {/* Right Columns: Links */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12 lg:gap-16 lg:pt-2">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:gap-12 lg:pt-2">
             {/* SUPPORT */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50">
                 Support
               </p>
-              <ul className="flex flex-col gap-3 text-[13px] font-medium tracking-wide text-white/85">
+              <ul className="flex flex-col gap-2 text-[13px] font-medium tracking-wide text-white/85">
                 <li><Link href="/about" className="transition hover:text-white">About Preeti</Link></li>
                 <li><Link href="/testimonials" className="transition hover:text-white">Client Stories</Link></li>
                 <li><Link href="/book-a-session" className="transition hover:text-white">Book a Session</Link></li>
@@ -141,11 +151,11 @@ export default function Footer() {
             </div>
 
             {/* SERVICES */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50">
                 Services
               </p>
-              <ul className="flex flex-col gap-3 text-[13px] font-medium tracking-wide text-white/85">
+              <ul className="flex flex-col gap-2 text-[13px] font-medium tracking-wide text-white/85">
                 <li><Link href="/inner-clarity-session" className="transition hover:text-white">Inner Clarity</Link></li>
                 <li><Link href="/intuitive-healing" className="transition hover:text-white">Intuitive Healing</Link></li>
                 <li><Link href="/womb-healing" className="transition hover:text-white">Womb Healing</Link></li>
@@ -154,11 +164,11 @@ export default function Footer() {
             </div>
 
             {/* CONNECT */}
-            <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
+            <div className="flex flex-col gap-3 col-span-2 sm:col-span-1">
               <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50">
                 Connect
               </p>
-              <ul className="flex flex-col gap-3 text-[13px] font-medium tracking-wide text-white/85">
+              <ul className="flex flex-col gap-2 text-[13px] font-medium tracking-wide text-white/85">
                 <li>
                   <a href="https://www.instagram.com/preeti_semwal_bembi/" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">
                     Instagram
@@ -180,7 +190,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-6 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-6 sm:flex-row">
           
           {/* Left: Copyright and Address */}
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 text-[11px] text-white/60">
