@@ -33,7 +33,7 @@ export default function HomeIntro() {
             you are ready to surrender - ready to return home to yourself.
           </p>
           <p className="pt-2 text-right italic text-[#7a6b5e]">
-            -Preeti Semwal Bembi
+            -Preeti Semwal
           </p>
         </div>
       </article>

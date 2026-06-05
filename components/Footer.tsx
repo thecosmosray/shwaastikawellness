@@ -184,6 +184,11 @@ export default function Footer() {
                     WhatsApp
                   </a>
                 </li>
+                <li>
+                  <a href="mailto:connect@shwaastikawellness.com" className="transition hover:text-white">
+                    Email
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

@@ -28,6 +28,7 @@ export default function VideoTestimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const combinedVideoRef = useRef<HTMLVideoElement | null>(null);
   const videoSectionRef = useRef<HTMLDivElement | null>(null);
   const activeVideo = videoTestimonials[activeIndex];
 
@@ -46,6 +47,7 @@ export default function VideoTestimonials() {
       ([entry]) => {
         if (!entry.isIntersecting) {
           videoRef.current?.pause();
+          combinedVideoRef.current?.pause();
         }
       },
       { threshold: 0.18 },
@@ -92,7 +94,12 @@ export default function VideoTestimonials() {
                 controls
                 playsInline
                 preload="metadata"
-                onPlay={() => setIsPlaying(true)}
+                onPlay={() => {
+                  setIsPlaying(true);
+                  if (combinedVideoRef.current) {
+                    combinedVideoRef.current.pause();
+                  }
+                }}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
                 className="h-full w-full bg-[#17130f] object-cover sm:object-contain"
@@ -149,6 +156,47 @@ export default function VideoTestimonials() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mt-20 border-t border-[#eadfce] pt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 text-center"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8d735f]">
+              Corporate Wellness Workshops
+            </p>
+            <h3 className="mt-2 text-2xl font-bold text-[#17120f] sm:text-3xl">
+              Workshop Experiences
+            </h3>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mx-auto w-full max-w-[420px]"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-[#eadfce] bg-[#17130f] shadow-xl shadow-[#6b513b]/7">
+              <video
+                ref={combinedVideoRef}
+                src="/combinedree.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                onPlay={() => {
+                  if (videoRef.current) {
+                    videoRef.current.pause();
+                  }
+                }}
+                className="h-full w-full object-cover object-[center_20%] scale-[1.02]"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

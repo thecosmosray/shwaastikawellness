@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const mainLinks = [
   { label: "Home", href: "/" },
@@ -65,7 +66,12 @@ export default function Header() {
   // We now use the main header layout across all pages.
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#d8cab5]/60 bg-[#f4ebe1]/95 backdrop-blur-xl">
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="sticky top-0 z-50 border-b border-[#d8cab5]/60 bg-[#f4ebe1]/95 backdrop-blur-xl"
+    >
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-[86rem] items-center justify-between gap-6 px-5 py-4 sm:px-6 lg:px-10"
@@ -153,15 +159,17 @@ export default function Header() {
         </ul>
 
         <div className="flex items-center gap-4">
-          <div className="hidden shrink-0 xl:block">
-            <Link
-              href="/book-a-session"
-              scroll
-              className="rounded-full bg-[#5d686f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#5d686f]/20 transition hover:-translate-y-0.5 hover:bg-[#7b878f]"
-            >
-              Book a Consultation
-            </Link>
-          </div>
+          {!isHomePage ? (
+            <div className="hidden shrink-0 xl:block">
+              <Link
+                href="/book-a-session"
+                scroll
+                className="rounded-full bg-[#5d686f] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#5d686f]/20 transition hover:-translate-y-0.5 hover:bg-[#7b878f]"
+              >
+                Book a Consultation
+              </Link>
+            </div>
+          ) : null}
 
           <button
             type="button"
@@ -238,6 +246,6 @@ export default function Header() {
           </div>
         ) : null}
       </div>
-    </header>
+    </motion.header>
   );
 }

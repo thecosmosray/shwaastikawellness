@@ -1,10 +1,40 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const whatsappUrl =
   "https://api.whatsapp.com/send/?phone=919310685448&text=Hello%0AWelcome+to+SHWAASTIKA+WELLNESS.%0A%0AThank+you+for+reaching+out+through+our+website.%0APlease+tell+us+how+we+can+help+you+today.%0A%0AYou+can+share%3A%0A-+Your+concern+or+goal%0A-+Preferred+service%0A-+Suitable+time+for+a+call%2Fsession%0A%0AOur+team+will+respond+shortly&type=phone_number&app_absent=0";
 
 export default function Hero() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <section className="bg-transparent px-4 pb-12 pt-7 sm:px-6 lg:px-8 lg:pb-16 lg:pt-9">
       <div
@@ -53,7 +83,7 @@ export default function Hero() {
               Intuitive Energy Healer & Wellness Guide
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:gap-16 lg:gap-30">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -82,8 +112,16 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] bg-[#fffdf8] shadow-lg shadow-[#6b513b]/7 ring-1 ring-white/80 sm:min-h-[390px] lg:min-h-[450px]">
-            <div className="absolute -inset-x-4 -inset-y-6" style={{ position: "absolute" }}>
+          <motion.div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            className="relative min-h-[320px] overflow-hidden rounded-[1.75rem] bg-[#fffdf8] shadow-lg shadow-[#6b513b]/7 ring-1 ring-white/80 sm:min-h-[390px] lg:min-h-[450px]"
+          >
+            <div
+              className="absolute -inset-x-4 -inset-y-6"
+              style={{ position: "absolute", transform: "translateZ(30px)" }}
+            >
               <Image
                 src="/images/Home.jpg"
                 alt="Preeti Semwal intuitive healing session at Shwaastika Wellness"
@@ -95,8 +133,8 @@ export default function Hero() {
                 quality={95}
               />
             </div>
-            <div className="home-hero-image-glow absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fffdf8]/55 to-transparent" />
-          </div>
+            <div className="home-hero-image-glow absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#fffdf8]/55 to-transparent pointer-events-none" />
+          </motion.div>
         </div>
       </div>
     </section>

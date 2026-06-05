@@ -22,10 +22,10 @@ const testimonials = [
     imageClassName: "object-contain p-6",
   },
   {
-    title: "Intuitive Healing",
-    note: "A client reflection from an Intuitive Healing session.",
-    image: "/images/testimonial/Intuitive%20Healing.png",
-    alt: "Intuitive Healing testimonial",
+    title: "Inner Clarity",
+    note: "A client reflection from an Inner Clarity session.",
+    image: "/images/testimonial/Poonam%20Ji%20testimonial%20Inner%20Clarity-clean.png",
+    alt: "Inner Clarity testimonial",
     imageClassName: "object-contain p-6",
   },
 ];
