@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Intuitive Healing | Preeti Semwal",
+  title: "Intuitive Healing Sessions | Preeti Semwal – Energy Healing",
   description:
     "Discover intuitive healing sessions by Preeti Semwal using energy awareness, breath, gentle practices, and inner guidance for whole-being support.",
   path: "/intuitive-healing",
@@ -108,7 +108,7 @@ export default function IntuitiveHealingPage() {
             <article>
               <div className="mx-auto max-w-[52rem]">
                 <h2 className="text-2xl font-semibold leading-tight text-[#2f2822] sm:text-3xl">
-                  Intuitive Healing
+                  About This Practice
                 </h2>
                 <div className="editorial-prose mt-6">
                   <p>

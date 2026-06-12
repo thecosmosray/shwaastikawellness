@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Testimonials | Preeti Semwal",
+  title: "Client Testimonials & Reviews | Preeti Semwal Wellness",
   description:
     "Read shared experiences, client reflections, and public reviews for healing sessions and workshops by Preeti Semwal.",
   path: "/testimonials",

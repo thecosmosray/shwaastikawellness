@@ -5,7 +5,7 @@ import ReadingProgress from "@/components/ReadingProgress";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Rethinking Safety: A Holistic Approach to Personal Security | Preeti Semwal",
+  title: "Rethinking Safety: A Holistic Approach to Personal Security",
   description:
     "Safety is not about men vs women. It is about staying aware, alert and keeping presence of mind whenever in a difficult situation — by Preeti Semwal.",
   path: "/blog",

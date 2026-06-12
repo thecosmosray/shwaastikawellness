@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "About Preeti Semwal | Shwaastika Wellness",
+  title: "About Preeti Semwal | Intuitive Healer & Wellness Guide",
   description:
     "Meet Preeti Semwal, founder of Shwaastika Wellness, and learn about her intuitive healing work, ancestral wisdom, resilience, and holistic approach.",
   path: "/about",

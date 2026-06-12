@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Corporate Wellness Workshops | Preeti Semwal",
+  title: "Corporate Wellness Workshops | Shwaastika Wellness",
   description:
     "Corporate wellness workshops by Preeti Semwal support workplace resilience, leadership presence, emotional intelligence, safety awareness, and well-being.",
   path: "/corporate-workshop",

@@ -43,6 +43,11 @@ const routes = [
     changeFrequency: "monthly",
     priority: 0.7,
   },
+  {
+    path: "/blog",
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
 ] satisfies Array<{
   path: string;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];

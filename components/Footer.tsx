@@ -185,7 +185,10 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:connect@shwaastikawellness.com" className="transition hover:text-white">
+                  <a
+                    href="mailto:shwaastikawellness@gmail.com?subject=Inquiry%20from%20Swastika%20Wellness%20Website&body=Name%3A%0A%0APhone%3A%0A%0AQuery%3A"
+                    className="transition hover:text-white"
+                  >
                     Email
                   </a>
                 </li>

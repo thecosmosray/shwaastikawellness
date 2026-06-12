@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Inner Clarity | Preeti Semwal",
+  title: "Inner Clarity Session | Emotional Guidance by Preeti Semwal",
   description:
     "Explore inner clarity sessions by Preeti Semwal for emotional awareness, intuitive guidance, life transitions, and deeper self-connection.",
   path: "/inner-clarity-session",

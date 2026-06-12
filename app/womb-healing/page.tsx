@@ -10,7 +10,7 @@ import ServiceContentSection, {
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Womb Healing & Prenatal Support | Preeti Semwal",
+  title: "Womb Healing & Prenatal Yoga Support | Preeti Semwal",
   description:
     "Womb healing and prenatal support by Preeti Semwal offer a nurturing space for pregnancy, emotional transitions, mother-baby connection, and mindful well-being.",
   path: "/womb-healing",
@@ -74,7 +74,7 @@ export default function WombHealingPage() {
             <ServiceContentSection
               imageSrc="/images/womb%20healing.jpg"
               imageAlt="Womb Healing and prenatal support session"
-              title="Womb Healing"
+              title="About This Practice"
               imagePosition="object-top"
               imageFit="object-contain"
               imageAspectRatio="aspect-[2/3]"
